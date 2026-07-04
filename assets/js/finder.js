@@ -1,0 +1,245 @@
+/* HMB Standort-Finder (WS-HMB-STANDORT-BUILD H4) — rein client-seitig,
+ * GitHub-Pages-tauglich. Datenquelle: inline #hmb-locations (JSON).
+ *
+ * - Filter-Chips (alle/online/onsite) → Liste.
+ * - Textsuche „Ort/Stadt" → EIN google.maps.Geocoder-Call beim Absenden
+ *   (inhärent consent-gegated: der Geocoder existiert erst, wenn die Maps-JS
+ *   nach Consent geladen ist). Ohne Consent/Maps → Hinweis; Geolocation geht
+ *   trotzdem.
+ * - „In meiner Nähe" → Browser-Geolocation.
+ * - Distanz per Haversine, Sortierung OHNE Radius-Deckel, Gruppen „<50 km /
+ *   weiter". Load-More (Anzeige inkrementell, Suche über alle).
+ * - Karten-Marker-Klick + Karten-Card-Klick füttern dasselbe Side-Panel
+ *   (window.hmbSelectLocation), Karte zentriert via window.hmbPanTo.
+ */
+(function () {
+	"use strict";
+
+	var dataEl = document.getElementById("hmb-locations");
+	var listEl = document.getElementById("locList");
+	if (!dataEl || !listEl) return;   // keine Übersichtsseite
+
+	var LOCS = [];
+	try { LOCS = JSON.parse(dataEl.textContent || "[]"); } catch (_) { LOCS = []; }
+
+	var EN = location.pathname.indexOf("/en/") === 0;
+	var T = EN ? {
+		near: "Nearby (< 50 km)", far: "Farther away", count: "locations",
+		more: "Show more", geo_wait: "Locating…", geo_fail: "Location unavailable.",
+		geo_hint: "Enable the map (accept cookies) to search by place name.",
+		no_hits: "No locations match.", detail: "/en/location/",
+		to_loc: "To location →", book: "Book now",
+		online: "Book online", onsite: "Book on-site",
+	} : {
+		near: "In der Nähe (< 50 km)", far: "Weiter entfernt", count: "Standorte",
+		more: "Weitere anzeigen", geo_wait: "Orte…", geo_fail: "Standort nicht verfügbar.",
+		geo_hint: "Aktiviere die Karte (Cookies akzeptieren), um nach Ort zu suchen.",
+		no_hits: "Keine Standorte gefunden.", detail: "/standort/",
+		to_loc: "Zum Standort →", book: "Jetzt buchen",
+	};
+
+	var state = { filter: "all", origin: null, shown: 24 };
+	var PAGE = 24;
+
+	function esc(s) {
+		return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+			return { "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;", "'": "&#39;" }[c];
+		});
+	}
+
+	function haversine(a, b) {
+		var R = 6371, toRad = Math.PI / 180;
+		var dLat = (b.lat - a.lat) * toRad, dLng = (b.lng - a.lng) * toRad;
+		var la1 = a.lat * toRad, la2 = b.lat * toRad;
+		var h = Math.sin(dLat / 2) ** 2 + Math.cos(la1) * Math.cos(la2) * Math.sin(dLng / 2) ** 2;
+		return 2 * R * Math.asin(Math.sqrt(h));
+	}
+
+	function matchesFilter(loc) {
+		if (state.filter === "online") return !!loc.online;
+		if (state.filter === "onsite") return !!loc.onsite;
+		return true;
+	}
+
+	function badges(loc) {
+		var h = "";
+		if (loc.online) h += '<span class="badge badge-online">🔒 ' + T.online + "</span>";
+		if (loc.onsite) h += '<span class="badge badge-onsite">📱 ' + T.onsite + "</span>";
+		return h;
+	}
+
+	function computed() {
+		var items = LOCS.filter(matchesFilter);
+		if (state.origin) {
+			items.forEach(function (l) {
+				l._dist = (l.lat != null && l.lng != null)
+					? haversine(state.origin, { lat: l.lat, lng: l.lng }) : Infinity;
+			});
+			items.sort(function (a, b) { return (a._dist) - (b._dist); });
+		} else {
+			items.forEach(function (l) { l._dist = null; });
+		}
+		return items;
+	}
+
+	function card(loc) {
+		var dist = (loc._dist != null && isFinite(loc._dist))
+			? '<span class="dist-tag' + (loc._dist < 50 ? " near" : "") + '">' + Math.round(loc._dist) + " km</span>" : "";
+		return '<li class="loc-card" data-slug="' + esc(loc.slug) + '">'
+			+ dist
+			+ '<h4><a href="' + T.detail + encodeURIComponent(loc.slug) + '/">' + esc(loc.title) + "</a></h4>"
+			+ (loc.city ? '<p class="lc-city">' + esc((loc.zip ? loc.zip + " " : "") + loc.city) + "</p>" : "")
+			+ '<div class="badges">' + badges(loc) + "</div></li>";
+	}
+
+	function render() {
+		var items = computed();
+		var total = items.length;
+		var slice = items.slice(0, state.shown);
+		var html = "", lastGroup = null;
+		slice.forEach(function (loc) {
+			if (state.origin && isFinite(loc._dist)) {
+				var g = loc._dist < 50 ? "near" : "far";
+				if (g !== lastGroup) { html += '<li class="list-group-head">' + (g === "near" ? T.near : T.far) + "</li>"; lastGroup = g; }
+			}
+			html += card(loc);
+		});
+		if (!total) html = '<li class="loc-card hmb-empty">' + T.no_hits + "</li>";
+		listEl.innerHTML = html;
+
+		var ovc = document.getElementById("ov-count");
+		if (ovc) ovc.textContent = total + " " + T.count;
+		var wrap = document.getElementById("loadMoreWrap");
+		var cnt = document.getElementById("loadMoreCount");
+		if (wrap) {
+			if (state.shown < total) {
+				wrap.hidden = false;
+				if (cnt) cnt.textContent = slice.length + " / " + total;
+			} else { wrap.hidden = true; }
+		}
+	}
+
+	function selectLoc(slug) {
+		var loc = LOCS.filter(function (l) { return l.slug === slug; })[0];
+		var panel = document.getElementById("panel");
+		var empty = document.getElementById("panelEmpty");
+		if (!loc || !panel) return;
+		if (empty) empty.style.display = "none";
+		var body = panel.querySelector(".result-card") || document.createElement("div");
+		body.className = "result-card is-active";
+		body.innerHTML =
+			(loc.image_url ? '<div class="rc-img" style="background-image:url(\'' + esc(loc.image_url) + "')\"></div>" : '<div class="rc-img"></div>')
+			+ '<div class="rc-body">'
+			+ "<h3>" + esc(loc.title) + "</h3>"
+			+ (loc.city ? '<p class="rc-city">' + esc((loc.zip ? loc.zip + " " : "") + loc.city) + "</p>" : "")
+			+ (loc.description_short ? '<p class="rc-desc">' + esc(loc.description_short) + "</p>" : "")
+			+ (loc.price_text ? '<p class="rc-price">' + esc(loc.price_text) + "</p>" : "")
+			+ '<div class="badges">' + badges(loc) + "</div>"
+			+ '<div class="rc-actions"><a class="btn btn-primary btn-sm" href="' + T.detail + encodeURIComponent(loc.slug) + '/">' + T.to_loc + "</a>"
+			+ (loc.booking_url ? '<a class="btn btn-ghost btn-sm" href="' + esc(loc.booking_url) + '" rel="noopener" target="_blank">' + T.book + "</a>" : "")
+			+ "</div></div>";
+		if (!body.parentNode) panel.appendChild(body);
+		panel.classList.add("sheet-open");
+		if (typeof window.hmbPanTo === "function") window.hmbPanTo(slug);
+	}
+	window.hmbSelectLocation = selectLoc;
+
+	function setStatus(msg) {
+		var el = document.getElementById("finderStatus");
+		if (el) el.textContent = msg || "";
+	}
+
+	function applyOrigin(o, label) {
+		state.origin = o; state.shown = PAGE; render();
+		var items = computed();
+		if (items.length && isFinite(items[0]._dist)) {
+			setStatus((label ? label + " · " : "") + Math.round(items[0]._dist) + " km");
+			selectLoc(items[0].slug);   // nächsten Treffer direkt öffnen
+		}
+	}
+
+	// ---- Textsuche → Geocoder (consent-gegated via Maps-JS) ----
+	function runSearch() {
+		var input = document.getElementById("finderInput");
+		var q = (input && input.value || "").trim();
+		if (!q) return;
+		if (!(window.google && google.maps && google.maps.Geocoder)) {
+			setStatus(T.geo_hint);
+			return;
+		}
+		setStatus(T.geo_wait);
+		new google.maps.Geocoder().geocode({ address: q }, function (res, status) {
+			if (status === "OK" && res && res[0]) {
+				var g = res[0].geometry.location;
+				applyOrigin({ lat: g.lat(), lng: g.lng() }, q);
+			} else { setStatus(T.geo_fail); }
+		});
+	}
+
+	function useMyLocation() {
+		if (!navigator.geolocation) { setStatus(T.geo_fail); return; }
+		setStatus(T.geo_wait);
+		navigator.geolocation.getCurrentPosition(
+			function (p) { applyOrigin({ lat: p.coords.latitude, lng: p.coords.longitude }, EN ? "Near me" : "In deiner Nähe"); },
+			function () { setStatus(T.geo_fail); },
+			{ enableHighAccuracy: false, timeout: 8000, maximumAge: 300000 }
+		);
+	}
+
+	// ---- City-Quick-Chips (nur Städte mit Lockern) ----
+	function renderCityChips() {
+		var box = document.getElementById("cityChips");
+		if (!box) return;
+		var seen = {}, cities = [];
+		LOCS.forEach(function (l) { if (l.city && !seen[l.city]) { seen[l.city] = 1; cities.push(l.city); } });
+		cities.sort();
+		box.innerHTML = cities.slice(0, 12).map(function (c) {
+			return '<button type="button" data-city="' + esc(c) + '">' + esc(c) + "</button>";
+		}).join("");
+	}
+
+	// ---- Wiring ----
+	function wire() {
+		var form = document.getElementById("finder");
+		if (form) form.addEventListener("submit", function (e) { e.preventDefault(); runSearch(); });
+		var geo = document.getElementById("finderGeo");
+		if (geo) geo.addEventListener("click", useMyLocation);
+
+		document.querySelectorAll(".ov-filter .chip").forEach(function (chip) {
+			chip.addEventListener("click", function () {
+				document.querySelectorAll(".ov-filter .chip").forEach(function (c) { c.classList.remove("is-active"); });
+				chip.classList.add("is-active");
+				state.filter = chip.getAttribute("data-filter") || "all";
+				state.shown = PAGE; render();
+			});
+		});
+
+		var cityBox = document.getElementById("cityChips");
+		if (cityBox) cityBox.addEventListener("click", function (e) {
+			var b = e.target.closest("[data-city]");
+			if (!b) return;
+			var input = document.getElementById("finderInput");
+			if (input) input.value = b.getAttribute("data-city");
+			runSearch();
+		});
+
+		listEl.addEventListener("click", function (e) {
+			// Klick auf Card (aber nicht auf den Detail-Link) → Panel öffnen.
+			if (e.target.closest("a")) return;
+			var li = e.target.closest(".loc-card");
+			if (li && li.getAttribute("data-slug")) { e.preventDefault(); selectLoc(li.getAttribute("data-slug")); }
+		});
+
+		var more = document.getElementById("loadMoreBtn");
+		if (more) more.addEventListener("click", function () { state.shown += PAGE; render(); });
+
+		var sheetClose = document.getElementById("sheetClose");
+		if (sheetClose) sheetClose.addEventListener("click", function () {
+			document.getElementById("panel").classList.remove("sheet-open");
+		});
+	}
+
+	renderCityChips();
+	wire();
+	render();
+})();

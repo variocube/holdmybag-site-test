@@ -68,7 +68,7 @@
      "name": "Linz  PlusCity \u2013 in den Eingangsbereichen"}]
 }
 </script>
-  <link rel="stylesheet" href="/assets/css/site.css?v=9103b5cb33"></head>
+  <link rel="stylesheet" href="/assets/css/site.css?v=2daf23f4d6"></head>
 <body><div class="stage-banner" role="alert">STAGE — kein Produktivinhalt</div><header class="site-header">
   <div class="site-header-inner">
     <a class="site-brand" href="/">
@@ -108,20 +108,30 @@
   <span class="ov-count" id="ov-count">23 Standorte</span>
 </div></div>
 
-<div class="container split"><div id="hmb-map" class="hmb-map-full" data-locations-url="/content/locations.json" data-mode="full"></div>
+<div class="container split"><div class="hmb-map-col">
+    <div id="hmb-map" class="hmb-map-full" data-locations-url="/content/locations.json" data-mode="full"></div>
 <script defer src="/assets/vendor/markerclusterer/markerclusterer.min.js"></script>
-<script defer src="/assets/js/map.js?v=3"></script>
+<script defer src="/assets/js/map.js?v=5"></script>
 <script type="text/plain" data-name="googleMaps"
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhlyCSQgLvwXie5WmZJGWmSKpjnArlEHM&libraries=geocoding&loading=async&callback=hmbInitMap"></script>
-<aside class="panel" id="panel" aria-live="polite">
+
+    <div class="hmb-map-legend" aria-hidden="true">
+      <span><span class="lg-dot lg-online"></span> Online buchbar</span>
+      <span><span class="lg-dot lg-onsite"></span> Nur vor Ort (Handy &amp; Terminal)</span>
+    </div>
+  </div><aside class="panel" id="panel" aria-live="polite">
     <button class="sheet-close" id="sheetClose" aria-label="Schließen">×</button>
     <div class="panel-empty" id="panelEmpty">
       <div class="big">📍</div><p>Wähle einen Marker oder eine Karte,<br>um Details zu sehen.</p>
     </div>
   </aside>
 </div><div class="container list-fallback">
-  <h2 id="listHeading">Alle Standorte</h2>
-  <ul class="locations-grid" id="locList">    <li class="loc-card"
+  <h2 id="listHeading">Alle Standorte</h2><div class="ov-filter ov-filter-list"><div class="row">
+    <button class="chip is-active" data-filter="all">Alle <span class="n">23</span></button>
+    <button class="chip" data-filter="online">Online buchbar <span class="n">18</span></button>
+    <button class="chip" data-filter="onsite">Vor Ort buchbar <span class="n">23</span></button>
+  </div></div>
+  <ul class="locations-grid" id="locList">    <li class="loc-card hmb-card-online"
         data-slug="homaris-berlin-west-side"
         data-online="1"
         data-onsite="1"
@@ -131,7 +141,7 @@
 data-lat="52.4903144"data-lng="13.3305934">
       <span class="dist-tag" hidden></span>
       <h4><a href="/standort/homaris-berlin-west-side/">Homaris Berlin West Side</a></h4>      <div class="badges"><span class="badge badge-online">🔒 Online buchbar</span><span class="badge badge-onsite">📱 Vor Ort buchbar</span></div>
-    </li>    <li class="loc-card"
+    </li>    <li class="loc-card hmb-card-onsite"
         data-slug="freistadt-hauptplatz"
         data-online="0"
         data-onsite="1"
@@ -141,7 +151,7 @@ data-lat="52.4903144"data-lng="13.3305934">
 data-lat="48.5111386"data-lng="14.5056387">
       <span class="dist-tag" hidden></span>
       <h4><a href="/standort/freistadt-hauptplatz/">Freistadt  Hauptplatz</a></h4>      <div class="badges"><span class="badge badge-onsite">📱 Vor Ort buchbar</span></div>
-    </li>    <li class="loc-card"
+    </li>    <li class="loc-card hmb-card-online"
         data-slug="innsbruck-citylocker-store-altstadt-innsbruck"
         data-online="1"
         data-onsite="1"
@@ -151,7 +161,7 @@ data-lat="48.5111386"data-lng="14.5056387">
 data-lat="47.2673221"data-lng="11.392071">
       <span class="dist-tag" hidden></span>
       <h4><a href="/standort/innsbruck-citylocker-store-altstadt-innsbruck/">Innsbruck  Citylocker.store – Altstadt Innsbruck</a></h4>      <div class="badges"><span class="badge badge-online">🔒 Online buchbar</span><span class="badge badge-onsite">📱 Vor Ort buchbar</span></div>
-    </li>    <li class="loc-card"
+    </li>    <li class="loc-card hmb-card-online"
         data-slug="heymi-apartments-zieglergasse"
         data-online="1"
         data-onsite="1"
@@ -161,7 +171,7 @@ data-lat="47.2673221"data-lng="11.392071">
 data-lat="48.1978642"data-lng="16.3457539">
       <span class="dist-tag" hidden></span>
       <h4><a href="/standort/heymi-apartments-zieglergasse/">HeyMi Apartments Zieglergasse</a></h4>      <div class="badges"><span class="badge badge-online">🔒 Online buchbar</span><span class="badge badge-onsite">📱 Vor Ort buchbar</span></div>
-    </li>    <li class="loc-card"
+    </li>    <li class="loc-card hmb-card-online"
         data-slug="bahnhof-zell-am-ziller"
         data-online="1"
         data-onsite="1"
@@ -171,7 +181,7 @@ data-lat="48.1978642"data-lng="16.3457539">
 data-lat="47.2315935"data-lng="11.881363">
       <span class="dist-tag" hidden></span>
       <h4><a href="/standort/bahnhof-zell-am-ziller/">Bahnhof Zell am Ziller</a></h4>      <div class="badges"><span class="badge badge-online">🔒 Online buchbar</span><span class="badge badge-onsite">📱 Vor Ort buchbar</span></div>
-    </li>    <li class="loc-card"
+    </li>    <li class="loc-card hmb-card-online"
         data-slug="wien-city-stay-vienna-stephansplatz"
         data-online="1"
         data-onsite="1"
@@ -181,7 +191,7 @@ data-lat="47.2315935"data-lng="11.881363">
 data-lat="48.2098873"data-lng="16.3761227">
       <span class="dist-tag" hidden></span>
       <h4><a href="/standort/wien-city-stay-vienna-stephansplatz/">Wien  City Stay Vienna Stephansplatz</a></h4>      <div class="badges"><span class="badge badge-online">🔒 Online buchbar</span><span class="badge badge-onsite">📱 Vor Ort buchbar</span></div>
-    </li>    <li class="loc-card"
+    </li>    <li class="loc-card hmb-card-online"
         data-slug="homaris-k48-studios"
         data-online="1"
         data-onsite="1"
@@ -191,7 +201,7 @@ data-lat="48.2098873"data-lng="16.3761227">
 data-lat="52.5093478"data-lng="13.42329">
       <span class="dist-tag" hidden></span>
       <h4><a href="/standort/homaris-k48-studios/">Homaris K48 Studios</a></h4>      <div class="badges"><span class="badge badge-online">🔒 Online buchbar</span><span class="badge badge-onsite">📱 Vor Ort buchbar</span></div>
-    </li>    <li class="loc-card"
+    </li>    <li class="loc-card hmb-card-online"
         data-slug="waltherpark-bozen"
         data-online="1"
         data-onsite="1"
@@ -201,7 +211,7 @@ data-lat="52.5093478"data-lng="13.42329">
 data-lat="46.4974493"data-lng="11.3554717">
       <span class="dist-tag" hidden></span>
       <h4><a href="/standort/waltherpark-bozen/">Waltherpark Bozen</a></h4>      <div class="badges"><span class="badge badge-online">🔒 Online buchbar</span><span class="badge badge-onsite">📱 Vor Ort buchbar</span></div>
-    </li>    <li class="loc-card"
+    </li>    <li class="loc-card hmb-card-online"
         data-slug="im-wizemann-halle-stuttgart"
         data-online="1"
         data-onsite="1"
@@ -211,7 +221,7 @@ data-lat="46.4974493"data-lng="11.3554717">
 data-lat="48.8079795"data-lng="9.1999992">
       <span class="dist-tag" hidden></span>
       <h4><a href="/standort/im-wizemann-halle-stuttgart/">Im Wizemann Halle Stuttgart</a></h4>      <div class="badges"><span class="badge badge-online">🔒 Online buchbar</span><span class="badge badge-onsite">📱 Vor Ort buchbar</span></div>
-    </li>    <li class="loc-card"
+    </li>    <li class="loc-card hmb-card-online"
         data-slug="landesgartenschau-neuss-2026"
         data-online="1"
         data-onsite="1"
@@ -221,7 +231,7 @@ data-lat="48.8079795"data-lng="9.1999992">
 data-lat="51.1984667"data-lng="6.700985">
       <span class="dist-tag" hidden></span>
       <h4><a href="/standort/landesgartenschau-neuss-2026/">Landesgartenschau Neuss 2026</a></h4>      <div class="badges"><span class="badge badge-online">🔒 Online buchbar</span><span class="badge badge-onsite">📱 Vor Ort buchbar</span></div>
-    </li>    <li class="loc-card"
+    </li>    <li class="loc-card hmb-card-onsite"
         data-slug="linz-lentiacity-ug1"
         data-online="0"
         data-onsite="1"
@@ -231,7 +241,7 @@ data-lat="51.1984667"data-lng="6.700985">
 data-lat="48.3141946"data-lng="14.2814938">
       <span class="dist-tag" hidden></span>
       <h4><a href="/standort/linz-lentiacity-ug1/">Linz  LentiaCity – UG1</a></h4>      <div class="badges"><span class="badge badge-onsite">📱 Vor Ort buchbar</span></div>
-    </li>    <li class="loc-card"
+    </li>    <li class="loc-card hmb-card-online"
         data-slug="athens-commercial-1"
         data-online="1"
         data-onsite="1"
@@ -241,7 +251,7 @@ data-lat="48.3141946"data-lng="14.2814938">
 data-lat="37.9775065"data-lng="23.7286476">
       <span class="dist-tag" hidden></span>
       <h4><a href="/standort/athens-commercial-1/">Athens Commercial 1</a></h4>      <div class="badges"><span class="badge badge-online">🔒 Online buchbar</span><span class="badge badge-onsite">📱 Vor Ort buchbar</span></div>
-    </li>    <li class="loc-card"
+    </li>    <li class="loc-card hmb-card-online"
         data-slug="podersdorf-strandbad"
         data-online="1"
         data-onsite="1"
@@ -251,7 +261,7 @@ data-lat="37.9775065"data-lng="23.7286476">
 data-lat="47.864394"data-lng="16.8345223">
       <span class="dist-tag" hidden></span>
       <h4><a href="/standort/podersdorf-strandbad/">Podersdorf  Strandbad</a></h4>      <div class="badges"><span class="badge badge-online">🔒 Online buchbar</span><span class="badge badge-onsite">📱 Vor Ort buchbar</span></div>
-    </li>    <li class="loc-card"
+    </li>    <li class="loc-card hmb-card-online"
         data-slug="fire-and-ice-ischgl"
         data-online="1"
         data-onsite="1"
@@ -261,7 +271,7 @@ data-lat="47.864394"data-lng="16.8345223">
 data-lat="47.009572"data-lng="10.2883469">
       <span class="dist-tag" hidden></span>
       <h4><a href="/standort/fire-and-ice-ischgl/">Fire and Ice Ischgl</a></h4>      <div class="badges"><span class="badge badge-online">🔒 Online buchbar</span><span class="badge badge-onsite">📱 Vor Ort buchbar</span></div>
-    </li>    <li class="loc-card"
+    </li>    <li class="loc-card hmb-card-online"
         data-slug="balmers-hostel-interlaken"
         data-online="1"
         data-onsite="1"
@@ -271,7 +281,7 @@ data-lat="47.009572"data-lng="10.2883469">
 data-lat="46.6815062"data-lng="7.863922">
       <span class="dist-tag" hidden></span>
       <h4><a href="/standort/balmers-hostel-interlaken/">Balmers Hostel | Interlaken</a></h4>      <div class="badges"><span class="badge badge-online">🔒 Online buchbar</span><span class="badge badge-onsite">📱 Vor Ort buchbar</span></div>
-    </li>    <li class="loc-card"
+    </li>    <li class="loc-card hmb-card-online"
         data-slug="duesseldorf-mitsubishi-electric-halle"
         data-online="1"
         data-onsite="1"
@@ -281,7 +291,7 @@ data-lat="46.6815062"data-lng="7.863922">
 data-lat="51.2063102"data-lng="6.8086162">
       <span class="dist-tag" hidden></span>
       <h4><a href="/standort/duesseldorf-mitsubishi-electric-halle/">Düsseldorf  Mitsubishi Electric HALLE</a></h4>      <div class="badges"><span class="badge badge-online">🔒 Online buchbar</span><span class="badge badge-onsite">📱 Vor Ort buchbar</span></div>
-    </li>    <li class="loc-card"
+    </li>    <li class="loc-card hmb-card-online"
         data-slug="wyndham-grand-salzburg-conference-centre-hotel"
         data-online="1"
         data-onsite="1"
@@ -291,7 +301,7 @@ data-lat="51.2063102"data-lng="6.8086162">
 data-lat="47.8152675"data-lng="13.0437085">
       <span class="dist-tag" hidden></span>
       <h4><a href="/standort/wyndham-grand-salzburg-conference-centre-hotel/">Wyndham Grand Salzburg Conference Centre Hotel</a></h4>      <div class="badges"><span class="badge badge-online">🔒 Online buchbar</span><span class="badge badge-onsite">📱 Vor Ort buchbar</span></div>
-    </li>    <li class="loc-card"
+    </li>    <li class="loc-card hmb-card-onsite"
         data-slug="burghausen-stadtplatz"
         data-online="0"
         data-onsite="1"
@@ -301,7 +311,7 @@ data-lat="47.8152675"data-lng="13.0437085">
 data-lat="48.1586054"data-lng="12.8333581">
       <span class="dist-tag" hidden></span>
       <h4><a href="/standort/burghausen-stadtplatz/">Burghausen  Stadtplatz</a></h4>      <div class="badges"><span class="badge badge-onsite">📱 Vor Ort buchbar</span></div>
-    </li>    <li class="loc-card"
+    </li>    <li class="loc-card hmb-card-online"
         data-slug="stuttgart-porsche-arena-hanns-martin-schleyer-halle"
         data-online="1"
         data-onsite="1"
@@ -311,7 +321,7 @@ data-lat="48.1586054"data-lng="12.8333581">
 data-lat="48.7940598"data-lng="9.2271424">
       <span class="dist-tag" hidden></span>
       <h4><a href="/standort/stuttgart-porsche-arena-hanns-martin-schleyer-halle/">Stuttgart - Porsche-Arena / Hanns-Martin-Schleyer-Halle</a></h4>      <div class="badges"><span class="badge badge-online">🔒 Online buchbar</span><span class="badge badge-onsite">📱 Vor Ort buchbar</span></div>
-    </li>    <li class="loc-card"
+    </li>    <li class="loc-card hmb-card-online"
         data-slug="wien-sonnwendviertel-arsenalsteg"
         data-online="1"
         data-onsite="1"
@@ -321,7 +331,7 @@ data-lat="48.7940598"data-lng="9.2271424">
 data-lat="48.1801596"data-lng="16.3860814">
       <span class="dist-tag" hidden></span>
       <h4><a href="/standort/wien-sonnwendviertel-arsenalsteg/">Wien Sonnwendviertel  Arsenalsteg</a></h4>      <div class="badges"><span class="badge badge-online">🔒 Online buchbar</span><span class="badge badge-onsite">📱 Vor Ort buchbar</span></div>
-    </li>    <li class="loc-card"
+    </li>    <li class="loc-card hmb-card-onsite"
         data-slug="linz-best-western-hotel-spinnerei-linz"
         data-online="0"
         data-onsite="1"
@@ -331,7 +341,7 @@ data-lat="48.1801596"data-lng="16.3860814">
 data-lat="48.2456008"data-lng="14.3286922">
       <span class="dist-tag" hidden></span>
       <h4><a href="/standort/linz-best-western-hotel-spinnerei-linz/">Linz  Best Western Hotel Spinnerei Linz</a></h4>      <div class="badges"><span class="badge badge-onsite">📱 Vor Ort buchbar</span></div>
-    </li>    <li class="loc-card"
+    </li>    <li class="loc-card hmb-card-online"
         data-slug="heymi-apartments-mondscheingasse"
         data-online="1"
         data-onsite="1"
@@ -341,7 +351,7 @@ data-lat="48.2456008"data-lng="14.3286922">
 data-lat="48.2012334"data-lng="16.3500876">
       <span class="dist-tag" hidden></span>
       <h4><a href="/standort/heymi-apartments-mondscheingasse/">HeyMi Apartments Mondscheingasse</a></h4>      <div class="badges"><span class="badge badge-online">🔒 Online buchbar</span><span class="badge badge-onsite">📱 Vor Ort buchbar</span></div>
-    </li>    <li class="loc-card"
+    </li>    <li class="loc-card hmb-card-onsite"
         data-slug="linz-pluscity-in-den-eingangsbereichen"
         data-online="0"
         data-onsite="1"
@@ -402,6 +412,6 @@ data-lat="48.2450116"data-lng="14.2354455">
 </footer><div id="hmb-consent" data-cookie-name="hmb_consent_test" hidden>
   <!-- Banner wird zur Laufzeit von /assets/js/consent.js gerendert (HMB-K6). -->
 </div>
-<script defer src="/assets/js/consent.js?v=1"></script><script defer src="/assets/js/finder.js?v=1"></script>
+<script defer src="/assets/js/consent.js?v=1"></script><script defer src="/assets/js/finder.js?v=2"></script>
 </body>
 </html>

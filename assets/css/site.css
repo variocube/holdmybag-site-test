@@ -117,7 +117,10 @@ hr { border: 0; border-top: 1px solid var(--hmb-border); margin: 2em 0; }
   display: inline-flex; align-items: center; gap: 8px;
   text-decoration: none;
 }
-.site-brand img { height: 34px; width: auto; display: block; }
+/* WS-HMB-LOGO-SIZE: Header-Logo deutlich größer (34→50px, ~+47%); mobil
+   moderater (40px), damit die Kopfzeile nicht überläuft. */
+.site-brand img { height: 50px; width: auto; display: block; }
+@media (max-width: 720px) { .site-brand img { height: 40px; } }
 
 .site-nav { display: flex; gap: clamp(8px, 1.5vw, 20px); align-items: center; }
 .site-nav a {
@@ -646,3 +649,19 @@ hr { border: 0; border-top: 1px solid var(--hmb-border); margin: 2em 0; }
 .result-card .rc-desc { font-size: var(--fs-sm); color: var(--hmb-text-soft); margin-bottom: 14px; }
 .result-card .rc-price { font-weight: 700; color: var(--hmb-accent-dark); margin-bottom: 14px; }
 .result-card .rc-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+
+/* WS-HMB-MAP-MARKERS: Karten-Legende (Marker-Farben Mint=online / Lila=vor Ort) */
+.hmb-map-col { display: flex; flex-direction: column; gap: 8px; }
+.hmb-map-legend { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: var(--fs-sm);
+	color: var(--hmb-text-soft); padding: 2px 2px 0; }
+.hmb-map-legend span { display: inline-flex; align-items: center; gap: 6px; }
+.hmb-map-legend .lg-dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block;
+	border: 1px solid rgba(0,0,0,.12); }
+.hmb-map-legend .lg-online { background: #18bdc5; }
+.hmb-map-legend .lg-onsite { background: #693e7e; }
+
+/* WS-HMB-FINDER-UX: Ergebnisliste farbcodiert wie die Marker (Mint=online /
+   Lila=vor Ort) + 2. Filter-Chip-Reihe unter der Karte (nicht sticky). */
+.loc-card.hmb-card-online { border-left: 4px solid #18bdc5; }
+.loc-card.hmb-card-onsite { border-left: 4px solid #693e7e; }
+.ov-filter-list { position: static; top: auto; z-index: auto; margin: 4px 0 0; }

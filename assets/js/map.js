@@ -40,6 +40,21 @@
 		try { return JSON.parse(el.textContent || "[]"); } catch (_) { return null; }
 	}
 
+	// WS-HMB-MAP-MARKERS: Marken-Pin als data-URI. online=true → Mint, sonst Lila.
+	var MARKER_MINT = "#18bdc5", MARKER_PURPLE = "#693e7e";
+	function pinIcon(online) {
+		var color = online ? MARKER_MINT : MARKER_PURPLE;
+		var svg = '<svg xmlns="http://www.w3.org/2000/svg" width="28" height="40" viewBox="0 0 28 40">'
+			+ '<path d="M14 0C6.27 0 0 6.27 0 14c0 10.5 14 26 14 26s14-15.5 14-26C28 6.27 21.73 0 14 0z" '
+			+ 'fill="' + color + '" stroke="#ffffff" stroke-width="2"/>'
+			+ '<circle cx="14" cy="14" r="5" fill="#ffffff"/></svg>';
+		return {
+			url: "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(svg),
+			scaledSize: new google.maps.Size(28, 40),
+			anchor: new google.maps.Point(14, 40),
+		};
+	}
+
 	window.hmbInitMap = function () {
 		var el = document.getElementById("hmb-map");
 		if (!el || !(window.google && google.maps)) return;
@@ -51,7 +66,8 @@
 			var lng = parseFloat(el.getAttribute("data-lng"));
 			if (isNaN(lat) || isNaN(lng)) return;
 			var smap = new google.maps.Map(el, Object.assign({ center: { lat: lat, lng: lng }, zoom: 15 }, common));
-			var sm = new google.maps.Marker({ position: { lat: lat, lng: lng }, map: smap });
+			var sOnline = el.getAttribute("data-online") === "1";
+			var sm = new google.maps.Marker({ position: { lat: lat, lng: lng }, map: smap, icon: pinIcon(sOnline) });
 			var title = el.getAttribute("data-title");
 			if (title) {
 				var iw = new google.maps.InfoWindow({ content: escapeHtml(title) });
@@ -66,13 +82,16 @@
 		window.hmbMarkers = {};
 		var info = new google.maps.InfoWindow();
 
+		var markerData = [];        // [{marker, loc}] — für den Filter (WS-HMB-FINDER-UX)
+		var clusterer = null;
+
 		function plot(locs) {
 			var markers = [];
 			var bounds = new google.maps.LatLngBounds();
 			(locs || []).forEach(function (loc) {
 				if (loc.lat == null || loc.lng == null) return;
 				var pos = { lat: Number(loc.lat), lng: Number(loc.lng) };
-				var m = new google.maps.Marker({ position: pos, title: loc.title || "" });
+				var m = new google.maps.Marker({ position: pos, title: loc.title || "", icon: pinIcon(loc.online === true) });
 				m.addListener("click", function () {
 					if (typeof window.hmbSelectLocation === "function") {
 						window.hmbSelectLocation(loc.slug);
@@ -82,10 +101,11 @@
 				});
 				if (loc.slug) window.hmbMarkers[loc.slug] = m;
 				markers.push(m);
+				markerData.push({ marker: m, loc: loc });
 				bounds.extend(pos);
 			});
 			if (window.markerClusterer && markerClusterer.MarkerClusterer) {
-				new markerClusterer.MarkerClusterer({ map: map, markers: markers });
+				clusterer = new markerClusterer.MarkerClusterer({ map: map, markers: markers });
 			} else {
 				markers.forEach(function (m) { m.setMap(map); });
 			}
@@ -98,12 +118,37 @@
 			document.dispatchEvent(new CustomEvent("hmb:map-ready"));
 		}
 
+		// WS-HMB-FINDER-UX: Filter wirkt auf die Marker (Cluster neu aufbauen).
+		// mode: 'all' | 'online' | 'onsite' (online_onsite matcht beide).
+		window.hmbFilterMarkers = function (mode) {
+			var visible = markerData.filter(function (d) {
+				if (mode === "online") return d.loc.online === true;
+				if (mode === "onsite") return d.loc.onsite === true;
+				return true;
+			});
+			if (clusterer) {
+				clusterer.clearMarkers();
+				clusterer.addMarkers(visible.map(function (d) { return d.marker; }));
+			} else {
+				markerData.forEach(function (d) { d.marker.setMap(null); });
+				visible.forEach(function (d) { d.marker.setMap(map); });
+			}
+		};
+
 		var inline = inlineLocations();
 		if (inline) { plot(inline); return; }
 		var url = el.getAttribute("data-locations-url") || "/content/locations.json";
 		fetch(url).then(function (r) { return r.json(); }).then(plot).catch(function (e) {
 			if (window.console) console.error("hmb-map: locations load failed", e);
 		});
+	};
+
+	// WS-HMB-FINDER-UX: Karte auf ein Geocoder-Viewport (LatLngBounds) zoomen;
+	// Fallback: Center + Zoom. Von finder.js im Geocoder-Callback aufgerufen.
+	window.hmbFitBounds = function (viewport, center) {
+		if (!window.hmbMap) return;
+		if (viewport) { window.hmbMap.fitBounds(viewport); }
+		else if (center) { window.hmbMap.setCenter(center); window.hmbMap.setZoom(12); }
 	};
 
 	// Von finder.js aufrufbar: Karte auf einen Standort zentrieren.

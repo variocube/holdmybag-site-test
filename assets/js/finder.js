@@ -85,7 +85,8 @@
 	function card(loc) {
 		var dist = (loc._dist != null && isFinite(loc._dist))
 			? '<span class="dist-tag' + (loc._dist < 50 ? " near" : "") + '">' + Math.round(loc._dist) + " km</span>" : "";
-		return '<li class="loc-card" data-slug="' + esc(loc.slug) + '">'
+		var colorCls = loc.online ? " hmb-card-online" : " hmb-card-onsite";
+		return '<li class="loc-card' + colorCls + '" data-slug="' + esc(loc.slug) + '">'
 			+ dist
 			+ '<h4><a href="' + T.detail + encodeURIComponent(loc.slug) + '/">' + esc(loc.title) + "</a></h4>"
 			+ (loc.city ? '<p class="lc-city">' + esc((loc.zip ? loc.zip + " " : "") + loc.city) + "</p>" : "")
@@ -171,7 +172,11 @@
 		new google.maps.Geocoder().geocode({ address: q }, function (res, status) {
 			if (status === "OK" && res && res[0]) {
 				var g = res[0].geometry.location;
-				applyOrigin({ lat: g.lat(), lng: g.lng() }, q);
+				// WS-HMB-FINDER-UX: PRIMÄR die Karte auf den Ort zoomen.
+				if (typeof window.hmbFitBounds === "function") {
+					window.hmbFitBounds(res[0].geometry.viewport, { lat: g.lat(), lng: g.lng() });
+				}
+				applyOrigin({ lat: g.lat(), lng: g.lng() }, q);   // Distanz-Sortierung sekundär
 			} else { setStatus(T.geo_fail); }
 		});
 	}
@@ -205,13 +210,20 @@
 		var geo = document.getElementById("finderGeo");
 		if (geo) geo.addEventListener("click", useMyLocation);
 
-		document.querySelectorAll(".ov-filter .chip").forEach(function (chip) {
-			chip.addEventListener("click", function () {
-				document.querySelectorAll(".ov-filter .chip").forEach(function (c) { c.classList.remove("is-active"); });
-				chip.classList.add("is-active");
-				state.filter = chip.getAttribute("data-filter") || "all";
-				state.shown = PAGE; render();
+		// WS-HMB-FINDER-UX: BEIDE Chip-Gruppen (oben + unter der Karte) synchron —
+		// alle .chip[data-filter] teilen state.filter; Klick spiegelt is-active in
+		// beiden Gruppen, filtert Liste + Karten-Marker.
+		function applyFilter(f) {
+			state.filter = f || "all";
+			document.querySelectorAll(".chip[data-filter]").forEach(function (c) {
+				c.classList.toggle("is-active", c.getAttribute("data-filter") === state.filter);
 			});
+			state.shown = PAGE;
+			render();
+			if (typeof window.hmbFilterMarkers === "function") window.hmbFilterMarkers(state.filter);
+		}
+		document.querySelectorAll(".chip[data-filter]").forEach(function (chip) {
+			chip.addEventListener("click", function () { applyFilter(chip.getAttribute("data-filter")); });
 		});
 
 		var cityBox = document.getElementById("cityChips");

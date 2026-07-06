@@ -487,6 +487,10 @@ hr { border: 0; border-top: 1px solid var(--hmb-border); margin: 2em 0; }
 	background: linear-gradient(180deg, rgba(105,62,126,.25), rgba(105,62,126,.85)),
 		linear-gradient(135deg, var(--hmb-purple), var(--hmb-purple-light)); }
 .d-hero .container { padding-top: 60px; padding-bottom: 26px; }
+.d-hero .d-back { display: inline-flex; align-items: center; gap: 6px; color: #fff; text-decoration: none;
+	background: rgba(255,255,255,.16); border: 1px solid rgba(255,255,255,.28); border-radius: 20px;
+	padding: 5px 13px; font-size: var(--fs-sm); margin-bottom: 14px; transition: background .12s; }
+.d-hero .d-back:hover { background: rgba(255,255,255,.28); }
 .d-hero h1 { color: #fff; margin-bottom: 6px; text-shadow: 0 2px 20px rgba(0,0,0,.3); }
 .d-hero .d-city { color: rgba(255,255,255,.9); font-size: var(--fs-lg); margin-bottom: 12px; }
 .d-hero .badges .badge { background: rgba(255,255,255,.16); color: #fff; }

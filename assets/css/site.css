@@ -512,9 +512,16 @@ hr { border: 0; border-top: 1px solid var(--hmb-border); margin: 2em 0; }
 .d-main h2 .ic { font-size: 1.1em; }
 
 .geo-row { display: flex; flex-wrap: wrap; gap: 10px 26px; margin-bottom: 14px; }
-.geo-item .k { font-size: var(--fs-xs); text-transform: uppercase; letter-spacing: .06em;
+.geo-item .k, .geo-address .k { font-size: var(--fs-xs); text-transform: uppercase; letter-spacing: .06em;
 	color: var(--hmb-text-mute); font-weight: 600; margin-bottom: 2px; }
 .geo-item .v { font-weight: 600; }
+/* WS-HMB-DETAIL-NAV: Adresse prominent, Navigation-Deeplinks, Koordinaten sekundär. */
+.geo-address { margin-bottom: 14px; }
+.geo-address .v { font-weight: 700; font-size: var(--fs-lg); }
+.nav-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-bottom: 14px; }
+.nav-actions .coords { font-family: ui-monospace,'SF Mono',Menlo,Consolas,monospace;
+	font-size: var(--fs-sm); color: var(--hmb-text-soft); }
+.nav-actions .copybtn { margin-left: 0; }
 .copybtn { background: none; border: 1px solid var(--hmb-border-strong); border-radius: 6px; cursor: pointer;
 	font-size: .75rem; padding: 2px 7px; margin-left: 6px; color: var(--hmb-text-soft); font-family: inherit; }
 .w3w { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; padding: 14px 16px;

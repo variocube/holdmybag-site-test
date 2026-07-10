@@ -82,6 +82,15 @@
 		window.hmbMarkers = {};
 		var info = new google.maps.InfoWindow();
 
+		// WS-HMB-FINDER-20: bei jedem 'idle' den sichtbaren Ausschnitt an finder.js
+		// melden — die Liste folgt dem Karten-Ausschnitt statt fixer 24er-Paginierung.
+		map.addListener("idle", function () {
+			var b = map.getBounds();
+			if (!b || typeof window.hmbFinderBounds !== "function") return;
+			var ne = b.getNorthEast(), sw = b.getSouthWest();
+			window.hmbFinderBounds({ north: ne.lat(), south: sw.lat(), east: ne.lng(), west: sw.lng() });
+		});
+
 		var markerData = [];        // [{marker, loc}] — für den Filter (WS-HMB-FINDER-UX)
 		var clusterer = null;
 

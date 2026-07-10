@@ -476,6 +476,8 @@ hr { border: 0; border-top: 1px solid var(--hmb-border); margin: 2em 0; }
 .card { background: var(--hmb-bg-alt); border: 1px solid var(--hmb-border); border-radius: 12px; padding: 20px 22px; }
 .card + .card { margin-top: 14px; }
 .badges { display: flex; flex-wrap: wrap; gap: 6px; }
+/* WS-HMB-DISPLAY-HYGIENE: Abstand Badges → Buttons im Ergebnis-Panel. */
+.rc-body .badges { margin-bottom: 12px; }
 .badge { font-size: var(--fs-xs); font-weight: 600; padding: 4px 10px; border-radius: 999px;
 	display: inline-flex; gap: 5px; align-items: center; }
 .badge-online { background: #e0f2fe; color: #0369a1; }
@@ -483,8 +485,11 @@ hr { border: 0; border-top: 1px solid var(--hmb-border); margin: 2em 0; }
 .badge-247 { background: #ecfccb; color: #3f6212; }
 
 /* ---- Detail ---- */
+/* WS-HMB-DEFAULT-IMAGE: ohne Standort-Foto → gebrandetes Default-Locker-SVG statt
+   leerem Lila-Verlauf. Foto-Fall überschreibt `background-image` inline im Template. */
 .d-hero { position: relative; min-height: 300px; display: flex; align-items: flex-end; color: #fff;
 	background: linear-gradient(180deg, rgba(105,62,126,.25), rgba(105,62,126,.85)),
+		url('/assets/img/default-locker.svg') center / cover no-repeat,
 		linear-gradient(135deg, var(--hmb-purple), var(--hmb-purple-light)); }
 .d-hero .container { padding-top: 60px; padding-bottom: 26px; }
 .d-hero .d-back { display: inline-flex; align-items: center; gap: 6px; color: #fff; text-decoration: none;
@@ -639,6 +644,10 @@ hr { border: 0; border-top: 1px solid var(--hmb-border); margin: 2em 0; }
 	transition: transform .15s var(--ease), border-color .15s; position: relative; }
 .loc-card:hover { transform: translateY(-2px); border-color: var(--hmb-accent); }
 .loc-card.hidden { display: none; }
+/* WS-HMB-FINDER-20: Zoom-/Leer-Hinweis (volle Breite, kein Hover-Lift). */
+.loc-card.hmb-hint { grid-column: 1 / -1; text-align: center; color: var(--hmb-text-mute);
+	cursor: default; background: transparent; border-style: dashed; }
+.loc-card.hmb-hint:hover { transform: none; border-color: var(--hmb-border); }
 .loc-card h4 { margin: 0 0 4px; font-size: 1.05rem; }
 .loc-card .lc-city { color: var(--hmb-text-mute); font-size: var(--fs-sm); margin-bottom: 10px; }
 .load-more-wrap { display: flex; align-items: center; gap: 14px; justify-content: center; margin: 24px 0 0; }
@@ -652,7 +661,9 @@ hr { border: 0; border-top: 1px solid var(--hmb-border); margin: 2em 0; }
 .dist-tag.near { background: var(--hmb-accent-dark); }
 .result-card { display: none; }
 .result-card.is-active { display: block; }
-.result-card .rc-img { height: 150px; background: linear-gradient(135deg, var(--hmb-purple), var(--hmb-purple-light));
+.result-card .rc-img { height: 150px;
+	background: url('/assets/img/default-locker.svg') center / cover no-repeat,
+		linear-gradient(135deg, var(--hmb-purple), var(--hmb-purple-light));
 	background-size: cover; background-position: center; }
 .result-card .rc-body { padding: 18px 20px 20px; }
 .result-card h3 { margin: 0 0 2px; }

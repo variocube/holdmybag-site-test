@@ -28,18 +28,23 @@
 		more: "Show more", geo_wait: "Locating…", geo_fail: "Location unavailable.",
 		geo_hint: "Enable the map (accept cookies) to search by place name.",
 		no_hits: "No locations match.", detail: "/en/location/",
-		to_loc: "To location →", book: "Book now",
+		to_loc: "View details", book: "Book now",
 		online: "Book online", onsite: "Book on-site",
+		zoom_hint: "Zoom in further to see locations.",
 	} : {
 		near: "In der Nähe (< 50 km)", far: "Weiter entfernt", count: "Standorte",
 		more: "Weitere anzeigen", geo_wait: "Orte…", geo_fail: "Standort nicht verfügbar.",
 		geo_hint: "Aktiviere die Karte (Cookies akzeptieren), um nach Ort zu suchen.",
 		no_hits: "Keine Standorte gefunden.", detail: "/standort/",
-		to_loc: "Zum Standort →", book: "Jetzt buchen",
+		to_loc: "Details ansehen", book: "Jetzt buchen",
+		// WS-HMB-DISPLAY-HYGIENE: DE-Keys ergänzt — fehlten → Badges zeigten „undefined".
+		online: "Online buchbar", onsite: "Vor Ort buchbar",
+		zoom_hint: "Zoomen Sie weiter rein, um Standorte zu sehen.",
 	};
 
-	var state = { filter: "all", origin: null, shown: 24 };
-	var PAGE = 24;
+	// WS-HMB-FINDER-20: Liste folgt dem Karten-Ausschnitt (map idle → bounds).
+	var state = { filter: "all", origin: null, bounds: null };
+	var BOUNDS_LIMIT = 20;
 
 	function esc(s) {
 		return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
@@ -86,38 +91,47 @@
 		var dist = (loc._dist != null && isFinite(loc._dist))
 			? '<span class="dist-tag' + (loc._dist < 50 ? " near" : "") + '">' + Math.round(loc._dist) + " km</span>" : "";
 		var colorCls = loc.online ? " hmb-card-online" : " hmb-card-onsite";
+		var b = badges(loc);
 		return '<li class="loc-card' + colorCls + '" data-slug="' + esc(loc.slug) + '">'
 			+ dist
 			+ '<h4><a href="' + T.detail + encodeURIComponent(loc.slug) + '/">' + esc(loc.title) + "</a></h4>"
 			+ (loc.city ? '<p class="lc-city">' + esc((loc.zip ? loc.zip + " " : "") + loc.city) + "</p>" : "")
-			+ '<div class="badges">' + badges(loc) + "</div></li>";
+			+ (b ? '<div class="badges">' + b + "</div>" : "") + "</li>";
+	}
+
+	// WS-HMB-FINDER-20: liegt der Standort im aktuellen Karten-Ausschnitt?
+	// Ohne aktive bounds (Karte noch nicht/ohne Consent geladen) zählt alles.
+	function inBounds(loc) {
+		var b = state.bounds;
+		if (!b) return true;
+		if (loc.lat == null || loc.lng == null) return false;
+		return loc.lat <= b.north && loc.lat >= b.south && loc.lng <= b.east && loc.lng >= b.west;
 	}
 
 	function render() {
-		var items = computed();
-		var total = items.length;
-		var slice = items.slice(0, state.shown);
+		var view = computed().filter(inBounds);
+		var count = view.length;
+
+		var ovc = document.getElementById("ov-count");
+		if (ovc) ovc.textContent = count + " " + T.count;
+
+		// Zu viele Standorte im Ausschnitt → Liste ausblenden, Zoom-Hinweis (ersetzt
+		// die alte „24 + Weitere anzeigen"-Paginierung). Greift nur bei aktiver Karte.
+		if (state.bounds && count >= BOUNDS_LIMIT) {
+			listEl.innerHTML = '<li class="loc-card hmb-hint">' + T.zoom_hint + "</li>";
+			return;
+		}
+		if (!count) { listEl.innerHTML = '<li class="loc-card hmb-hint">' + T.no_hits + "</li>"; return; }
+
 		var html = "", lastGroup = null;
-		slice.forEach(function (loc) {
+		view.forEach(function (loc) {
 			if (state.origin && isFinite(loc._dist)) {
 				var g = loc._dist < 50 ? "near" : "far";
 				if (g !== lastGroup) { html += '<li class="list-group-head">' + (g === "near" ? T.near : T.far) + "</li>"; lastGroup = g; }
 			}
 			html += card(loc);
 		});
-		if (!total) html = '<li class="loc-card hmb-empty">' + T.no_hits + "</li>";
 		listEl.innerHTML = html;
-
-		var ovc = document.getElementById("ov-count");
-		if (ovc) ovc.textContent = total + " " + T.count;
-		var wrap = document.getElementById("loadMoreWrap");
-		var cnt = document.getElementById("loadMoreCount");
-		if (wrap) {
-			if (state.shown < total) {
-				wrap.hidden = false;
-				if (cnt) cnt.textContent = slice.length + " / " + total;
-			} else { wrap.hidden = true; }
-		}
 	}
 
 	function selectLoc(slug) {
@@ -135,7 +149,7 @@
 			+ (loc.city ? '<p class="rc-city">' + esc((loc.zip ? loc.zip + " " : "") + loc.city) + "</p>" : "")
 			+ (loc.description_short ? '<p class="rc-desc">' + esc(loc.description_short) + "</p>" : "")
 			+ (loc.price_text ? '<p class="rc-price">' + esc(loc.price_text) + "</p>" : "")
-			+ '<div class="badges">' + badges(loc) + "</div>"
+			+ (badges(loc) ? '<div class="badges">' + badges(loc) + "</div>" : "")
 			+ '<div class="rc-actions"><a class="btn btn-primary btn-sm" href="' + T.detail + encodeURIComponent(loc.slug) + '/">' + T.to_loc + "</a>"
 			+ (loc.booking_url ? '<a class="btn btn-ghost btn-sm" href="' + esc(loc.booking_url) + '" rel="noopener" target="_blank">' + T.book + "</a>" : "")
 			+ "</div></div>";
@@ -145,13 +159,19 @@
 	}
 	window.hmbSelectLocation = selectLoc;
 
+	// WS-HMB-FINDER-20: map.js meldet bei jedem 'idle' den sichtbaren Ausschnitt.
+	window.hmbFinderBounds = function (b) {
+		state.bounds = (b && typeof b.north === "number") ? b : null;
+		render();
+	};
+
 	function setStatus(msg) {
 		var el = document.getElementById("finderStatus");
 		if (el) el.textContent = msg || "";
 	}
 
 	function applyOrigin(o, label) {
-		state.origin = o; state.shown = PAGE; render();
+		state.origin = o; render();
 		var items = computed();
 		if (items.length && isFinite(items[0]._dist)) {
 			setStatus((label ? label + " · " : "") + Math.round(items[0]._dist) + " km");
@@ -218,7 +238,6 @@
 			document.querySelectorAll(".chip[data-filter]").forEach(function (c) {
 				c.classList.toggle("is-active", c.getAttribute("data-filter") === state.filter);
 			});
-			state.shown = PAGE;
 			render();
 			if (typeof window.hmbFilterMarkers === "function") window.hmbFilterMarkers(state.filter);
 		}
@@ -242,8 +261,9 @@
 			if (li && li.getAttribute("data-slug")) { e.preventDefault(); selectLoc(li.getAttribute("data-slug")); }
 		});
 
-		var more = document.getElementById("loadMoreBtn");
-		if (more) more.addEventListener("click", function () { state.shown += PAGE; render(); });
+		// WS-HMB-FINDER-20: „Weitere anzeigen"-Paginierung entfällt (Bounds steuern die Liste).
+		var wrap = document.getElementById("loadMoreWrap");
+		if (wrap) wrap.hidden = true;
 
 		var sheetClose = document.getElementById("sheetClose");
 		if (sheetClose) sheetClose.addEventListener("click", function () {

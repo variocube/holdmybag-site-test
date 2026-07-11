@@ -580,8 +580,37 @@ hr { border: 0; border-top: 1px solid var(--hmb-border); margin: 2em 0; }
 .size-tbl { width: 100%; border-collapse: collapse; font-size: var(--fs-sm); }
 .size-tbl th, .size-tbl td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--hmb-border); }
 .size-tbl th { color: var(--hmb-text-mute); font-weight: 600; text-transform: uppercase; font-size: var(--fs-xs); }
-.gallery { display: grid; grid-template-columns: repeat(auto-fit,minmax(150px,1fr)); gap: 10px; }
-.gallery .gitem { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 10px; }
+/* Galerie: Center/Peek-Karussell (WS-HMB-GALLERY-DISPLAY). 1 Bild → nur das Bild;
+   mehrere → scroll-snap-Track (natives Wischen), Pfeile/Punkte via gallery.js. */
+.gallery-single .gitem { width: 100%; max-height: 460px; aspect-ratio: 16/10; object-fit: cover; border-radius: 12px; display: block; }
+.gallery-carousel { position: relative; }
+.gallery-track {
+	display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory;
+	-webkit-overflow-scrolling: touch; scrollbar-width: none;
+	padding: 0 10%; scroll-padding: 0 10%;   /* Peek: Nachbarn angeschnitten */
+}
+.gallery-track::-webkit-scrollbar { display: none; }
+.gallery-slide { flex: 0 0 80%; scroll-snap-align: center; }
+.gallery-slide .gitem { width: 100%; aspect-ratio: 16/10; object-fit: cover; border-radius: 12px; display: block; }
+/* ‹ ›-Pfeile (von gallery.js injiziert) */
+.gallery-nav {
+	position: absolute; top: 50%; transform: translateY(-50%); z-index: 2;
+	width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--hmb-border);
+	background: rgba(255,255,255,.92); color: var(--hmb-text); font-size: 22px; line-height: 1;
+	cursor: pointer; display: flex; align-items: center; justify-content: center;
+	box-shadow: 0 2px 8px rgba(0,0,0,.15);
+}
+.gallery-prev { left: 6px; } .gallery-next { right: 6px; }
+.gallery-nav:disabled { opacity: .35; cursor: default; }
+.gallery-nav:hover:not(:disabled) { background: #fff; }
+/* Punkte (von gallery.js injiziert) */
+.gallery-dots { display: flex; justify-content: center; gap: 8px; margin-top: 12px; }
+.gallery-dot { width: 8px; height: 8px; padding: 0; border-radius: 50%; border: 0; cursor: pointer; background: var(--hmb-border); }
+.gallery-dot.is-active { background: var(--hmb-accent-dark); }
+@media (max-width: 640px) {
+	.gallery-slide { flex-basis: 84%; }
+	.gallery-track { padding: 0 8%; scroll-padding: 0 8%; }
+}
 .d-side .price-big { font-size: 1.4rem; font-weight: 800; color: var(--hmb-accent-dark); margin: 0; }
 
 .action-bar { display: none; }

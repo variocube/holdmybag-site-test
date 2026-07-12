@@ -31,6 +31,7 @@
 		to_loc: "View details", book: "Book now",
 		online: "Book online", onsite: "Book on-site",
 		zoom_hint: "Zoom in further to see locations.",
+		city_less: "− show fewer",
 	} : {
 		near: "In der Nähe (< 50 km)", far: "Weiter entfernt", count: "Standorte",
 		more: "Weitere anzeigen", geo_wait: "Orte…", geo_fail: "Standort nicht verfügbar.",
@@ -40,6 +41,7 @@
 		// WS-HMB-DISPLAY-HYGIENE: DE-Keys ergänzt — fehlten → Badges zeigten „undefined".
 		online: "Online buchbar", onsite: "Vor Ort buchbar",
 		zoom_hint: "Zoomen Sie weiter rein, um Standorte zu sehen.",
+		city_less: "− weniger",
 	};
 
 	// WS-HMB-FINDER-20: Liste folgt dem Karten-Ausschnitt (map idle → bounds).
@@ -212,15 +214,32 @@
 	}
 
 	// ---- City-Quick-Chips (nur Städte mit Lockern) ----
+	// WS-HMB-CITY-CHIPS: nach Anzahl Standorte je Stadt absteigend (Tiebreak
+	// alphabetisch), Top CITY_CHIPS_VISIBLE als Chips + „+ N weitere"-Aufklapper
+	// für den Rest — statt willkürlichem alphabetischem Abschneiden.
+	var CITY_CHIPS_VISIBLE = 8;
 	function renderCityChips() {
 		var box = document.getElementById("cityChips");
 		if (!box) return;
-		var seen = {}, cities = [];
-		LOCS.forEach(function (l) { if (l.city && !seen[l.city]) { seen[l.city] = 1; cities.push(l.city); } });
-		cities.sort();
-		box.innerHTML = cities.slice(0, 12).map(function (c) {
-			return '<button type="button" data-city="' + esc(c) + '">' + esc(c) + "</button>";
+		var counts = {}, order = [];
+		LOCS.forEach(function (l) {
+			if (!l.city) return;
+			if (!counts[l.city]) { counts[l.city] = 0; order.push(l.city); }
+			counts[l.city]++;
+		});
+		order.sort(function (a, b) { return counts[b] - counts[a] || a.localeCompare(b); });
+		var html = order.map(function (c, i) {
+			var extra = i >= CITY_CHIPS_VISIBLE;
+			return '<button type="button" data-city="' + esc(c) + '"'
+				+ (extra ? ' class="city-extra" hidden' : "") + ">" + esc(c) + "</button>";
 		}).join("");
+		var rest = order.length - CITY_CHIPS_VISIBLE;
+		if (rest > 0) {
+			var moreLabel = (EN ? "+ " + rest + " more" : "+ " + rest + " weitere");
+			html += '<button type="button" class="city-more" data-city-more aria-expanded="false"'
+				+ ' data-more-label="' + esc(moreLabel) + '">' + esc(moreLabel) + "</button>";
+		}
+		box.innerHTML = html;
 	}
 
 	// ---- Wiring ----
@@ -247,6 +266,15 @@
 
 		var cityBox = document.getElementById("cityChips");
 		if (cityBox) cityBox.addEventListener("click", function (e) {
+			// „+ N weitere" / „− weniger" — restliche Städte ein-/ausblenden.
+			var more = e.target.closest("[data-city-more]");
+			if (more) {
+				var expanded = more.getAttribute("aria-expanded") !== "true";
+				more.setAttribute("aria-expanded", String(expanded));
+				cityBox.querySelectorAll(".city-extra").forEach(function (ch) { ch.hidden = !expanded; });
+				more.textContent = expanded ? T.city_less : more.getAttribute("data-more-label");
+				return;
+			}
 			var b = e.target.closest("[data-city]");
 			if (!b) return;
 			var input = document.getElementById("finderInput");

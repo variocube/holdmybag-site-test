@@ -28,17 +28,16 @@
   <li>✉️ <a href="mailto:office@holdmybag.net">office@holdmybag.net</a></li>
 </ul>
 <h2>Oder schreiben Sie uns</h2>
-<form id="hmb-contact-form" method="post" action="/api/hmb/contact">
-  <label>Name<input name="name" required maxlength="120"></label>
-  <label>E-Mail<input name="email" type="email" required></label>
-  <label>Betreff<input name="subject" required maxlength="200"></label>
-  <label>Nachricht<textarea name="message" required minlength="10" maxlength="5000"></textarea></label>
-  <input type="text" name="honeypot" tabindex="-1" autocomplete="off" hidden>
-  <button type="submit" class="btn-primary">Absenden</button>
+<form id="hmb-contact-form" method="post" action="/api/hmb/contact"
+      data-api-base="https://hub-test.variocube.com" style="display:grid;gap:14px;margin-top:24px">
+  <label style="display:grid;gap:6px"><span>Name</span><input name="name" required maxlength="120" class="hmb-input"></label>
+  <label style="display:grid;gap:6px"><span>E-Mail</span><input name="email" type="email" required class="hmb-input"></label>
+  <label style="display:grid;gap:6px"><span>Betreff</span><input name="subject" required maxlength="200" class="hmb-input"></label>
+  <label style="display:grid;gap:6px"><span>Nachricht</span><textarea name="message" required minlength="10" maxlength="5000" rows="6" class="hmb-input"></textarea></label><input type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true" hidden>  <button type="submit" class="btn btn-primary" style="justify-self:start">Absenden</button>
+  <p id="hmb-contact-msg" role="status" aria-live="polite" hidden></p>
 </form>
   </div>
-</section>
-<script defer src="/assets/js/contact.js"></script>
+</section><script defer src="/assets/js/contact.js?v=1"></script>
 </main><footer class="site-footer">
   <div class="site-footer-inner">
     <div>

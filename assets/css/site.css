@@ -177,6 +177,40 @@ hr { border: 0; border-top: 1px solid var(--hmb-border); margin: 2em 0; }
 .btn-on-dark.btn-ghost { background: transparent; color: #fff; border-color: rgba(255,255,255,.6); }
 .btn-on-dark.btn-ghost:hover { background: rgba(255,255,255,.1); color: #fff; }
 
+/* WS-HMB-CONTACT-HEIGHT: Formular-Eingabefelder (Kontakt) — luftiger, größere
+   Trefferfläche. Vorher ungestylt (Browser-Default, zu winzig). */
+.hmb-input {
+  width: 100%; box-sizing: border-box;
+  padding: 13px 16px; min-height: 52px; line-height: 1.5;
+  font: inherit; font-size: var(--fs-base); color: var(--hmb-text);
+  background: var(--hmb-bg-alt); border: 1px solid var(--hmb-border-strong);
+  border-radius: 10px;
+  transition: border-color .12s var(--ease), box-shadow .12s var(--ease);
+}
+.hmb-input:focus {
+  outline: 0; border-color: var(--hmb-accent);
+  box-shadow: 0 0 0 3px var(--hmb-accent-soft);
+}
+textarea.hmb-input { min-height: 150px; resize: vertical; }
+
+/* WS-HMB-HOME-SEARCH: prominenter Such-CTA direkt unter dem Hero (wichtigster CTA). */
+.home-search-section { background: var(--hmb-purple); padding: 30px 0; }
+.home-search { max-width: 720px; margin: 0 auto; }
+.home-search-label { display: block; color: #fff; font-size: var(--fs-lg); font-weight: 600;
+  text-align: center; margin: 0 0 16px; }
+.home-search-row { display: flex; gap: 12px; }
+.home-search-input {
+  flex: 1; min-width: 0; min-height: 58px; padding: 15px 20px; font: inherit;
+  font-size: var(--fs-base); color: var(--hmb-text); background: #fff;
+  border: 0; border-radius: 12px;
+}
+.home-search-input:focus { outline: 0; box-shadow: 0 0 0 3px rgba(255,255,255,.45); }
+.home-search-btn { min-height: 58px; padding: 0 30px; white-space: nowrap; }
+@media (max-width: 560px) {
+  .home-search-row { flex-direction: column; }
+  .home-search-btn { width: 100%; }
+}
+
 /* -----------------------------------------------------------------------
  * 5. Hero
  * --------------------------------------------------------------------- */

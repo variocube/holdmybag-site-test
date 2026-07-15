@@ -15,6 +15,22 @@
 (function () {
 	"use strict";
 
+	// WS-HMB-HOME-SEARCH: Home-Such-CTA. Die Startseite hat KEINE Finder-Daten und
+	// lädt KEIN Google-Maps — das Formular navigiert nur zur Standorte-Seite mit
+	// ?q=, wo der Finder (unten) die Suche übernimmt. Läuft VOR dem Early-Return,
+	// weil die Home die #hmb-locations/#locList-Elemente nicht hat.
+	var _homeSearch = document.getElementById("hmb-home-search");
+	if (_homeSearch) {
+		_homeSearch.addEventListener("submit", function (e) {
+			e.preventDefault();
+			var inp = document.getElementById("hmb-home-search-input");
+			var q = (inp && inp.value || "").trim();
+			var en = location.pathname.indexOf("/en/") === 0;
+			var base = en ? "/en/locations/" : "/standorte/";
+			window.location.href = q ? (base + "?q=" + encodeURIComponent(q)) : base;
+		});
+	}
+
 	var dataEl = document.getElementById("hmb-locations");
 	var listEl = document.getElementById("locList");
 	if (!dataEl || !listEl) return;   // keine Übersichtsseite
@@ -302,4 +318,15 @@
 	renderCityChips();
 	wire();
 	render();
+
+	// WS-HMB-HOME-SEARCH (C): ?q= (von der Home-Suche) übernehmen → Feld füllen +
+	// suchen. Geocoding greift nur, wenn Maps geladen (consent) — sonst Hinweis.
+	try {
+		var _q = new URLSearchParams(location.search).get("q");
+		if (_q) {
+			var _fi = document.getElementById("finderInput");
+			if (_fi) _fi.value = _q;
+			runSearch();
+		}
+	} catch (_) { /* URLSearchParams evtl. nicht verfügbar → ignorieren */ }
 })();

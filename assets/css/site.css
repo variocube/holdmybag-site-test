@@ -722,8 +722,30 @@ textarea.hmb-input { min-height: 150px; resize: vertical; }
 
 /* WS-HMB-STANDORT-BUILD H4 — Karte-Höhen (mobil gedeckelt), Result-Card, Distanz */
 .hmb-map-full { height: min(70vh, 560px); width: 100%; background: #eef1f3; border-radius: 14px;
-	border: 1px solid var(--hmb-border); }
+	border: 1px solid var(--hmb-border); position: relative; }
 @media (max-width: 860px) { .hmb-map-full { height: 42vh; } }
+/* WS-HMB-MAP-CONSENT-CTA: klickbare CTA über der leeren (consent-gegateten) Karte. */
+.hmb-map-cta {
+	position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+	display: inline-flex; align-items: center; gap: 8px; z-index: 2;
+	padding: 14px 22px; border: 0; border-radius: 999px; cursor: pointer;
+	background: var(--hmb-accent); color: #fff; font-family: inherit;
+	font-size: var(--fs-base); font-weight: 600; box-shadow: 0 6px 20px rgba(0,0,0,.18);
+	max-width: calc(100% - 28px); text-align: center; line-height: 1.25;
+}
+.hmb-map-cta:hover { background: var(--hmb-accent-dark); }
+.hmb-map-cta-ic { font-size: 1.2em; }
+/* WS-HMB-FINDER-FILTER-COUNTS: Einschränkungs-/Ergebnis-Banner mit Reset. */
+.finder-restrict {
+	display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+	margin: 8px 0 0; padding: 8px 14px; border-radius: 10px;
+	background: var(--hmb-accent-soft); color: var(--hmb-accent-dark);
+	font-size: var(--fs-sm); font-weight: 600;
+}
+.finder-restrict .fr-text { flex: 1; min-width: 0; }
+.finder-restrict .fr-reset { flex-shrink: 0; }
+/* [hidden] muss die display:flex-Regel schlagen (sonst Banner schon ohne Suche sichtbar). */
+.finder-restrict[hidden] { display: none; }
 .hmb-map-single { height: 360px; width: 100%; background: #eef1f3; border-radius: 12px;
 	border: 1px solid var(--hmb-border); }
 .dist-tag.near { background: var(--hmb-accent-dark); }

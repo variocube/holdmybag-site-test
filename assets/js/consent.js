@@ -112,6 +112,23 @@
 	// Widerruf / Einstellungen erneut öffnen (z.B. Footer-Link).
 	window.hmbConsentOpen = function () { render(readConsent() || { map: true, stats: true }); };
 
+	// WS-HMB-MAP-CONSENT-CTA: eine Kategorie programmatisch akzeptieren (z.B. die
+	// Karten-CTA „Karte aktivieren"). Merged in die bestehende Wahl, persistiert,
+	// aktiviert das zugehörige Script SOFORT (kein Reload) → googleMaps lädt →
+	// callback hmbInitMap. Banner (falls offen) wird geschlossen.
+	window.hmbConsentAccept = function (cat) {
+		var s = readConsent() || {};
+		s[cat] = true; s.v = 1;
+		writeConsent(s);
+		apply(s);
+		hide();
+	};
+	// Ist eine Kategorie bereits erteilt? (für die CTA-Sichtbarkeit)
+	window.hmbConsentHas = function (cat) {
+		var s = readConsent();
+		return !!(s && s[cat]);
+	};
+
 	function init() {
 		var saved = readConsent();
 		if (saved) { apply(saved); }   // schon entschieden → still aktivieren, kein Banner

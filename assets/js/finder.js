@@ -48,6 +48,10 @@
 		online: "Book online", onsite: "Book on-site",
 		zoom_hint: "Zoom in further to see locations.",
 		city_less: "− show fewer",
+		map_cta: "Enable map (accept cookies)",
+		result_for: 'Results for "{q}" — {n} locations',
+		result_area: "Current map view — {n} locations",
+		reset: "Reset",
 	} : {
 		near: "In der Nähe (< 50 km)", far: "Weiter entfernt", count: "Standorte",
 		more: "Weitere anzeigen", geo_wait: "Orte…", geo_fail: "Standort nicht verfügbar.",
@@ -58,10 +62,14 @@
 		online: "Online buchbar", onsite: "Vor Ort buchbar",
 		zoom_hint: "Zoomen Sie weiter rein, um Standorte zu sehen.",
 		city_less: "− weniger",
+		map_cta: "Karte aktivieren (Cookies akzeptieren)",
+		result_for: 'Ergebnis für „{q}" — {n} Standorte',
+		result_area: "Aktueller Kartenausschnitt — {n} Standorte",
+		reset: "Zurücksetzen",
 	};
 
 	// WS-HMB-FINDER-20: Liste folgt dem Karten-Ausschnitt (map idle → bounds).
-	var state = { filter: "all", origin: null, bounds: null };
+	var state = { filter: "all", origin: null, bounds: null, searchLabel: null };
 	var BOUNDS_LIMIT = 20;
 
 	function esc(s) {
@@ -126,7 +134,40 @@
 		return loc.lat <= b.north && loc.lat >= b.south && loc.lng <= b.east && loc.lng >= b.west;
 	}
 
+	// WS-HMB-FINDER-FILTER-COUNTS: geografisch eingeschränktes Set (Karten-Ausschnitt),
+	// OHNE den aktiven Kategorie-Filter — damit jeder Chip seine Zahl im aktuellen
+	// Ergebnis zeigt (nicht global). Ohne bounds = alle (globale Zahlen).
+	function baseSet() { return LOCS.filter(inBounds); }
+
+	function updateChipCounts() {
+		var base = baseSet();
+		var counts = {
+			all: base.length,
+			online: base.filter(function (l) { return l.online; }).length,
+			onsite: base.filter(function (l) { return l.onsite; }).length,
+		};
+		document.querySelectorAll(".chip[data-filter]").forEach(function (chip) {
+			var f = chip.getAttribute("data-filter");
+			var sp = chip.querySelector(".n");
+			if (sp && counts[f] != null) sp.textContent = counts[f];
+		});
+		// Einschränkungs-Banner: sichtbar, sobald die Karte den Ausschnitt begrenzt.
+		var rb = document.getElementById("finderRestrict");
+		if (!rb) return;
+		if (state.bounds) {
+			var txt = state.searchLabel
+				? T.result_for.replace("{q}", state.searchLabel).replace("{n}", base.length)
+				: T.result_area.replace("{n}", base.length);
+			var t = rb.querySelector(".fr-text");
+			if (t) t.textContent = txt;
+			rb.hidden = false;
+		} else {
+			rb.hidden = true;
+		}
+	}
+
 	function render() {
+		updateChipCounts();   // WS-HMB-FINDER-FILTER-COUNTS: Chip-Zahlen an das aktuelle Set anpassen
 		var view = computed().filter(inBounds);
 		var count = view.length;
 
@@ -189,7 +230,9 @@
 	}
 
 	function applyOrigin(o, label) {
-		state.origin = o; render();
+		state.origin = o;
+		state.searchLabel = label || null;   // WS-HMB-FINDER-FILTER-COUNTS: fürs Ergebnis-Banner
+		render();
 		var items = computed();
 		if (items.length && isFinite(items[0]._dist)) {
 			setStatus((label ? label + " · " : "") + Math.round(items[0]._dist) + " km");
@@ -229,6 +272,43 @@
 		);
 	}
 
+	// WS-HMB-FINDER-FILTER-COUNTS: Suche/Ausschnitt zurücksetzen → alle Standorte,
+	// globale Chip-Zahlen. Setzt die Karte NICHT zurück (kein idle→bounds-Loop);
+	// der nächste Karten-Move re-appliziert bounds wie gehabt.
+	function resetSearch() {
+		state.origin = null; state.bounds = null; state.searchLabel = null;
+		var input = document.getElementById("finderInput");
+		if (input) input.value = "";
+		setStatus("");
+		if (typeof window.hmbFilterMarkers === "function") window.hmbFilterMarkers(state.filter);
+		render();
+	}
+
+	// WS-HMB-MAP-CONSENT-CTA: solange die (consent-gegated) Karte weder geladen
+	// noch die map-Kategorie erteilt ist, eine klickbare CTA IM Kartenbereich
+	// zeigen. Klick → map-Kategorie akzeptieren → consent.js aktiviert das
+	// Maps-Script → hmbInitMap → Karte erscheint (ohne Reload). Nach 'hmb:map-ready'
+	// wird die CTA entfernt.
+	function setupMapConsentCTA() {
+		var mapEl = document.getElementById("hmb-map");
+		if (!mapEl) return;
+		var mapsComing = !!(window.google && window.google.maps);
+		var consented = (typeof window.hmbConsentHas === "function") && window.hmbConsentHas("map");
+		if (mapsComing || consented) return;   // Karte kommt ohnehin → keine CTA
+		var cta = document.createElement("button");
+		cta.type = "button";
+		cta.className = "hmb-map-cta";
+		cta.innerHTML = '<span class="hmb-map-cta-ic" aria-hidden="true">🗺️</span> ' + esc(T.map_cta);
+		cta.addEventListener("click", function () {
+			if (typeof window.hmbConsentAccept === "function") window.hmbConsentAccept("map");
+			else if (typeof window.hmbConsentOpen === "function") window.hmbConsentOpen();
+		});
+		mapEl.appendChild(cta);
+		document.addEventListener("hmb:map-ready", function () {
+			if (cta.parentNode) cta.parentNode.removeChild(cta);
+		}, { once: true });
+	}
+
 	// ---- City-Quick-Chips (nur Städte mit Lockern) ----
 	// WS-HMB-CITY-CHIPS: nach Anzahl Standorte je Stadt absteigend (Tiebreak
 	// alphabetisch), Top CITY_CHIPS_VISIBLE als Chips + „+ N weitere"-Aufklapper
@@ -260,6 +340,19 @@
 
 	// ---- Wiring ----
 	function wire() {
+		// WS-HMB-FINDER-FILTER-COUNTS: Ergebnis-/Einschränkungs-Banner + Reset einfügen.
+		var status = document.getElementById("finderStatus");
+		if (status && !document.getElementById("finderRestrict")) {
+			var rb = document.createElement("div");
+			rb.id = "finderRestrict";
+			rb.className = "finder-restrict";
+			rb.hidden = true;
+			rb.innerHTML = '<span class="fr-text"></span>'
+				+ '<button type="button" class="fr-reset btn btn-ghost btn-sm">' + esc(T.reset) + "</button>";
+			status.parentNode.insertBefore(rb, status.nextSibling);
+			rb.querySelector(".fr-reset").addEventListener("click", resetSearch);
+		}
+
 		var form = document.getElementById("finder");
 		if (form) form.addEventListener("submit", function (e) { e.preventDefault(); runSearch(); });
 		var geo = document.getElementById("finderGeo");
@@ -318,6 +411,7 @@
 	renderCityChips();
 	wire();
 	render();
+	setupMapConsentCTA();   // WS-HMB-MAP-CONSENT-CTA
 
 	// WS-HMB-HOME-SEARCH (C): ?q= (von der Home-Suche) übernehmen → Feld füllen +
 	// suchen. Geocoding greift nur, wenn Maps geladen (consent) — sonst Hinweis.

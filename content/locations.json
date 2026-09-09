@@ -120,18 +120,6 @@
     "description_short": "Der Luggage Locker steht in einem extra Raum im Hochparterre des Apartmenthauses und ist für de Gäste der HeyMi Apartments zugänglich."
   },
   {
-    "id": "9e3b07db-c061-4dd7-aaf0-827d859099aa",
-    "slug": "wien-swv",
-    "title": "Wien Sonnwendviertel Arsenalsteg",
-    "lat": 48.1801596,
-    "lng": 16.3860814,
-    "category": "online_onsite",
-    "city": "Wien",
-    "booking_url": null,
-    "image_url": null,
-    "description_short": null
-  },
-  {
     "id": "9ebc2a98-5807-44c4-afc4-8913468c0ef3",
     "slug": "homaris-berlin-west-side",
     "title": "Homaris Berlin West Side",
@@ -201,7 +189,7 @@
     "city": "Wien",
     "booking_url": "https://booking.holdmybag.net/elenas-apartments/city-stay-vienna-stephansplatz/dates",
     "image_url": null,
-    "description_short": null
+    "description_short": "_"
   },
   {
     "id": "e70365f5-ce6b-4ed8-a765-323a32c915e4",

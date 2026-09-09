@@ -192,6 +192,18 @@
     "description_short": null
   },
   {
+    "id": "aebfed20-703a-42d7-9666-e752444759a9",
+    "slug": "nogithub-probe",
+    "title": "Nogithub Probe",
+    "lat": 48.2,
+    "lng": 16.3,
+    "category": "onsite",
+    "city": null,
+    "booking_url": null,
+    "image_url": null,
+    "description_short": null
+  },
+  {
     "id": "c2ea4712-86a7-4bf1-b3f1-823879ae1b75",
     "slug": "wyndham-grand-salzburg-conference-centre-hotel",
     "title": "Wyndham Grand Salzburg Conference Centre Hotel",

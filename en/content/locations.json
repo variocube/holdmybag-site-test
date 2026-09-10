@@ -10,7 +10,7 @@
     "booking_url": null,
     "image_url": null,
     "description_short": "Direkt am Hauptplatz gelegen",
-    "translation_fallback": false
+    "translation_fallback": true
   },
   {
     "id": "0e293400-50e5-4c66-9099-2c1aee573d23",
@@ -23,7 +23,7 @@
     "booking_url": "https://booking.holdmybag.net/in-stuttgart/",
     "image_url": "/content/img/hmb/8f9be0897b2a4970b115f9fc32926ca7.webp",
     "description_short": "Die Garderoben Schließfächer befinden sich im Untergeschoss, direkt neben den manuellen Garderoben.",
-    "translation_fallback": false
+    "translation_fallback": true
   },
   {
     "id": "1d04ff26-2c35-4f3e-9a58-e85bf654f89f",
@@ -36,7 +36,7 @@
     "booking_url": null,
     "image_url": "/content/img/hmb/e882480f30c84dd7a3a0b0bed9a0401f.webp",
     "description_short": "Zugang am Gemeindeamt",
-    "translation_fallback": false
+    "translation_fallback": true
   },
   {
     "id": "2338bc0a-ca2c-4b09-8228-f753316530d3",
@@ -62,7 +62,7 @@
     "booking_url": "https://booking.holdmybag.net/wyndham-salzburg/wyndham-hotel-salzburg/dates",
     "image_url": null,
     "description_short": "Das Radisson Blu Hotel ist direkt am Hauptbahnhof in Salzburg. Der Luggage Locker befindet sich im Hotel, der Zugang erfolgt durch das Foyer oder die Parkgarage.",
-    "translation_fallback": false
+    "translation_fallback": true
   },
   {
     "id": "6c7e1af5-6aa8-4b42-88d9-5eff5d28fd0f",
@@ -88,7 +88,7 @@
     "booking_url": "https://booking.holdmybag.net/balmers-hostel/balmers-hostel-interlaken/dates",
     "image_url": "/content/img/hmb/09b1f2f0f9a94f629cc0da65b88a9a7a.webp",
     "description_short": "Gepäckschließfächer im Hotel im extra Gepäckraum. Zutritt von außen für die Gäste des Balmers Hostel.",
-    "translation_fallback": false
+    "translation_fallback": true
   },
   {
     "id": "8d7da5d5-a21b-4093-9054-f6020dfdb69c",
@@ -101,7 +101,7 @@
     "booking_url": "https://booking.holdmybag.net/landesgartenschau-neuss-2026",
     "image_url": "/content/img/hmb/f9108d3fce5a40a99324c174bc95b6d1.webp",
     "description_short": "Die Schließfächer stehen auf dem Gelände der Landesgartenschau Neuss und sind frei zugänglich.",
-    "translation_fallback": false
+    "translation_fallback": true
   },
   {
     "id": "8fa3d068-fdc3-435e-b09b-93a5b71cfe83",
@@ -127,7 +127,7 @@
     "booking_url": "https://booking.holdmybag.net/three-friends/heymi-apartments-zieglergasse/dates",
     "image_url": null,
     "description_short": "Der Luggage Locker steht in einem extra Raum im Hochparterre des Apartmenthauses und ist für de Gäste der HeyMi Apartments zugänglich.",
-    "translation_fallback": false
+    "translation_fallback": true
   },
   {
     "id": "9ebc2a98-5807-44c4-afc4-8913468c0ef3",
@@ -140,7 +140,7 @@
     "booking_url": "https://booking.holdmybag.net/homaris-ag/homaris-berlin-west-side/dates",
     "image_url": "/content/img/hmb/b236af2cf30e4da9b90bb39ce939858d.webp",
     "description_short": "Die Gepäckschließfächer sind in der Lobby des Hotels frei zugänglich. Zutritt über den Haupteingang des Hotels mittels Zugangscode für die Gäste des Hotels.",
-    "translation_fallback": false
+    "translation_fallback": true
   },
   {
     "id": "9f236513-1965-4a4d-b1b1-eda72f3397a9",
@@ -153,7 +153,7 @@
     "booking_url": "https://booking.holdmybag.net/zillertaler-verkehrsbetriebe-ag/bahnhof-zell-am-ziller",
     "image_url": "/content/img/hmb/abbc5669d8044dfb8f0585197a766f5c.webp",
     "description_short": "Öffentlich nutzbare Gepäckschließfächer, direkt am Bahnhof Zell am Ziller",
-    "translation_fallback": false
+    "translation_fallback": true
   },
   {
     "id": "abef7156-ac1f-4b8c-996c-d8b3e04eafe2",
@@ -166,7 +166,7 @@
     "booking_url": "https://booking.citylocker.store/citylocker-store/citylocker.store/dates",
     "image_url": null,
     "description_short": "Zugang zum Store über den Haupteingang  zum Store.",
-    "translation_fallback": false
+    "translation_fallback": true
   },
   {
     "id": "b58d79a8-b2cf-43ca-beca-f69767038bd1",
@@ -179,7 +179,7 @@
     "booking_url": "https://booking.holdmybag.net/fire-and-ice-ischgl/fire-and-ice/dates",
     "image_url": null,
     "description_short": "Schliessfächer für Garderobe im Durchgang vom Haupteingang, offen für alle Gäste.",
-    "translation_fallback": false
+    "translation_fallback": true
   },
   {
     "id": "b60c73c6-006e-4c1d-ae40-a40be01ba49c",
@@ -192,7 +192,7 @@
     "booking_url": "https://booking.holdmybag.net/three-friends/heymi-apartments/dates",
     "image_url": "/content/img/hmb/7460fd0b7c624e889c004ae58d8e7dd3.webp",
     "description_short": "Die Gepäckschließfächer (Luggage Locker) befinden sich im Untergeschoss der Heymi Appartments Mondscheingasse.",
-    "translation_fallback": false
+    "translation_fallback": true
   },
   {
     "id": "c482fc7f-6d37-4623-bdaf-f6cfd43d00a5",
@@ -205,7 +205,7 @@
     "booking_url": "https://booking.holdmybag.net/elenas-apartments/city-stay-vienna-stephansplatz/dates",
     "image_url": null,
     "description_short": "_",
-    "translation_fallback": false
+    "translation_fallback": true
   },
   {
     "id": "e70365f5-ce6b-4ed8-a765-323a32c915e4",
@@ -218,7 +218,7 @@
     "booking_url": "https://booking.safecube.io/str-kultur-und-betriebs-gmbH",
     "image_url": null,
     "description_short": "Zugang zum Garderoben Locker im Rahmen der Veranstaltungen und der Öffnungszeiten des Wizemann.",
-    "translation_fallback": false
+    "translation_fallback": true
   },
   {
     "id": "efb2d00d-0804-4382-af4b-c68ab1b5d9bf",
@@ -231,7 +231,7 @@
     "booking_url": "https://booking.holdmybag.net/waltherpark-spa",
     "image_url": "/content/img/hmb/0508a15d8ee24993a5d7f7e50135eeff.webp",
     "description_short": "Die Schließfächer befinden sich an zentraler Stelle im Erdgeschoß des Waltherpark. Verschiedene Größen sind buchbar, unter anderem auch für das Aufladen von Handys/ I-Pads.",
-    "translation_fallback": false
+    "translation_fallback": true
   },
   {
     "id": "f01699d0-addf-4d60-8dfb-7600c575c0f7",
@@ -244,6 +244,6 @@
     "booking_url": "https://booking.holdmybag.net/homaris-ag/homaris-apartmenthaus-coe48/dates",
     "image_url": null,
     "description_short": "Die Gepäckschließfächer befinden sich im Erdgeschoss des Homaris in einem extra Gepäckraum.",
-    "translation_fallback": false
+    "translation_fallback": true
   }
 ]

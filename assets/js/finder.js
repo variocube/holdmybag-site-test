@@ -118,7 +118,7 @@
 			? '<span class="dist-tag' + (loc._dist < 50 ? " near" : "") + '">' + Math.round(loc._dist) + " km</span>" : "";
 		var colorCls = loc.online ? " hmb-card-online" : " hmb-card-onsite";
 		var b = badges(loc);
-		return '<li class="loc-card' + colorCls + '" data-slug="' + esc(loc.slug) + '">'
+		return '<li class="loc-card' + colorCls + '" data-slug="' + esc(loc.slug) + '" tabindex="0">'
 			+ dist
 			+ '<h4><a href="' + T.detail + encodeURIComponent(loc.slug) + '/">' + esc(loc.title) + "</a></h4>"
 			+ (loc.city ? '<p class="lc-city">' + esc((loc.zip ? loc.zip + " " : "") + loc.city) + "</p>" : "")
@@ -193,11 +193,28 @@
 		listEl.innerHTML = html;
 	}
 
-	function selectLoc(slug) {
+	var sheetOpener = null;
+	var sheetSlug = null;
+	function closeSheet() {
+		var panel = document.getElementById("panel");
+		if (!panel || !panel.classList.contains("sheet-open")) return;
+		panel.classList.remove("sheet-open");
+		var target = sheetOpener;
+		if (!target || target === document.body || !target.isConnected) {
+			target = Array.from(listEl.querySelectorAll(".loc-card")).filter(function (el) {
+				return el.getAttribute("data-slug") === sheetSlug;
+			})[0] || document.getElementById("finderInput");
+		}
+		if (target && target.focus) target.focus({ preventScroll: true });
+	}
+
+	function selectLoc(slug, opener) {
 		var loc = LOCS.filter(function (l) { return l.slug === slug; })[0];
 		var panel = document.getElementById("panel");
 		var empty = document.getElementById("panelEmpty");
 		if (!loc || !panel) return;
+		sheetSlug = slug;
+		if (!panel.contains(document.activeElement)) sheetOpener = opener || document.activeElement;
 		if (empty) empty.style.display = "none";
 		var body = panel.querySelector(".result-card") || document.createElement("div");
 		body.className = "result-card is-active";
@@ -206,6 +223,7 @@
 			+ '<div class="rc-body">'
 			+ "<h3>" + esc(loc.title) + "</h3>"
 			+ (loc.city ? '<p class="rc-city">' + esc((loc.zip ? loc.zip + " " : "") + loc.city) + "</p>" : "")
+			+ (EN && loc.translation_fallback ? '<p class="rc-desc">Some details are shown in German.</p>' : "")
 			+ (loc.description_short ? '<p class="rc-desc">' + esc(loc.description_short) + "</p>" : "")
 			+ (loc.price_text ? '<p class="rc-price">' + esc(loc.price_text) + "</p>" : "")
 			+ (badges(loc) ? '<div class="badges">' + badges(loc) + "</div>" : "")
@@ -214,6 +232,9 @@
 			+ "</div></div>";
 		if (!body.parentNode) panel.appendChild(body);
 		panel.classList.add("sheet-open");
+		panel.scrollTop = 0;
+		var close = document.getElementById("sheetClose");
+		if (close && window.matchMedia("(max-width: 860px)").matches) close.focus({ preventScroll: true });
 		if (typeof window.hmbPanTo === "function") window.hmbPanTo(slug);
 	}
 	window.hmbSelectLocation = selectLoc;
@@ -395,7 +416,16 @@
 			// Klick auf Card (aber nicht auf den Detail-Link) → Panel öffnen.
 			if (e.target.closest("a")) return;
 			var li = e.target.closest(".loc-card");
-			if (li && li.getAttribute("data-slug")) { e.preventDefault(); selectLoc(li.getAttribute("data-slug")); }
+			if (li && li.getAttribute("data-slug")) { e.preventDefault(); selectLoc(li.getAttribute("data-slug"), li); }
+		});
+
+		listEl.addEventListener("keydown", function (e) {
+			if ((e.key === "Enter" || e.key === " ") && e.target.matches(".loc-card[data-slug]")) {
+				e.preventDefault(); selectLoc(e.target.getAttribute("data-slug"), e.target);
+			}
+		});
+		document.getElementById("panel").addEventListener("keydown", function (e) {
+			if (e.key === "Escape") { e.preventDefault(); closeSheet(); }
 		});
 
 		// WS-HMB-FINDER-20: „Weitere anzeigen"-Paginierung entfällt (Bounds steuern die Liste).
@@ -403,9 +433,7 @@
 		if (wrap) wrap.hidden = true;
 
 		var sheetClose = document.getElementById("sheetClose");
-		if (sheetClose) sheetClose.addEventListener("click", function () {
-			document.getElementById("panel").classList.remove("sheet-open");
-		});
+		if (sheetClose) sheetClose.addEventListener("click", closeSheet);
 	}
 
 	renderCityChips();

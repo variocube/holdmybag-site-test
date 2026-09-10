@@ -433,6 +433,11 @@ textarea.hmb-input { min-height: 150px; resize: vertical; }
   font-size: var(--fs-xs); color: rgba(255,255,255,.6);
   max-width: var(--container); margin-inline: auto; padding-inline: clamp(16px, 4vw, 32px);
 }
+.site-footer-updated {
+  max-width: var(--container); margin: 16px auto 0;
+  padding-inline: clamp(16px, 4vw, 32px);
+  font-size: var(--fs-xs); color: rgba(255,255,255,.7);
+}
 .site-footer-legal .attributions a { color: rgba(255,255,255,.7); }
 
 /* -----------------------------------------------------------------------
@@ -528,10 +533,16 @@ textarea.hmb-input { min-height: 150px; resize: vertical; }
 		url('/assets/img/default-locker.svg') center / cover no-repeat,
 		linear-gradient(135deg, var(--hmb-purple), var(--hmb-purple-light)); }
 .d-hero .container { padding-top: 60px; padding-bottom: 26px; }
-.d-hero .d-back { display: inline-flex; align-items: center; gap: 6px; color: #fff; text-decoration: none;
-	background: rgba(255,255,255,.16); border: 1px solid rgba(255,255,255,.28); border-radius: 20px;
-	padding: 5px 13px; font-size: var(--fs-sm); margin-bottom: 14px; transition: background .12s; }
-.d-hero .d-back:hover { background: rgba(255,255,255,.28); }
+.d-return { background: var(--hmb-bg); padding: 8px 0; }
+.d-back { display: inline-flex; align-items: center; min-height: 44px; padding: 8px 16px;
+    color: var(--hmb-purple); background: #fff; border: 1px solid var(--hmb-purple);
+    border-radius: 8px; font-size: var(--fs-sm); font-weight: 600; text-decoration: none; }
+.d-back:hover { background: var(--hmb-accent-soft); }
+@media (max-width: 720px) {
+    /* Mobile header: 40px logo + 28px padding + 1px border. The stage
+       banner occupies the upper part of that sticky header, never this row. */
+    .d-return { position: sticky; top: 69px; z-index: 45; }
+}
 .d-hero h1 { color: #fff; margin-bottom: 6px; text-shadow: 0 2px 20px rgba(0,0,0,.3); }
 .d-hero .d-city { color: rgba(255,255,255,.9); font-size: var(--fs-lg); margin-bottom: 12px; }
 .d-hero .badges .badge { background: rgba(255,255,255,.16); color: #fff; }
@@ -704,16 +715,19 @@ textarea.hmb-input { min-height: 150px; resize: vertical; }
 	position: sticky; top: 90px; }
 .panel-empty { padding: 34px 24px; text-align: center; color: var(--hmb-text-mute); }
 .panel-empty .big { font-size: 2rem; margin-bottom: 8px; }
+.sheet-close { display: none; }
 @media (max-width: 860px) {
 	.panel { position: fixed; left: 0; right: 0; bottom: 0; top: auto; z-index: 150; border-radius: 16px 16px 0 0;
-		transform: translateY(110%); transition: transform .28s var(--ease); max-height: 82vh; overflow: auto;
+		transform: translateY(110%); transition: transform .28s var(--ease); max-height: 82vh; overflow: auto; overscroll-behavior: contain; visibility: hidden;
 		box-shadow: 0 -8px 30px rgba(0,0,0,.25); }
-	.panel.sheet-open { transform: translateY(0); }
+	.panel.sheet-open { transform: translateY(0); visibility: visible; }
 	.panel-empty { display: none; }
-	.sheet-close { display: block; position: absolute; top: 8px; right: 12px; background: none; border: 0;
-		font-size: 1.6rem; cursor: pointer; color: var(--hmb-text-mute); }
+	.sheet-close { display: flex; align-items: center; justify-content: center;
+        position: sticky; top: 8px; z-index: 2; width: 44px; height: 44px;
+        margin: 8px 12px -52px auto; padding: 0; border: 2px solid #1f2937;
+        border-radius: 50%; background: #fff; color: #1f2937; font-size: 1.8rem;
+        cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,.3); }
 }
-.sheet-close { display: none; }
 .list-fallback { padding-bottom: 56px; }
 .locations-grid { list-style: none; padding: 0; margin: 16px 0 0; display: grid;
 	grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 16px; }

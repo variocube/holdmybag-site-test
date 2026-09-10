@@ -5,6 +5,7 @@
  */
 (function () {
 	"use strict";
+	var en = document.documentElement.lang === "en";
 
 	function initOne(root) {
 		var track = root.querySelector(".gallery-track");
@@ -19,10 +20,10 @@
 		// ‹ ›-Pfeile
 		var prev = document.createElement("button");
 		prev.type = "button"; prev.className = "gallery-nav gallery-prev";
-		prev.setAttribute("aria-label", "Vorheriges Bild"); prev.innerHTML = "‹";
+		prev.setAttribute("aria-label", (en ? "Previous image" : "Vorheriges Bild")); prev.innerHTML = "‹";
 		var next = document.createElement("button");
 		next.type = "button"; next.className = "gallery-nav gallery-next";
-		next.setAttribute("aria-label", "Nächstes Bild"); next.innerHTML = "›";
+		next.setAttribute("aria-label", (en ? "Next image" : "Nächstes Bild")); next.innerHTML = "›";
 		root.appendChild(prev);
 		root.appendChild(next);
 
@@ -30,11 +31,11 @@
 		var dotsWrap = document.createElement("div");
 		dotsWrap.className = "gallery-dots";
 		dotsWrap.setAttribute("role", "tablist");
-		dotsWrap.setAttribute("aria-label", "Galerie-Navigation");
+		dotsWrap.setAttribute("aria-label", (en ? "Gallery navigation" : "Galerie-Navigation"));
 		var dots = slides.map(function (s, k) {
 			var d = document.createElement("button");
 			d.type = "button"; d.className = "gallery-dot"; d.setAttribute("role", "tab");
-			d.setAttribute("aria-label", "Bild " + (k + 1));
+			d.setAttribute("aria-label", (en ? "Image " : "Bild ") + (k + 1));
 			d.addEventListener("click", function () { go(k); });
 			dotsWrap.appendChild(d);
 			return d;

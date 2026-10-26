@@ -1,18 +1,5 @@
 [
   {
-    "id": "0328e638-e3a6-44b5-a541-c0c0c021d234",
-    "slug": "freistadt",
-    "title": "Freistadt Hauptplatz",
-    "lat": 48.5111386,
-    "lng": 14.5056387,
-    "category": "onsite",
-    "city": "Freistadt",
-    "booking_url": null,
-    "image_url": null,
-    "description_short": "Direkt am Hauptplatz gelegen",
-    "translation_fallback": true
-  },
-  {
     "id": "0e293400-50e5-4c66-9099-2c1aee573d23",
     "slug": "stuttgart-hallenduo",
     "title": "Stuttgart – Porsche-Arena / Hanns-Martin-Schleyer-Halle / Schließsfächer für Garderobe",
@@ -39,19 +26,6 @@
     "translation_fallback": true
   },
   {
-    "id": "2338bc0a-ca2c-4b09-8228-f753316530d3",
-    "slug": "lentiacity",
-    "title": "Linz LentiaCity – UG1",
-    "lat": 48.3141946,
-    "lng": 14.2814938,
-    "category": "onsite",
-    "city": "Linz",
-    "booking_url": null,
-    "image_url": null,
-    "description_short": null,
-    "translation_fallback": false
-  },
-  {
     "id": "3b19cead-ce5f-49dd-a955-348d02325b00",
     "slug": "wyndham-grand-salzburg-conference-centre-hotel",
     "title": "Radisson Blu Hotel & Conference Centre, Salzburg",
@@ -60,21 +34,8 @@
     "category": "online_onsite",
     "city": "Salzburg",
     "booking_url": "https://booking.holdmybag.net/wyndham-salzburg/wyndham-hotel-salzburg/dates",
-    "image_url": null,
-    "description_short": "Das Radisson Blu Hotel ist direkt am Hauptbahnhof in Salzburg. Der Luggage Locker befindet sich im Hotel, der Zugang erfolgt durch das Foyer oder die Parkgarage.",
-    "translation_fallback": true
-  },
-  {
-    "id": "6c7e1af5-6aa8-4b42-88d9-5eff5d28fd0f",
-    "slug": "hotel-spinnerei-linz",
-    "title": "Linz Best Western Hotel Spinnerei Linz",
-    "lat": 48.2456008,
-    "lng": 14.3286922,
-    "category": "onsite",
-    "city": "Linz",
-    "booking_url": null,
-    "image_url": null,
-    "description_short": null,
+    "image_url": "/content/img/hmb/04f52ec31a87498598ff8d8c25a108a1.webp",
+    "description_short": "The Radisson Blu Hotel is located right next to the main train station in Salzburg. The luggage locker is inside the hotel; access is via the lobby or the parking garage.",
     "translation_fallback": false
   },
   {
@@ -89,32 +50,6 @@
     "image_url": "/content/img/hmb/09b1f2f0f9a94f629cc0da65b88a9a7a.webp",
     "description_short": "Gepäckschließfächer im Hotel im extra Gepäckraum. Zutritt von außen für die Gäste des Balmers Hostel.",
     "translation_fallback": true
-  },
-  {
-    "id": "8d7da5d5-a21b-4093-9054-f6020dfdb69c",
-    "slug": "landesgartenschau-neuss-2026",
-    "title": "Landesgartenschau Neuss 2026",
-    "lat": 51.1984667,
-    "lng": 6.700985,
-    "category": "online_onsite",
-    "city": "Neuss",
-    "booking_url": "https://booking.holdmybag.net/landesgartenschau-neuss-2026",
-    "image_url": "/content/img/hmb/f9108d3fce5a40a99324c174bc95b6d1.webp",
-    "description_short": "Die Schließfächer stehen auf dem Gelände der Landesgartenschau Neuss und sind frei zugänglich.",
-    "translation_fallback": true
-  },
-  {
-    "id": "8fa3d068-fdc3-435e-b09b-93a5b71cfe83",
-    "slug": "pluscity",
-    "title": "Linz PlusCity – in den Eingangsbereichen",
-    "lat": 48.2450116,
-    "lng": 14.2354455,
-    "category": "onsite",
-    "city": "Pasching",
-    "booking_url": null,
-    "image_url": null,
-    "description_short": null,
-    "translation_fallback": false
   },
   {
     "id": "92569241-be45-4d7b-a4e6-8e22277d644e",
@@ -244,6 +179,19 @@
     "booking_url": "https://booking.holdmybag.net/homaris-ag/homaris-apartmenthaus-coe48/dates",
     "image_url": null,
     "description_short": "Die Gepäckschließfächer befinden sich im Erdgeschoss des Homaris in einem extra Gepäckraum.",
+    "translation_fallback": true
+  },
+  {
+    "id": "f0bd7541-7084-416c-b7d5-d82aa45ca21f",
+    "slug": "lockerstore-niddastrasse",
+    "title": "Holdmybag Locker Store Frankfurt am Main - Niddastr. 63",
+    "lat": 50.1094045,
+    "lng": 8.6630254,
+    "category": "onsite",
+    "city": "Frankfurt am Main",
+    "booking_url": "https://booking.safecube.io/holdmybag/lockerstore-niddastrasse/dates",
+    "image_url": "/content/img/hmb/66e7ab3af1914be9a9748d8bedd6b36e.webp",
+    "description_short": "Locker Store der Holdmybag drei Gehminuten vom Frankfurt Hauptbahnhof mit 75 Fächern (videoüberwacht. mit Qualitätslockern) - Zutritt mit QR Code oder Vorbuchung",
     "translation_fallback": true
   }
 ]

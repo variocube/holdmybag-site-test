@@ -1,0 +1,99 @@
+# Lighthouse-Pruefung fuer test.holdmybag.net (Issue variocube/VC-Hub#12)
+#
+# Versionierte Quelle: VC-Hub `hmb_cms/assets/lighthouse.yml` (+ Konfiguration
+# `hmb_cms/assets/lighthouserc.json`). Im Site-Repo liegt die Datei unter
+# `.github/workflows/lighthouse.yml`, die Konfiguration unter
+# `.github/lighthouserc.json`. Beide werden VON HAND ins Repo
+# `variocube/holdmybag-site-test` committet — der Hub liest diese Dateien nie
+# und committet sie nicht; ein Publish laesst `.github/` im Site-Repo stehen
+# (er raeumt nur die Inhaltsordner auf). Aenderungen: hier aendern, dann von
+# Hand ins Site-Repo uebernehmen.
+#
+# Nur Test-Repo: jeder Hub-Publish nach test.holdmybag.net ist ein Push auf
+# `main` und loest diese Pruefung aus, bevor dieselben Inhalte nach Prod
+# gehen. Prod (`holdmybag-site`) bleibt ohne Workflow; der Job ist zusaetzlich
+# per `if:` auf das Test-Repo beschraenkt, falls die Datei dorthin kopiert wird.
+#
+# Ablauf: GitHub Pages deployt im Altmodus „Deploy from a branch“ (`main`, `/`)
+# — kein Workflow im Repo. Der Job wartet deshalb, bis der Pages-Build GENAU
+# dieses Commits fertig ist (`GET /repos/{repo}/pages/builds/latest`:
+# `commit == GITHUB_SHA` und `status == built`; `errored` = Fehler; nach
+# 15 Minuten Abbruch), dann ~60 s fuer das Pages-CDN, und misst danach.
+# Nur `main`: ein `workflow_dispatch` auf einem anderen Ref wird uebersprungen.
+# Wird ein alter Lauf neu gestartet, nachdem schon ein neuerer Publish
+# deployt ist, endet er im 15-Minuten-Abbruch (der letzte Pages-Build gehoert
+# dann zu einem anderen Commit) — das ist kein Fehler der Site; stattdessen den
+# Workflow per `workflow_dispatch` auf `main` starten.
+#
+# Messung (`lighthouserc.json`): 4 URLs, je 3 Laeufe, mobil (Lighthouse-
+# Standard), Median je Kategorie, Stufe `error` (roter Lauf):
+# Performance ≥ 0.90, Accessibility ≥ 0.90, Best Practices ≥ 0.90, SEO ≥ 0.95.
+# Das SEO-Audit `is-crawlable` wird uebersprungen: test.holdmybag.net ist
+# bewusst `noindex` (robots.txt + Meta), das Audit faellt dort immer durch und
+# allein kostet es ~30 SEO-Punkte. Auf Prod gilt es weiter (W7-Audit).
+# Ergebnisse als Artefakt `lighthouse-results`; nichts wird oeffentlich
+# hochgeladen (`temporaryPublicStorage: false`).
+
+name: Lighthouse
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: read
+
+concurrency:
+  group: lighthouse
+  cancel-in-progress: true
+
+jobs:
+  lighthouse:
+    if: github.repository == 'variocube/holdmybag-site-test' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - name: Auf den Pages-Build dieses Commits warten
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          deadline=$((SECONDS + 900))
+          while :; do
+            build=$(gh api "repos/${GITHUB_REPOSITORY}/pages/builds/latest" \
+              --jq '[.commit, .status, (.error.message // "")] | @tsv') || build=""
+            IFS=$'\t' read -r commit status message <<<"$build" || true
+            echo "Pages-Build: commit=${commit:-?} status=${status:-?}"
+            if [ "$commit" = "$GITHUB_SHA" ]; then
+              case "$status" in
+                built)
+                  break
+                  ;;
+                errored)
+                  echo "::error::Pages-Build fuer ${GITHUB_SHA} ist fehlgeschlagen: ${message:-ohne Meldung}"
+                  exit 1
+                  ;;
+              esac
+            fi
+            if [ "$SECONDS" -ge "$deadline" ]; then
+              echo "::error::Pages-Build fuer ${GITHUB_SHA} nach 15 Minuten nicht fertig (zuletzt: commit=${commit:-?} status=${status:-?})"
+              exit 1
+            fi
+            sleep 15
+          done
+          echo "Pages-Build fuer ${GITHUB_SHA} ist fertig; 60 s Pause fuer das Pages-CDN"
+          sleep 60
+
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Lighthouse CI
+        uses: treosh/lighthouse-ci-action@3e7e23fb74242897f95c0ba9cabad3d0227b9b18 # 12.6.2
+        with:
+          urls: |
+            https://test.holdmybag.net/
+            https://test.holdmybag.net/standorte/
+            https://test.holdmybag.net/standort/citystay-vienna/
+            https://test.holdmybag.net/kontakt/
+          configPath: ./.github/lighthouserc.json
+          uploadArtifacts: true
+          temporaryPublicStorage: false

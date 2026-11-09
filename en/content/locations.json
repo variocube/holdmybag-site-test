@@ -39,6 +39,19 @@
     "translation_fallback": false
   },
   {
+    "id": "4d3ab2f1-da2b-4e1b-bcb1-c592d152b555",
+    "slug": "wienerriesenrad",
+    "title": "Wiener Riesenrad - Gepäckschließfächer Holdmybag",
+    "lat": 48.2169998,
+    "lng": 16.3960327,
+    "category": "onsite",
+    "city": "Wien",
+    "booking_url": "https://booking.safecube.io/wienerriesenrad/wienerriesenrad/dates",
+    "image_url": "/content/img/hmb/e600f64e48f5400cb2d5843726cf6915.webp",
+    "description_short": "The new Holdmybag / Variocube luggage lockers are located directly next to the entrance of the Vienna Giant Ferris Wheel (Wiener Riesenrad) in the Vienna Prater. Lockers are available in various sizes, including options for large suitcases.",
+    "translation_fallback": false
+  },
+  {
     "id": "75b59776-eb2c-4382-abbd-1078fc2c99e7",
     "slug": "balmers-hostel-interlaken",
     "title": "Balmers Hostel | Interlaken",
@@ -191,7 +204,7 @@
     "city": "Frankfurt am Main",
     "booking_url": "https://booking.safecube.io/holdmybag/lockerstore-niddastrasse/dates",
     "image_url": "/content/img/hmb/66e7ab3af1914be9a9748d8bedd6b36e.webp",
-    "description_short": "Locker Store der Holdmybag drei Gehminuten vom Frankfurt Hauptbahnhof mit 75 Fächern (videoüberwacht. mit Qualitätslockern) - Zutritt mit QR Code oder Vorbuchung",
-    "translation_fallback": true
+    "description_short": "Holdmybag Locker Store, just a 3-minute walk from Frankfurt Central Station, featuring 75 high-quality lockers in a video-monitored facility. Easy access via QR code, with the option to book in advance.",
+    "translation_fallback": false
   }
 ]

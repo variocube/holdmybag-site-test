@@ -39,6 +39,19 @@
     "translation_fallback": false
   },
   {
+    "id": "4d3ab2f1-da2b-4e1b-bcb1-c592d152b555",
+    "slug": "wienerriesenrad",
+    "title": "Wiener Riesenrad - Gepäckschließfächer Holdmybag",
+    "lat": 48.2169998,
+    "lng": 16.3960327,
+    "category": "onsite",
+    "city": "Wien",
+    "booking_url": "https://booking.safecube.io/wienerriesenrad/wienerriesenrad/dates",
+    "image_url": "/content/img/hmb/e600f64e48f5400cb2d5843726cf6915.webp",
+    "description_short": "Direkt neben dem Eingang des Wiener Riesenrads auf dem Geländes des Wiener Prater befinden sich die neuen Gepäckschließfächer der Holdmybag/Variocube. Verschiedene Größen bis hin für große Koffer werden angeboten.",
+    "translation_fallback": false
+  },
+  {
     "id": "75b59776-eb2c-4382-abbd-1078fc2c99e7",
     "slug": "balmers-hostel-interlaken",
     "title": "Balmers Hostel | Interlaken",

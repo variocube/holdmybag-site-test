@@ -205,6 +205,6 @@
     "booking_url": "https://booking.safecube.io/holdmybag/lockerstore-niddastrasse/dates",
     "image_url": "/content/img/hmb/66e7ab3af1914be9a9748d8bedd6b36e.webp",
     "description_short": "Holdmybag Locker Store, just a 3-minute walk from Frankfurt Central Station, featuring 75 high-quality lockers in a video-monitored facility. Easy access via QR code, with the option to book in advance.",
-    "translation_fallback": false
+    "translation_fallback": true
   }
 ]

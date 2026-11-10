@@ -443,7 +443,10 @@ textarea.hmb-input { min-height: 150px; resize: vertical; }
 /* -----------------------------------------------------------------------
  * 8. Standorte-Detail (refresh, soft-cards)
  * --------------------------------------------------------------------- */
-.location-detail { max-width: 920px; margin: 0 auto; padding: clamp(20px, 4vw, 40px) clamp(16px, 4vw, 32px); }
+/* WS-HMB-UEBERSETZUNG-FIX Teil C: die Detailseite (Hero, Menü, .d-wrap) so breit wie Kopfleiste und Rest der Site (--container). Der Artikel selbst war
+   mit 920 px die eigentliche Bremse (umschließt Hero, Anker-Menü und .d-wrap); + 64 px = der waagerechte Innenabstand (32 px ab 800 px Breite), damit die
+   Innenkanten mit der Kopfleiste fluchten. Unter 1244 px Fensterbreite greift die Grenze nie: Tablet und Handy unverändert. */
+.location-detail { max-width: calc(var(--container) + 64px); margin: 0 auto; padding: clamp(20px, 4vw, 40px) clamp(16px, 4vw, 32px); }
 .location-detail .hero-image { width: 100%; max-height: 420px; object-fit: cover; border-radius: 12px; margin-bottom: 24px; }
 .location-detail .description { font-size: var(--fs-lg); color: var(--hmb-text-soft); }
 .amenities { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0; }
@@ -554,7 +557,7 @@ textarea.hmb-input { min-height: 150px; resize: vertical; }
 	font-weight: 600; color: var(--hmb-text-soft); background: var(--hmb-bg); }
 .anchors a:hover { background: var(--hmb-accent-soft); color: var(--hmb-accent-dark); }
 
-.d-wrap { max-width: 1040px; margin: 0 auto; padding: 28px clamp(16px,4vw,32px) 120px;
+.d-wrap { max-width: var(--container); margin: 0 auto; padding: 28px clamp(16px,4vw,32px) 120px;
 	display: grid; grid-template-columns: 1fr 340px; gap: 36px; align-items: start; }
 @media (max-width: 820px) { .d-wrap { grid-template-columns: 1fr; gap: 0; } }
 .d-main > section { margin-bottom: 38px; scroll-margin-top: 70px; }

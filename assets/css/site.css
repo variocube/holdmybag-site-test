@@ -4,7 +4,12 @@
  * Brand-Tokens (gegen echte Live-Screenshots kalibriert, W6-FIX-1):
  *   Primär/Accent  #18bdc5 (Teal)        — Buttons, Links, Akzente
  *   Lila           #693e7e / #9f519f     — Header + dunkle Sektionen/Bänder/Footer (Live-Brand!)
+ *   Teal dunkel    #0f7a80               — Text auf hellem Grund (Eyebrow, Badges, Chips, Preise), Hover
  *   Schrift        Roboto (300/400, self-hosted)
+ * Kontrast (WCAG AA, VC-Hub#12): Text auf hellem Grund >= 4,5:1 — Teal dunkel
+ * 4,6:1 auf #e3f7f8, 4,8:1 auf #f6f9fa (vorher #0f8e95 = 3,6:1); Kleingedrucktes
+ * im lila Footer #d1d5db = 5,5:1 (vorher das globale small-Grau #6b7280 = 1,7:1).
+ * Weiss auf #18bdc5 (Knoepfe) bleibt bewusst (Markenentscheid, VC-Hub#16).
  * (W6b hatte den Header faelschlich Navy #0a3049 — Live-Header ist LILA. Navy raus.)
  */
 
@@ -26,7 +31,7 @@
 :root {
   /* Brand (W6b — echte holdmybag-Marke) */
   --hmb-accent:       #18bdc5;   /* Teal — Primär (Buttons/Links) */
-  --hmb-accent-dark:  #0f8e95;   /* dunkleres Teal für Hover */
+  --hmb-accent-dark:  #0f7a80;   /* dunkleres Teal: Text auf hellem Grund (≥ 4,5:1) + Hover */
   --hmb-accent-soft:  #e3f7f8;   /* helles Teal-Tint */
   --hmb-purple:       #693e7e;   /* Lila (dunkel) — Header + dunkle Sektionen */
   --hmb-purple-light: #9f519f;   /* Lila (hell) — Akzent-Band */
@@ -433,6 +438,8 @@ textarea.hmb-input { min-height: 150px; resize: vertical; }
   font-size: var(--fs-xs); color: rgba(255,255,255,.6);
   max-width: var(--container); margin-inline: auto; padding-inline: clamp(16px, 4vw, 32px);
 }
+/* Kleingedrucktes im lila Footer: das globale `small` (--hmb-text-mute) wäre hier 1,7:1. */
+.site-footer small { color: #d1d5db; }
 .site-footer-updated {
   max-width: var(--container); margin: 16px auto 0;
   padding-inline: clamp(16px, 4vw, 32px);
@@ -452,7 +459,7 @@ textarea.hmb-input { min-height: 150px; resize: vertical; }
 .amenities { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0; }
 .amenities .amenity {
   background: var(--hmb-accent-soft); color: var(--hmb-accent-dark);
-  padding: 4px 12px; border-radius: 999px; font-size: var(--fs-xs); text-transform: capitalize;
+  padding: 4px 12px; border-radius: 999px; font-size: var(--fs-xs);
 }
 
 /* Standorte-Liste */
@@ -480,6 +487,16 @@ textarea.hmb-input { min-height: 150px; resize: vertical; }
 /* Static-page (impressum/datenschutz/agb) */
 .static-page { max-width: 760px; margin: 0 auto; padding: clamp(32px, 6vh, 80px) clamp(16px, 4vw, 32px); }
 .static-page .placeholder { color: var(--hmb-text-mute); font-style: italic; }
+/* E-346: Entwurfsvermerk der englischen Rechtsseiten ("Draft — pending legal review"). */
+.static-page .draft-note { margin: 0 0 24px; padding: 12px 16px; border: 2px solid #b45309; border-radius: 6px;
+  background: #fffbeb; color: #78350f; font-size: .95rem; }
+.static-page .draft-note p { margin: 0 0 6px; }
+.static-page .draft-note p:last-child, .static-page .draft-note ul:last-child { margin-bottom: 0; }
+.static-page .draft-note ul { margin: 6px 0 0; padding-left: 20px; }
+.static-page .table-wrap { overflow-x: auto; margin: 0 0 1.2em; }
+.static-page table { border-collapse: collapse; width: 100%; font-size: .95rem; }
+.static-page th, .static-page td { border: 1px solid #d1d5db; padding: 8px 10px; text-align: left; vertical-align: top; }
+.static-page th { background: var(--hmb-bg); font-weight: 400; color: var(--hmb-text); }
 
 /* -----------------------------------------------------------------------
  * 9. Print + Reduced Motion
@@ -489,24 +506,53 @@ textarea.hmb-input { min-height: 150px; resize: vertical; }
 }
 
 /* -----------------------------------------------------------------------
- * Consent-Banner (HMB-K6)
+ * Consent-Dialog (HMB-K6, E-348 Variante D) + Karten-Platzhalter
+ * Mock: requirements-md/hmb/mock_cookie_banner_v1.1.html
  * --------------------------------------------------------------------- */
-.hmb-consent-bar {
-  position: fixed; left: 0; right: 0; bottom: 0; z-index: 1000;
-  background: var(--hmb-purple); color: #fff;
-  box-shadow: 0 -4px 24px rgba(0,0,0,.25);
+.hmb-consent-scrim {
+  position: fixed; inset: 0; z-index: 1000;
+  display: flex; align-items: center; justify-content: center; padding: 14px;
+  background: rgba(31, 41, 55, .62);
 }
-.hmb-consent-inner {
-  max-width: var(--container); margin: 0 auto;
-  padding: 16px clamp(16px, 4vw, 32px);
-  display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px;
+.hmb-consent-scrim[hidden] { display: none; }
+/* Rechtsseiten (data-modal="0"): keine Abdunklung, Karte unten, Seite bleibt bedienbar. */
+.hmb-consent-scrim.hmb-consent-scrim-open {
+  inset: auto 0 0 0; background: none; pointer-events: none; padding: 0 14px 14px;
 }
-.hmb-consent-text { margin: 0; flex: 1 1 360px; font-size: var(--fs-sm); color: rgba(255,255,255,.92); }
-.hmb-consent-cats { display: flex; flex-wrap: wrap; gap: 8px 18px; flex-basis: 100%; }
-.hmb-consent-cats[hidden] { display: none; }
-.hmb-consent-cats label { display: inline-flex; gap: 6px; align-items: center; font-size: var(--fs-sm); }
-.hmb-consent-actions { display: flex; flex-wrap: wrap; gap: 10px; }
-.hmb-consent-actions .btn-ghost { color: #fff; border-color: rgba(255,255,255,.5); }
+.hmb-consent-scrim-open .hmb-consent-dlg { pointer-events: auto; box-shadow: 0 6px 30px rgba(0,0,0,.35); }
+.hmb-consent-locked { overflow: hidden; }
+.hmb-consent-dlg {
+  background: #fff; color: var(--hmb-text); border-radius: 14px; width: 100%; max-width: 520px;
+  max-height: 100%; overflow-y: auto; padding: 22px; box-shadow: 0 10px 40px rgba(0,0,0,.35);
+}
+.hmb-consent-dlg h2 { margin: 0 0 8px; color: var(--hmb-purple); font-size: 1.2rem; line-height: 1.25; }
+.hmb-consent-text { margin: 0 0 12px; font-size: var(--fs-sm); color: var(--hmb-text-soft); }
+.hmb-consent-cats { display: flex; flex-direction: column; gap: 10px; margin: 6px 0 12px; }
+.hmb-consent-cats label { display: flex; gap: 10px; align-items: flex-start; font-size: var(--fs-sm); }
+.hmb-consent-cats input { margin-top: 4px; width: 18px; height: 18px; flex: none; }
+.hmb-consent-sub { color: var(--hmb-text-mute); font-size: var(--fs-xs); }
+.hmb-consent-actions { display: flex; flex-direction: column; align-items: stretch; gap: 4px; margin-top: 14px; }
+.hmb-consent-accept { font-size: 1.1rem; min-height: 52px; }
+.hmb-consent-save { min-height: 52px; background: var(--hmb-purple); color: #fff; }
+.hmb-consent-save:hover { background: var(--hmb-purple-light); color: #fff; }
+/* Ablehnen und Einstellungen: bewusst kleine Textlinks (Entscheid Variante D), Ziel ≥ 44 px hoch. */
+.hmb-consent-link {
+  align-self: center; min-height: 44px; padding: 0 12px; border: 0; background: none; cursor: pointer;
+  font: inherit; font-size: .8125rem; color: var(--hmb-text-mute); text-decoration: underline;
+}
+.hmb-consent-link:hover { color: var(--hmb-text); }
+.hmb-consent-dlg button:focus-visible, .hmb-consent-dlg input:focus-visible { outline: 3px solid var(--hmb-purple); outline-offset: 2px; }
+
+/* Platzhalter an jeder Karte, solange die Zustimmung „Karte“ fehlt. */
+.hmb-map-ph {
+  position: absolute; inset: 0; z-index: 2; overflow-y: auto; border-radius: inherit;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
+  padding: 18px; text-align: center; background: var(--hmb-accent-soft);
+}
+.hmb-map-ph-ic { font-size: 2.1rem; line-height: 1; }
+.hmb-map-ph p { margin: 0; max-width: 460px; font-size: var(--fs-sm); color: var(--hmb-text-soft); }
+.hmb-map-ph a { color: inherit; text-decoration: underline; }
+.hmb-map-ph-btn { max-width: 100%; text-align: center; line-height: 1.25; }
 
 /* =======================================================================
  * WS-HMB-STANDORT-BUILD H3 — Standort-Detail + Übersicht (nach abgenommenem
@@ -750,17 +796,6 @@ textarea.hmb-input { min-height: 150px; resize: vertical; }
 .hmb-map-full { height: min(70vh, 560px); width: 100%; background: #eef1f3; border-radius: 14px;
 	border: 1px solid var(--hmb-border); position: relative; }
 @media (max-width: 860px) { .hmb-map-full { height: 42vh; } }
-/* WS-HMB-MAP-CONSENT-CTA: klickbare CTA über der leeren (consent-gegateten) Karte. */
-.hmb-map-cta {
-	position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-	display: inline-flex; align-items: center; gap: 8px; z-index: 2;
-	padding: 14px 22px; border: 0; border-radius: 999px; cursor: pointer;
-	background: var(--hmb-accent); color: #fff; font-family: inherit;
-	font-size: var(--fs-base); font-weight: 600; box-shadow: 0 6px 20px rgba(0,0,0,.18);
-	max-width: calc(100% - 28px); text-align: center; line-height: 1.25;
-}
-.hmb-map-cta:hover { background: var(--hmb-accent-dark); }
-.hmb-map-cta-ic { font-size: 1.2em; }
 /* WS-HMB-FINDER-FILTER-COUNTS: Einschränkungs-/Ergebnis-Banner mit Reset. */
 .finder-restrict {
 	display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
@@ -773,7 +808,7 @@ textarea.hmb-input { min-height: 150px; resize: vertical; }
 /* [hidden] muss die display:flex-Regel schlagen (sonst Banner schon ohne Suche sichtbar). */
 .finder-restrict[hidden] { display: none; }
 .hmb-map-single { height: 360px; width: 100%; background: #eef1f3; border-radius: 12px;
-	border: 1px solid var(--hmb-border); }
+	border: 1px solid var(--hmb-border); position: relative; }
 .dist-tag.near { background: var(--hmb-accent-dark); }
 .result-card { display: none; }
 .result-card.is-active { display: block; }

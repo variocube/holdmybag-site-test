@@ -42,27 +42,25 @@
 	var T = EN ? {
 		near: "Nearby (< 50 km)", far: "Farther away", count: "locations",
 		more: "Show more", geo_wait: "Locating…", geo_fail: "Location unavailable.",
-		geo_hint: "Enable the map (accept cookies) to search by place name.",
+		geo_hint: "Activate the map and agree to search by place name.",
 		no_hits: "No locations match.", detail: "/en/location/",
 		to_loc: "View details", book: "Book now",
 		online: "Book online", onsite: "Book on-site",
 		zoom_hint: "Zoom in further to see locations.",
 		city_less: "− show fewer",
-		map_cta: "Enable map (accept cookies)",
 		result_for: 'Results for "{q}" — {n} locations',
 		result_area: "Current map view — {n} locations",
 		reset: "Reset",
 	} : {
 		near: "In der Nähe (< 50 km)", far: "Weiter entfernt", count: "Standorte",
 		more: "Weitere anzeigen", geo_wait: "Orte…", geo_fail: "Standort nicht verfügbar.",
-		geo_hint: "Aktiviere die Karte (Cookies akzeptieren), um nach Ort zu suchen.",
+		geo_hint: "Aktiviere die Karte und stimme zu, um nach Ort zu suchen.",
 		no_hits: "Keine Standorte gefunden.", detail: "/standort/",
 		to_loc: "Details ansehen", book: "Jetzt buchen",
 		// WS-HMB-DISPLAY-HYGIENE: DE-Keys ergänzt — fehlten → Badges zeigten „undefined".
 		online: "Online buchbar", onsite: "Vor Ort buchbar",
 		zoom_hint: "Zoomen Sie weiter rein, um Standorte zu sehen.",
 		city_less: "− weniger",
-		map_cta: "Karte aktivieren (Cookies akzeptieren)",
 		result_for: 'Ergebnis für „{q}" — {n} Standorte',
 		result_area: "Aktueller Kartenausschnitt — {n} Standorte",
 		reset: "Zurücksetzen",
@@ -305,30 +303,9 @@
 		render();
 	}
 
-	// WS-HMB-MAP-CONSENT-CTA: solange die (consent-gegated) Karte weder geladen
-	// noch die map-Kategorie erteilt ist, eine klickbare CTA IM Kartenbereich
-	// zeigen. Klick → map-Kategorie akzeptieren → consent.js aktiviert das
-	// Maps-Script → hmbInitMap → Karte erscheint (ohne Reload). Nach 'hmb:map-ready'
-	// wird die CTA entfernt.
-	function setupMapConsentCTA() {
-		var mapEl = document.getElementById("hmb-map");
-		if (!mapEl) return;
-		var mapsComing = !!(window.google && window.google.maps);
-		var consented = (typeof window.hmbConsentHas === "function") && window.hmbConsentHas("map");
-		if (mapsComing || consented) return;   // Karte kommt ohnehin → keine CTA
-		var cta = document.createElement("button");
-		cta.type = "button";
-		cta.className = "hmb-map-cta";
-		cta.innerHTML = '<span class="hmb-map-cta-ic" aria-hidden="true">🗺️</span> ' + esc(T.map_cta);
-		cta.addEventListener("click", function () {
-			if (typeof window.hmbConsentAccept === "function") window.hmbConsentAccept("map");
-			else if (typeof window.hmbConsentOpen === "function") window.hmbConsentOpen();
-		});
-		mapEl.appendChild(cta);
-		document.addEventListener("hmb:map-ready", function () {
-			if (cta.parentNode) cta.parentNode.removeChild(cta);
-		}, { once: true });
-	}
+	// E-348: den Karten-Platzhalter „Karte aktivieren und zustimmen“ (statt der früheren CTA
+	// „Karte aktivieren (Cookies akzeptieren)“) zeichnet consent.js an JEDER Karte (#hmb-map);
+	// der Finder braucht dafür keinen eigenen Knopf mehr.
 
 	// ---- City-Quick-Chips (nur Städte mit Lockern) ----
 	// WS-HMB-CITY-CHIPS: nach Anzahl Standorte je Stadt absteigend (Tiebreak
@@ -439,7 +416,6 @@
 	renderCityChips();
 	wire();
 	render();
-	setupMapConsentCTA();   // WS-HMB-MAP-CONSENT-CTA
 
 	// WS-HMB-HOME-SEARCH (C): ?q= (von der Home-Suche) übernehmen → Feld füllen +
 	// suchen. Geocoding greift nur, wenn Maps geladen (consent) — sonst Hinweis.

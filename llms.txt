@@ -1,0 +1,67 @@
+# Holdmybag
+
+> Holdmybag offers self-service luggage storage in smart lockers at hotels, train stations, shopping centres and other central locations in Europe. Lockers can be booked online in advance or on site, many locations are accessible 24/7. Holdmybag is operated by Holdmybag GmbH, the contractual partner for every booking.
+
+Holdmybag is a network of luggage lockers for travellers, commuters and shoppers. Each location has its own page with address, map coordinates, opening hours, prices per locker size, booking options and amenities. Every page also exists as Markdown (see the links below). Prices and opening hours differ per location; only the data on the location pages is authoritative.
+
+## Operator
+
+- Holdmybag GmbH operates Holdmybag and is the contractual partner of every customer (bookings, payments, terms and conditions).
+- Legal notice: https://test.holdmybag.net/en/legal-notice/; contact: office@holdmybag.net.
+- The locker hardware and software are supplied by the technology provider Variocube.
+
+## How booking works
+
+- Online in advance: locations with online booking link to their booking page on https://booking.holdmybag.net. Choose locker size and duration, pay online and receive the access code by email.
+- On site by smartphone: scan the QR code on the locker, choose a compartment and pay on your phone.
+- On site at the terminal: choose a compartment on the screen and pay by card or contactless.
+- Which of these channels a location offers, its payment methods, opening hours (24/7 or weekly hours) and prices are listed on each location page.
+- Payment methods used at Holdmybag locations: Card, Apple Pay, Google Pay, PayPal, TWINT.
+
+## Locations
+
+- [Fire and Ice Ischgl](https://test.holdmybag.net/en/location/fire-and-ice-ischgl/): Ischgl; open 24/7; booking: online, QR code, terminal. Page: [DE](https://test.holdmybag.net/standort/fire-and-ice-ischgl/), [EN](https://test.holdmybag.net/en/location/fire-and-ice-ischgl/). Markdown: [DE](https://test.holdmybag.net/standort/fire-and-ice-ischgl.md), [EN](https://test.holdmybag.net/en/location/fire-and-ice-ischgl.md).
+- [Radisson Blu Hotel & Conference Centre, Salzburg](https://test.holdmybag.net/en/location/wyndham-grand-salzburg-conference-centre-hotel/): Salzburg; open 24/7; booking: online, QR code, terminal. Page: [DE](https://test.holdmybag.net/standort/wyndham-grand-salzburg-conference-centre-hotel/), [EN](https://test.holdmybag.net/en/location/wyndham-grand-salzburg-conference-centre-hotel/). Markdown: [DE](https://test.holdmybag.net/standort/wyndham-grand-salzburg-conference-centre-hotel.md), [EN](https://test.holdmybag.net/en/location/wyndham-grand-salzburg-conference-centre-hotel.md).
+- [Innsbruck Citylocker.store – Altstadt Innsbruck](https://test.holdmybag.net/en/location/innsbruck-citylocker/): Innsbruck, AT; open 24/7; booking: online, QR code. Page: [DE](https://test.holdmybag.net/standort/innsbruck-citylocker/), [EN](https://test.holdmybag.net/en/location/innsbruck-citylocker/). Markdown: [DE](https://test.holdmybag.net/standort/innsbruck-citylocker.md), [EN](https://test.holdmybag.net/en/location/innsbruck-citylocker.md).
+- [HeyMi Apartments Mondscheingasse](https://test.holdmybag.net/en/location/booking-threefriends/): Wien, AT; open 24/7; booking: online, QR code, terminal. Page: [DE](https://test.holdmybag.net/standort/booking-threefriends/), [EN](https://test.holdmybag.net/en/location/booking-threefriends/). Markdown: [DE](https://test.holdmybag.net/standort/booking-threefriends.md), [EN](https://test.holdmybag.net/en/location/booking-threefriends.md).
+- [HeyMi Apartments Zieglergasse](https://test.holdmybag.net/en/location/heymi-apartments-zieglergasse/): Wien, AT; open 24/7; booking: online, QR code, terminal. Page: [DE](https://test.holdmybag.net/standort/heymi-apartments-zieglergasse/), [EN](https://test.holdmybag.net/en/location/heymi-apartments-zieglergasse/). Markdown: [DE](https://test.holdmybag.net/standort/heymi-apartments-zieglergasse.md), [EN](https://test.holdmybag.net/en/location/heymi-apartments-zieglergasse.md).
+- [Wien City Stay Vienna Stephansplatz](https://test.holdmybag.net/en/location/citystay-vienna/): Wien, AT; open 24/7; booking: online, QR code, terminal. Page: [DE](https://test.holdmybag.net/standort/citystay-vienna/), [EN](https://test.holdmybag.net/en/location/citystay-vienna/). Markdown: [DE](https://test.holdmybag.net/standort/citystay-vienna.md), [EN](https://test.holdmybag.net/en/location/citystay-vienna.md).
+- [Wiener Riesenrad - Gepäckschließfächer Holdmybag](https://test.holdmybag.net/en/location/wienerriesenrad/): Wien, AT; open 24/7; booking: online, QR code, terminal. Page: [DE](https://test.holdmybag.net/standort/wienerriesenrad/), [EN](https://test.holdmybag.net/en/location/wienerriesenrad/). Markdown: [DE](https://test.holdmybag.net/standort/wienerriesenrad.md), [EN](https://test.holdmybag.net/en/location/wienerriesenrad.md).
+- [Bahnhof Zell am Ziller 2](https://test.holdmybag.net/en/location/bahnhof-zell-am-ziller/): Zell am Ziller, AT; open 24/7; booking: online, QR code, terminal. Page: [DE](https://test.holdmybag.net/standort/bahnhof-zell-am-ziller/), [EN](https://test.holdmybag.net/en/location/bahnhof-zell-am-ziller/). Markdown: [DE](https://test.holdmybag.net/standort/bahnhof-zell-am-ziller.md), [EN](https://test.holdmybag.net/en/location/bahnhof-zell-am-ziller.md).
+- [Balmers Hostel \| Interlaken](https://test.holdmybag.net/en/location/balmers-hostel-interlaken/): Matten bei Interlaken, CH; open 24/7; booking: online, QR code, terminal. Page: [DE](https://test.holdmybag.net/standort/balmers-hostel-interlaken/), [EN](https://test.holdmybag.net/en/location/balmers-hostel-interlaken/). Markdown: [DE](https://test.holdmybag.net/standort/balmers-hostel-interlaken.md), [EN](https://test.holdmybag.net/en/location/balmers-hostel-interlaken.md).
+- [Homaris Berlin West Side](https://test.holdmybag.net/en/location/homaris-berlin-west-side/): Berlin, DE; open 24/7; booking: online, QR code, terminal. Page: [DE](https://test.holdmybag.net/standort/homaris-berlin-west-side/), [EN](https://test.holdmybag.net/en/location/homaris-berlin-west-side/). Markdown: [DE](https://test.holdmybag.net/standort/homaris-berlin-west-side.md), [EN](https://test.holdmybag.net/en/location/homaris-berlin-west-side.md).
+- [Homaris K48 Studios](https://test.holdmybag.net/en/location/homaris-k48-studios/): Berlin, DE; open 24/7; booking: online, QR code. Page: [DE](https://test.holdmybag.net/standort/homaris-k48-studios/), [EN](https://test.holdmybag.net/en/location/homaris-k48-studios/). Markdown: [DE](https://test.holdmybag.net/standort/homaris-k48-studios.md), [EN](https://test.holdmybag.net/en/location/homaris-k48-studios.md).
+- [Burghausen Stadtplatz](https://test.holdmybag.net/en/location/burghausen/): Burghausen, DE; open 24/7; booking: QR code. Page: [DE](https://test.holdmybag.net/standort/burghausen/), [EN](https://test.holdmybag.net/en/location/burghausen/). Markdown: [DE](https://test.holdmybag.net/standort/burghausen.md), [EN](https://test.holdmybag.net/en/location/burghausen.md).
+- [Holdmybag Locker Store Frankfurt am Main - Niddastr. 63](https://test.holdmybag.net/en/location/lockerstore-niddastrasse/): Frankfurt am Main, DE; open 24/7; booking: online, QR code, terminal. Page: [DE](https://test.holdmybag.net/standort/lockerstore-niddastrasse/), [EN](https://test.holdmybag.net/en/location/lockerstore-niddastrasse/). Markdown: [DE](https://test.holdmybag.net/standort/lockerstore-niddastrasse.md), [EN](https://test.holdmybag.net/en/location/lockerstore-niddastrasse.md).
+- [Im Wizemann Halle Stuttgart](https://test.holdmybag.net/en/location/im-wizemann-halle-stuttgart/): Stuttgart, DE; open 24/7; booking: online, QR code. Page: [DE](https://test.holdmybag.net/standort/im-wizemann-halle-stuttgart/), [EN](https://test.holdmybag.net/en/location/im-wizemann-halle-stuttgart/). Markdown: [DE](https://test.holdmybag.net/standort/im-wizemann-halle-stuttgart.md), [EN](https://test.holdmybag.net/en/location/im-wizemann-halle-stuttgart.md).
+- [Stuttgart – Porsche-Arena / Hanns-Martin-Schleyer-Halle / Schließsfächer für Garderobe](https://test.holdmybag.net/en/location/stuttgart-hallenduo/): Stuttgart, DE; open 24/7; booking: online, QR code, terminal. Page: [DE](https://test.holdmybag.net/standort/stuttgart-hallenduo/), [EN](https://test.holdmybag.net/en/location/stuttgart-hallenduo/). Markdown: [DE](https://test.holdmybag.net/standort/stuttgart-hallenduo.md), [EN](https://test.holdmybag.net/en/location/stuttgart-hallenduo.md).
+- [Waltherpark Bozen](https://test.holdmybag.net/en/location/waltherpark-spa/): Bozen, IT; booking: online, QR code, terminal. Page: [DE](https://test.holdmybag.net/standort/waltherpark-spa/), [EN](https://test.holdmybag.net/en/location/waltherpark-spa/). Markdown: [DE](https://test.holdmybag.net/standort/waltherpark-spa.md), [EN](https://test.holdmybag.net/en/location/waltherpark-spa.md).
+
+## Data
+
+- [locations.json](https://test.holdmybag.net/content/locations.json): JSON array with one object per published location (German texts; English texts in https://test.holdmybag.net/en/content/locations.json). Fields:
+  - `id`: internal location id
+  - `slug`: stable identifier, also used in the page URLs
+  - `title`: location name
+  - `lat, lng`: WGS84 coordinates (numbers or null)
+  - `address, zip, city, country`: postal address (country as ISO 3166-1 alpha-2 code)
+  - `url`: absolute URL of the German page
+  - `url_en`: absolute URL of the English page (only when the English site is built)
+  - `md_url`: absolute URL of the Markdown version of the page (same language as the file)
+  - `booking_url`: online booking link, usually on booking.holdmybag.net; only valid when booking_online is true
+  - `booking_online, booking_qr, booking_terminal`: booking channels: online in advance / on site via QR code and smartphone / on site at the terminal
+  - `is_24_7`: true = accessible around the clock, false = see opening_hours, null = unknown
+  - `opening_hours`: weekly windows, e.g. {"mon": [["08:00", "20:00"]], ...}; days: mon..sun; an empty list means closed
+  - `price_text`: free-text price summary (prices in the location's currency), may be null
+  - `category`: legacy booking category (online / onsite / online_onsite)
+  - `image_url`: main image (site-relative or absolute URL)
+  - `description_short`: short description
+  - `translation_fallback`: true if some English texts fall back to German
+
+## Optional
+
+- [Full details of all locations](https://test.holdmybag.net/llms-full.txt): this file plus the Markdown version of every location page
+- [All locations (map and search)](https://test.holdmybag.net/en/locations/)
+- [FAQ](https://test.holdmybag.net/en/faq/)
+- [Contact](https://test.holdmybag.net/en/contact/)
+- [Legal notice](https://test.holdmybag.net/en/legal-notice/)

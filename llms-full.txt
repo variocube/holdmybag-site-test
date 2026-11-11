@@ -1,0 +1,1070 @@
+# Holdmybag
+
+> Holdmybag offers self-service luggage storage in smart lockers at hotels, train stations, shopping centres and other central locations in Europe. Lockers can be booked online in advance or on site, many locations are accessible 24/7. Holdmybag is operated by Holdmybag GmbH, the contractual partner for every booking.
+
+Holdmybag is a network of luggage lockers for travellers, commuters and shoppers. Each location has its own page with address, map coordinates, opening hours, prices per locker size, booking options and amenities. Every page also exists as Markdown (see the links below). Prices and opening hours differ per location; only the data on the location pages is authoritative.
+
+## Operator
+
+- Holdmybag GmbH operates Holdmybag and is the contractual partner of every customer (bookings, payments, terms and conditions).
+- Legal notice: https://test.holdmybag.net/en/legal-notice/; contact: office@holdmybag.net.
+- The locker hardware and software are supplied by the technology provider Variocube.
+
+## How booking works
+
+- Online in advance: locations with online booking link to their booking page on https://booking.holdmybag.net. Choose locker size and duration, pay online and receive the access code by email.
+- On site by smartphone: scan the QR code on the locker, choose a compartment and pay on your phone.
+- On site at the terminal: choose a compartment on the screen and pay by card or contactless.
+- Which of these channels a location offers, its payment methods, opening hours (24/7 or weekly hours) and prices are listed on each location page.
+- Payment methods used at Holdmybag locations: Card, Apple Pay, Google Pay, PayPal, TWINT.
+
+## Locations
+
+- [Fire and Ice Ischgl](https://test.holdmybag.net/en/location/fire-and-ice-ischgl/): Ischgl; open 24/7; booking: online, QR code, terminal. Page: [DE](https://test.holdmybag.net/standort/fire-and-ice-ischgl/), [EN](https://test.holdmybag.net/en/location/fire-and-ice-ischgl/). Markdown: [DE](https://test.holdmybag.net/standort/fire-and-ice-ischgl.md), [EN](https://test.holdmybag.net/en/location/fire-and-ice-ischgl.md).
+- [Radisson Blu Hotel & Conference Centre, Salzburg](https://test.holdmybag.net/en/location/wyndham-grand-salzburg-conference-centre-hotel/): Salzburg; open 24/7; booking: online, QR code, terminal. Page: [DE](https://test.holdmybag.net/standort/wyndham-grand-salzburg-conference-centre-hotel/), [EN](https://test.holdmybag.net/en/location/wyndham-grand-salzburg-conference-centre-hotel/). Markdown: [DE](https://test.holdmybag.net/standort/wyndham-grand-salzburg-conference-centre-hotel.md), [EN](https://test.holdmybag.net/en/location/wyndham-grand-salzburg-conference-centre-hotel.md).
+- [Innsbruck Citylocker.store – Altstadt Innsbruck](https://test.holdmybag.net/en/location/innsbruck-citylocker/): Innsbruck, AT; open 24/7; booking: online, QR code. Page: [DE](https://test.holdmybag.net/standort/innsbruck-citylocker/), [EN](https://test.holdmybag.net/en/location/innsbruck-citylocker/). Markdown: [DE](https://test.holdmybag.net/standort/innsbruck-citylocker.md), [EN](https://test.holdmybag.net/en/location/innsbruck-citylocker.md).
+- [HeyMi Apartments Mondscheingasse](https://test.holdmybag.net/en/location/booking-threefriends/): Wien, AT; open 24/7; booking: online, QR code, terminal. Page: [DE](https://test.holdmybag.net/standort/booking-threefriends/), [EN](https://test.holdmybag.net/en/location/booking-threefriends/). Markdown: [DE](https://test.holdmybag.net/standort/booking-threefriends.md), [EN](https://test.holdmybag.net/en/location/booking-threefriends.md).
+- [HeyMi Apartments Zieglergasse](https://test.holdmybag.net/en/location/heymi-apartments-zieglergasse/): Wien, AT; open 24/7; booking: online, QR code, terminal. Page: [DE](https://test.holdmybag.net/standort/heymi-apartments-zieglergasse/), [EN](https://test.holdmybag.net/en/location/heymi-apartments-zieglergasse/). Markdown: [DE](https://test.holdmybag.net/standort/heymi-apartments-zieglergasse.md), [EN](https://test.holdmybag.net/en/location/heymi-apartments-zieglergasse.md).
+- [Wien City Stay Vienna Stephansplatz](https://test.holdmybag.net/en/location/citystay-vienna/): Wien, AT; open 24/7; booking: online, QR code, terminal. Page: [DE](https://test.holdmybag.net/standort/citystay-vienna/), [EN](https://test.holdmybag.net/en/location/citystay-vienna/). Markdown: [DE](https://test.holdmybag.net/standort/citystay-vienna.md), [EN](https://test.holdmybag.net/en/location/citystay-vienna.md).
+- [Wiener Riesenrad - Gepäckschließfächer Holdmybag](https://test.holdmybag.net/en/location/wienerriesenrad/): Wien, AT; open 24/7; booking: online, QR code, terminal. Page: [DE](https://test.holdmybag.net/standort/wienerriesenrad/), [EN](https://test.holdmybag.net/en/location/wienerriesenrad/). Markdown: [DE](https://test.holdmybag.net/standort/wienerriesenrad.md), [EN](https://test.holdmybag.net/en/location/wienerriesenrad.md).
+- [Bahnhof Zell am Ziller 2](https://test.holdmybag.net/en/location/bahnhof-zell-am-ziller/): Zell am Ziller, AT; open 24/7; booking: online, QR code, terminal. Page: [DE](https://test.holdmybag.net/standort/bahnhof-zell-am-ziller/), [EN](https://test.holdmybag.net/en/location/bahnhof-zell-am-ziller/). Markdown: [DE](https://test.holdmybag.net/standort/bahnhof-zell-am-ziller.md), [EN](https://test.holdmybag.net/en/location/bahnhof-zell-am-ziller.md).
+- [Balmers Hostel \| Interlaken](https://test.holdmybag.net/en/location/balmers-hostel-interlaken/): Matten bei Interlaken, CH; open 24/7; booking: online, QR code, terminal. Page: [DE](https://test.holdmybag.net/standort/balmers-hostel-interlaken/), [EN](https://test.holdmybag.net/en/location/balmers-hostel-interlaken/). Markdown: [DE](https://test.holdmybag.net/standort/balmers-hostel-interlaken.md), [EN](https://test.holdmybag.net/en/location/balmers-hostel-interlaken.md).
+- [Homaris Berlin West Side](https://test.holdmybag.net/en/location/homaris-berlin-west-side/): Berlin, DE; open 24/7; booking: online, QR code, terminal. Page: [DE](https://test.holdmybag.net/standort/homaris-berlin-west-side/), [EN](https://test.holdmybag.net/en/location/homaris-berlin-west-side/). Markdown: [DE](https://test.holdmybag.net/standort/homaris-berlin-west-side.md), [EN](https://test.holdmybag.net/en/location/homaris-berlin-west-side.md).
+- [Homaris K48 Studios](https://test.holdmybag.net/en/location/homaris-k48-studios/): Berlin, DE; open 24/7; booking: online, QR code. Page: [DE](https://test.holdmybag.net/standort/homaris-k48-studios/), [EN](https://test.holdmybag.net/en/location/homaris-k48-studios/). Markdown: [DE](https://test.holdmybag.net/standort/homaris-k48-studios.md), [EN](https://test.holdmybag.net/en/location/homaris-k48-studios.md).
+- [Burghausen Stadtplatz](https://test.holdmybag.net/en/location/burghausen/): Burghausen, DE; open 24/7; booking: QR code. Page: [DE](https://test.holdmybag.net/standort/burghausen/), [EN](https://test.holdmybag.net/en/location/burghausen/). Markdown: [DE](https://test.holdmybag.net/standort/burghausen.md), [EN](https://test.holdmybag.net/en/location/burghausen.md).
+- [Holdmybag Locker Store Frankfurt am Main - Niddastr. 63](https://test.holdmybag.net/en/location/lockerstore-niddastrasse/): Frankfurt am Main, DE; open 24/7; booking: online, QR code, terminal. Page: [DE](https://test.holdmybag.net/standort/lockerstore-niddastrasse/), [EN](https://test.holdmybag.net/en/location/lockerstore-niddastrasse/). Markdown: [DE](https://test.holdmybag.net/standort/lockerstore-niddastrasse.md), [EN](https://test.holdmybag.net/en/location/lockerstore-niddastrasse.md).
+- [Im Wizemann Halle Stuttgart](https://test.holdmybag.net/en/location/im-wizemann-halle-stuttgart/): Stuttgart, DE; open 24/7; booking: online, QR code. Page: [DE](https://test.holdmybag.net/standort/im-wizemann-halle-stuttgart/), [EN](https://test.holdmybag.net/en/location/im-wizemann-halle-stuttgart/). Markdown: [DE](https://test.holdmybag.net/standort/im-wizemann-halle-stuttgart.md), [EN](https://test.holdmybag.net/en/location/im-wizemann-halle-stuttgart.md).
+- [Stuttgart – Porsche-Arena / Hanns-Martin-Schleyer-Halle / Schließsfächer für Garderobe](https://test.holdmybag.net/en/location/stuttgart-hallenduo/): Stuttgart, DE; open 24/7; booking: online, QR code, terminal. Page: [DE](https://test.holdmybag.net/standort/stuttgart-hallenduo/), [EN](https://test.holdmybag.net/en/location/stuttgart-hallenduo/). Markdown: [DE](https://test.holdmybag.net/standort/stuttgart-hallenduo.md), [EN](https://test.holdmybag.net/en/location/stuttgart-hallenduo.md).
+- [Waltherpark Bozen](https://test.holdmybag.net/en/location/waltherpark-spa/): Bozen, IT; booking: online, QR code, terminal. Page: [DE](https://test.holdmybag.net/standort/waltherpark-spa/), [EN](https://test.holdmybag.net/en/location/waltherpark-spa/). Markdown: [DE](https://test.holdmybag.net/standort/waltherpark-spa.md), [EN](https://test.holdmybag.net/en/location/waltherpark-spa.md).
+
+## Data
+
+- [locations.json](https://test.holdmybag.net/content/locations.json): JSON array with one object per published location (German texts; English texts in https://test.holdmybag.net/en/content/locations.json). Fields:
+  - `id`: internal location id
+  - `slug`: stable identifier, also used in the page URLs
+  - `title`: location name
+  - `lat, lng`: WGS84 coordinates (numbers or null)
+  - `address, zip, city, country`: postal address (country as ISO 3166-1 alpha-2 code)
+  - `url`: absolute URL of the German page
+  - `url_en`: absolute URL of the English page (only when the English site is built)
+  - `md_url`: absolute URL of the Markdown version of the page (same language as the file)
+  - `booking_url`: online booking link, usually on booking.holdmybag.net; only valid when booking_online is true
+  - `booking_online, booking_qr, booking_terminal`: booking channels: online in advance / on site via QR code and smartphone / on site at the terminal
+  - `is_24_7`: true = accessible around the clock, false = see opening_hours, null = unknown
+  - `opening_hours`: weekly windows, e.g. {"mon": [["08:00", "20:00"]], ...}; days: mon..sun; an empty list means closed
+  - `price_text`: free-text price summary (prices in the location's currency), may be null
+  - `category`: legacy booking category (online / onsite / online_onsite)
+  - `image_url`: main image (site-relative or absolute URL)
+  - `description_short`: short description
+  - `translation_fallback`: true if some English texts fall back to German
+
+## Location details
+
+### Fire and Ice Ischgl
+
+> Luggage storage (lockers) by Holdmybag
+>
+> Schliessfächer für Garderobe im Durchgang vom Haupteingang, offen für alle Gäste.
+
+- Web page: https://test.holdmybag.net/en/location/fire-and-ice-ischgl/
+- Deutsche Version: https://test.holdmybag.net/standort/fire-and-ice-ischgl/
+- Markdown (Deutsch): https://test.holdmybag.net/standort/fire-and-ice-ischgl.md
+
+#### Address and map
+
+- Address: Silvrettaplatz 4, 6561 Ischgl
+- Coordinates (latitude, longitude): 47.009572, 10.2883469
+- Directions: https://www.google.com/maps/dir/?api=1&destination=47.009572,10.2883469
+
+#### Getting there and access
+
+Zugang je nach Öffnungszeiten und Saison der Apres Ski Bar.
+
+#### Opening hours
+
+Open 24/7.
+
+#### Booking and payment
+
+- Online: Reserve and pay for a locker in advance; the access code arrives by email. [Book now](https://booking.holdmybag.net/fire-and-ice-ischgl/fire-and-ice/dates)
+- On site by smartphone: Scan the QR code on the locker, choose a compartment and pay on your phone. Payment methods: Card, Apple Pay, Google Pay, PayPal.
+- On site at the terminal: Choose a compartment on the screen and pay by card or contactless at the terminal. Payment methods: Card, Apple Pay, Google Pay.
+
+#### Prices
+
+Package prices (total):
+
+| Duration | M | L |
+| --- | --- | --- |
+| 4 hrs | 6,00 € | 8,00 € |
+| 6 hrs | 12,00 € | 16,00 € |
+
+Package price: covers the entire booking period.
+
+#### Locker sizes
+
+| Size | Dimensions (W×H×D) | Note |
+| --- | --- | --- |
+| M | 46 × 28 × 65 cm |  |
+| L | 46 × 42 × 65 cm |  |
+
+#### Amenities
+
+- Covered
+
+#### Support and contact
+
+- Phone: +43 720 676 300 90
+
+---
+
+Source: holdmybag.net — Holdmybag luggage storage. Operator and contractual partner: Holdmybag GmbH.
+
+### Radisson Blu Hotel & Conference Centre, Salzburg
+
+> Luggage storage (lockers) by Holdmybag
+>
+> The Radisson Blu Hotel is located right next to the main train station in Salzburg. The luggage locker is inside the hotel; access is via the lobby or the parking garage.
+
+- Web page: https://test.holdmybag.net/en/location/wyndham-grand-salzburg-conference-centre-hotel/
+- Deutsche Version: https://test.holdmybag.net/standort/wyndham-grand-salzburg-conference-centre-hotel/
+- Markdown (Deutsch): https://test.holdmybag.net/standort/wyndham-grand-salzburg-conference-centre-hotel.md
+
+#### Address and map
+
+- Address: Fanny-von-Lehnert-Straße 7, 5020 Salzburg
+- Coordinates (latitude, longitude): 47.8152675, 13.0437085
+- Directions: https://www.google.com/maps/dir/?api=1&destination=47.8152675,13.0437085
+
+#### Getting there and access
+
+Access is via the hotel's main entrance and the parking garage. Luggage lockers are located in the stairwell. Operating hours correspond to the hotel's opening hours.
+
+#### Opening hours
+
+Open 24/7.
+
+#### Booking and payment
+
+- Online: Reserve and pay for a locker in advance; the access code arrives by email. [Book now](https://booking.holdmybag.net/wyndham-salzburg/wyndham-hotel-salzburg/dates)
+- On site by smartphone: Scan the QR code on the locker, choose a compartment and pay on your phone. Payment methods: Card, Apple Pay, Google Pay, PayPal.
+- On site at the terminal: Choose a compartment on the screen and pay by card or contactless at the terminal. Payment methods: Card, Apple Pay, Google Pay.
+
+#### Prices
+
+Package prices (total):
+
+| Duration | S | M | L |
+| --- | --- | --- | --- |
+| 1 hr | 2,50 € | 3,50 € | 4,50 € |
+| 6 hrs | 4,50 € | 5,50 € | 6,50 € |
+| 12 hrs | 5,50 € | 7,50 € | 9,50 € |
+| 24 hrs | 7,50 € | 9,50 € | 12,50 € |
+
+Package price: covers the entire booking period.
+
+#### Locker sizes
+
+| Size | Dimensions (W×H×D) | Note |
+| --- | --- | --- |
+| S | 46 × 28 × 45 cm |  |
+| M | 46 × 43 × 45 cm |  |
+| L | 46 × 88 × 45 cm |  |
+
+#### Amenities
+
+- 24/7 access
+- Lighting
+- Covered
+
+#### Support and contact
+
+- Phone: +43 662 46 88 0
+- Website: https://www.gchhotelgroup.com/de/hotel/radisson-blu-hotel-conference-centre-salzburg?gad_source=1&gad_campaignid=1330991487&gbraid=0AAAAADxUAX4U0RG021jFkogrl-jkTt_zH&gclid=Cj0KCQjwkt_UBhDMARIsALpnOAzN9osWIOlqzeWuBjYXOeXpn0QunLtOv_dOIqinTwftffeArlvCMvIaAibMEALw_wcB
+
+---
+
+Source: holdmybag.net — Holdmybag luggage storage. Operator and contractual partner: Holdmybag GmbH.
+
+### Innsbruck Citylocker.store – Altstadt Innsbruck
+
+> Luggage storage (lockers) by Holdmybag
+>
+> Zugang zum Store über den Haupteingang zum Store.
+
+- Web page: https://test.holdmybag.net/en/location/innsbruck-citylocker/
+- Deutsche Version: https://test.holdmybag.net/standort/innsbruck-citylocker/
+- Markdown (Deutsch): https://test.holdmybag.net/standort/innsbruck-citylocker.md
+
+#### Address and map
+
+- Address: Marktgraben 13, 6020 Innsbruck, AT
+- Coordinates (latitude, longitude): 47.2673221, 11.392071
+- Directions: https://www.google.com/maps/dir/?api=1&destination=47.2673221,11.392071
+
+#### Opening hours
+
+Open 24/7.
+
+#### Booking and payment
+
+- Online: Reserve and pay for a locker in advance; the access code arrives by email. [Book now](https://booking.citylocker.store/citylocker-store/citylocker.store/dates)
+- On site by smartphone: Scan the QR code on the locker, choose a compartment and pay on your phone.
+- On site at the terminal: not available at this location.
+
+#### Prices
+
+| Size | Price |
+| --- | --- |
+| XS | 3 €/day |
+| S | 6 €/day |
+| M | 8 €/day |
+| L | 12 €/day |
+| SKI | 18 €/day |
+
+#### Locker sizes
+
+| Size | Dimensions (W×H×D) | Note |
+| --- | --- | --- |
+| XS | 46 × 13 × 65 cm |  |
+| S | 46 × 28 × 65 cm |  |
+| M | 46 × 43 × 95 cm |  |
+| L | 46 × 73 × 95 cm |  |
+| SKI | 38 × 180 × 45 cm |  |
+
+#### Support and contact
+
+- Website: https://www.citylocker.store/#galerie
+
+---
+
+Source: holdmybag.net — Holdmybag luggage storage. Operator and contractual partner: Holdmybag GmbH.
+
+### HeyMi Apartments Mondscheingasse
+
+> Luggage storage (lockers) by Holdmybag
+>
+> Die Gepäckschließfächer (Luggage Locker) befinden sich im Untergeschoss der Heymi Appartments Mondscheingasse.
+
+- Web page: https://test.holdmybag.net/en/location/booking-threefriends/
+- Deutsche Version: https://test.holdmybag.net/standort/booking-threefriends/
+- Markdown (Deutsch): https://test.holdmybag.net/standort/booking-threefriends.md
+
+#### Address and map
+
+- Address: Mondscheingasse 16, 1070 Wien, AT
+- Coordinates (latitude, longitude): 48.2012334, 16.3500876
+- Directions: https://www.google.com/maps/dir/?api=1&destination=48.2012334,16.3500876
+
+#### Getting there and access
+
+Zugang über den Eingang zum Apartment Haus (Haupteingang) von der Mondescheingasse aus. Dann auf der Treppe in das Untergeschoss.
+
+#### Opening hours
+
+Open 24/7.
+
+#### Booking and payment
+
+- Online: Reserve and pay for a locker in advance; the access code arrives by email. [Book now](https://booking.holdmybag.net/three-friends/heymi-apartments/dates)
+- On site by smartphone: Scan the QR code on the locker, choose a compartment and pay on your phone. Payment methods: Card, Apple Pay, Google Pay, PayPal.
+- On site at the terminal: Choose a compartment on the screen and pay by card or contactless at the terminal. Payment methods: Card, Apple Pay, Google Pay.
+
+#### Prices
+
+Package prices (total):
+
+| Duration | S | M | L | XL | XXL |
+| --- | --- | --- | --- | --- | --- |
+| 3 hrs | 2,00 € | 3,00 € | 3,50 € | 4,00 € | 6,00 € |
+| 6 hrs | 4,00 € | 5,00 € | 6,00 € | 7,00 € | 10,00 € |
+| 12 hrs | 6,00 € | 8,00 € | 9,00 € | 10,00 € | 12,00 € |
+
+Package price: covers the entire booking period.
+
+#### Locker sizes
+
+| Size | Dimensions (W×H×D) | Note |
+| --- | --- | --- |
+| S | 46 × 13 × 45 cm | Jacke / Handtasche |
+| M | 46 × 28 × 45 cm | Helm / Rucksack |
+| L | 46 × 43 × 45 cm | großer Rucksack |
+| XL | 46 × 58 × 45 cm | mittelgroßer Trolley bis 23” / 58cm Höhe |
+| XXL | 46 × 73 × 45 cm | großer Trolley bis 28” / 71cm Höhe |
+
+#### Amenities
+
+- 24/7 access
+- Covered
+- Wi-Fi
+
+#### Support and contact
+
+- Phone: +43 1 310 23 29
+
+---
+
+Source: holdmybag.net — Holdmybag luggage storage. Operator and contractual partner: Holdmybag GmbH.
+
+### HeyMi Apartments Zieglergasse
+
+> Luggage storage (lockers) by Holdmybag
+>
+> Der Luggage Locker steht in einem extra Raum im Hochparterre des Apartmenthauses und ist für de Gäste der HeyMi Apartments zugänglich.
+
+- Web page: https://test.holdmybag.net/en/location/heymi-apartments-zieglergasse/
+- Deutsche Version: https://test.holdmybag.net/standort/heymi-apartments-zieglergasse/
+- Markdown (Deutsch): https://test.holdmybag.net/standort/heymi-apartments-zieglergasse.md
+
+#### Address and map
+
+- Address: Zieglergasse 6, 1070 Wien, AT
+- Coordinates (latitude, longitude): 48.1978642, 16.3457539
+- Directions: https://www.google.com/maps/dir/?api=1&destination=48.1978642,16.3457539
+
+#### Getting there and access
+
+Zugang für die Gäste der HeyMi Apartments mit Zugangscode oder Hotelinformationen.
+
+#### Opening hours
+
+Open 24/7.
+
+#### Booking and payment
+
+- Online: Reserve and pay for a locker in advance; the access code arrives by email. [Book now](https://booking.holdmybag.net/three-friends/heymi-apartments-zieglergasse/dates)
+- On site by smartphone: Scan the QR code on the locker, choose a compartment and pay on your phone. Payment methods: Card, Apple Pay, Google Pay, PayPal.
+- On site at the terminal: Choose a compartment on the screen and pay by card or contactless at the terminal. Payment methods: Card, Apple Pay, Google Pay, PayPal.
+
+#### Prices
+
+Package prices (total):
+
+| Duration | S | M | L |
+| --- | --- | --- | --- |
+| 3 hrs | 3,50 € | 4,00 € | 5,00 € |
+| 6 hrs | 6,00 € | 7,00 € | 10,00 € |
+| 12 hrs | 9,00 € | 10,00 € | 12,00 € |
+
+Package price: covers the entire booking period.
+
+#### Locker sizes
+
+| Size | Dimensions (W×H×D) | Note |
+| --- | --- | --- |
+| S | 46 × 28 × 45 cm | Helm / Rucksack |
+| M | 46 × 43 × 45 cm | großer Rucksack |
+| L | 46 × 88 × 45 cm | großer Trolley bis 32” / 81cm Höhe |
+
+#### Amenities
+
+- 24/7 access
+- Covered
+
+#### Support and contact
+
+- Phone: +43 1 310 23 29
+
+---
+
+Source: holdmybag.net — Holdmybag luggage storage. Operator and contractual partner: Holdmybag GmbH.
+
+### Wien City Stay Vienna Stephansplatz
+
+> Luggage storage (lockers) by Holdmybag
+>
+> \_
+
+- Web page: https://test.holdmybag.net/en/location/citystay-vienna/
+- Deutsche Version: https://test.holdmybag.net/standort/citystay-vienna/
+- Markdown (Deutsch): https://test.holdmybag.net/standort/citystay-vienna.md
+
+#### Address and map
+
+- Address: Sonnenfelsgasse 7, 1010 Wien, AT
+- Coordinates (latitude, longitude): 48.2098873, 16.3761227
+- Directions: https://www.google.com/maps/dir/?api=1&destination=48.2098873,16.3761227
+
+#### Getting there and access
+
+Lieber Gast! Es ist uns eine Freude, Ihnen unseren neuen Gepäckaufbewahrungsservice vorstellen zu dürfen! Unsere Schließfächer erfüllen strenge Sicherheitsstandards und verfügen über eine zeitgemäße Benutzeroberfläche. Sie haben die Möglichkeit, Ihre persönlichen Aufbewahrungszeiten entweder im Voraus oder bei Ihrer Ankunft vor Ort zu reservieren Die Lagerfächer sind im Untergeschoss des Gebäudes unmittelbar neben dem Waschraum untergebracht. Um dorthin zu gelangen, öffnen Sie die schwarze Metalltür neben dem Getränkeautomaten im Erdgeschoss, gehen die Treppe hinunter, biegen links ab und setzen Ihren Weg geradeaus fort, bis Sie die Waschküche erreichen. Nachdem Sie Ihr Gepäck abgeholt haben, können Sie bequem mit dem Aufzug ins Erdgeschoss fahren Die Räumlichkeiten sind 24/7 betretbar. Gerne stehen wir Ihnen für sämtliche relevante Anliegen zur Verfügung und sind unter der Telefonnummer +43 660 6614006 jederzeit erreichbar. Vielen Dank für Ihr Vertrauen! City Stay Vienna
+
+#### Opening hours
+
+Open 24/7.
+
+#### Booking and payment
+
+- Online: Reserve and pay for a locker in advance; the access code arrives by email. [Book now](https://booking.holdmybag.net/elenas-apartments/city-stay-vienna-stephansplatz/dates)
+- On site by smartphone: Scan the QR code on the locker, choose a compartment and pay on your phone.
+- On site at the terminal: Choose a compartment on the screen and pay by card or contactless at the terminal. Payment methods: Card, Apple Pay, Google Pay.
+
+#### Prices
+
+| Size | Price |
+| --- | --- |
+| XS | 4,5 €/day |
+| S | 5,9 €/day |
+| M | 7,9 €/day |
+| L | 9,9 €/day |
+
+#### Locker sizes
+
+| Size | Dimensions (W×H×D) | Note |
+| --- | --- | --- |
+| XS | 32 × 43 × 45 cm |  |
+| S | 46 × 43 × 65 cm |  |
+| M | 46 × 58 × 65 cm |  |
+| L | 46 × 73 × 65 cm |  |
+
+#### Amenities
+
+- 24/7 access
+
+---
+
+Source: holdmybag.net — Holdmybag luggage storage. Operator and contractual partner: Holdmybag GmbH.
+
+### Wiener Riesenrad - Gepäckschließfächer Holdmybag
+
+> Luggage storage (lockers) by Holdmybag
+>
+> The new Holdmybag / Variocube luggage lockers are located directly next to the entrance of the Vienna Giant Ferris Wheel (Wiener Riesenrad) in the Vienna Prater. Lockers are available in various sizes, including options for large suitcases.
+
+- Web page: https://test.holdmybag.net/en/location/wienerriesenrad/
+- Deutsche Version: https://test.holdmybag.net/standort/wienerriesenrad/
+- Markdown (Deutsch): https://test.holdmybag.net/standort/wienerriesenrad.md
+
+#### Address and map
+
+- Address: Gaudeegasse 1, 1020 Wien, AT
+- Coordinates (latitude, longitude): 48.2169998, 16.3960327
+- Directions: https://www.google.com/maps/dir/?api=1&destination=48.2169998,16.3960327
+
+#### Getting there and access
+
+The lockers are open and accessible daily from 7:00 AM to 11:59 PM. On-site emergency support is available from 7:00 AM until approximately 10:00 PM. After this time, emergency locker opening cannot be guaranteed. In case of an emergency outside support hours, assistance will only be available the following day at the information desk of the Vienna Giant Ferris Wheel, Riesenradplatz 2 / Gabor-Steiner-Weg, 1020 Vienna.
+
+##### Praterstern Wien
+
+#### Opening hours
+
+Open 24/7.
+
+#### Booking and payment
+
+- Online: Reserve and pay for a locker in advance; the access code arrives by email. [Book now](https://booking.safecube.io/wienerriesenrad/wienerriesenrad/dates)
+- On site by smartphone: Scan the QR code on the locker, choose a compartment and pay on your phone. Payment methods: Card, Apple Pay, Google Pay, PayPal.
+- On site at the terminal: Choose a compartment on the screen and pay by card or contactless at the terminal. Payment methods: Card, Apple Pay, Google Pay, PayPal.
+
+#### Prices
+
+Package prices (total):
+
+| Duration | S | M | L | XL |
+| --- | --- | --- | --- | --- |
+| 2 hrs | 3,00 € | 3,50 € | 4,00 € | 6,00 € |
+
+Package price: covers the entire booking period.
+
+#### Locker sizes
+
+| Size | Dimensions (W×H×D) | Note |
+| --- | --- | --- |
+| S | 46 × 13 × 65 cm | Jacket / Handbag |
+| M | 46 × 43 × 65 cm | Helmet / Backpack |
+| L | 46 × 6 × 65 cm | Medium-sized trolley up to 25” / 64 cm in height |
+| XL | 46 × 88 × 65 cm | Large trolley up to 32” / 81 cm in height |
+
+#### Amenities
+
+- 24/7 access
+- Lighting
+
+#### About this location
+
+The new Holdmybag / Variocube luggage lockers are located directly next to the entrance of the Vienna Giant Ferris Wheel (Wiener Riesenrad) in the Vienna Prater.
+
+Lockers are available in various sizes, including options for large suitcases. The minimum rental period is 2 hours and can be extended at any time online or directly at the touchscreen display.
+
+The lockers are accessible daily from 7:00 AM to 11:59 PM. On-site support is available for emergencies from 7:00 AM until approximately 10:00 PM. After this time, emergency locker opening cannot be guaranteed.
+
+In case of an emergency outside support hours, assistance will only be available the following day at the information desk of the Vienna Giant Ferris Wheel, Riesenradplatz 2 / Gabor-Steiner-Weg, 1020 Vienna.
+
+#### Support and contact
+
+- Phone: +43 720 676 300 90
+- Website: https://www.praterwien.com/
+
+---
+
+Source: holdmybag.net — Holdmybag luggage storage. Operator and contractual partner: Holdmybag GmbH.
+
+### Bahnhof Zell am Ziller 2
+
+> Luggage storage (lockers) by Holdmybag
+>
+> Öffentlich nutzbare Gepäckschließfächer, direkt am Bahnhof Zell am Ziller
+
+- Web page: https://test.holdmybag.net/en/location/bahnhof-zell-am-ziller/
+- Deutsche Version: https://test.holdmybag.net/standort/bahnhof-zell-am-ziller/
+- Markdown (Deutsch): https://test.holdmybag.net/standort/bahnhof-zell-am-ziller.md
+
+#### Address and map
+
+- Address: Bahnhofstraße 11, 6280 Zell am Ziller, AT
+- Coordinates (latitude, longitude): 47.2315935, 11.881363
+- Directions: https://www.google.com/maps/dir/?api=1&destination=47.2315935,11.881363
+
+#### Opening hours
+
+Open 24/7.
+
+#### Booking and payment
+
+- Online: Reserve and pay for a locker in advance; the access code arrives by email. [Book now](https://booking.holdmybag.net/zillertaler-verkehrsbetriebe-ag/bahnhof-zell-am-ziller)
+- On site by smartphone: Scan the QR code on the locker, choose a compartment and pay on your phone. Payment methods: Card, Apple Pay, Google Pay, PayPal.
+- On site at the terminal: Choose a compartment on the screen and pay by card or contactless at the terminal. Payment methods: Card, Apple Pay, Google Pay.
+
+#### Prices
+
+| Size | Price |
+| --- | --- |
+| M | 2 €/day |
+| L | 8 €/day |
+
+#### Locker sizes
+
+| Size | Dimensions (W×H×D) | Note |
+| --- | --- | --- |
+| M |  |  |
+| L |  |  |
+
+#### Amenities
+
+- 24/7 access
+- Wheelchair accessible
+- Parking
+
+---
+
+Source: holdmybag.net — Holdmybag luggage storage. Operator and contractual partner: Holdmybag GmbH.
+
+### Balmers Hostel \| Interlaken
+
+> Luggage storage (lockers) by Holdmybag
+>
+> Gepäckschließfächer im Hotel im extra Gepäckraum. Zutritt von außen für die Gäste des Balmers Hostel.
+
+- Web page: https://test.holdmybag.net/en/location/balmers-hostel-interlaken/
+- Deutsche Version: https://test.holdmybag.net/standort/balmers-hostel-interlaken/
+- Markdown (Deutsch): https://test.holdmybag.net/standort/balmers-hostel-interlaken.md
+
+#### Address and map
+
+- Address: Hauptstraße 23-33, 3800 Matten bei Interlaken, CH
+- Coordinates (latitude, longitude): 46.6815062, 7.863922
+- Directions: https://www.google.com/maps/dir/?api=1&destination=46.6815062,7.863922
+
+#### Getting there and access
+
+Im Hotel Balmers, Durchgang über den Haupteingang. Öffnungszeiten sind analog der Hotelzeiten und der Zutrittszeiten für Gäste.
+
+#### Opening hours
+
+Open 24/7.
+
+#### Booking and payment
+
+- Online: Reserve and pay for a locker in advance; the access code arrives by email. [Book now](https://booking.holdmybag.net/balmers-hostel/balmers-hostel-interlaken/dates)
+- On site by smartphone: Scan the QR code on the locker, choose a compartment and pay on your phone. Payment methods: Card, Apple Pay, Google Pay, PayPal, TWINT.
+- On site at the terminal: Choose a compartment on the screen and pay by card or contactless at the terminal. Payment methods: Card, Apple Pay, Google Pay, PayPal, TWINT.
+
+#### Prices
+
+Package prices (total):
+
+| Duration | S | M | L |
+| --- | --- | --- | --- |
+| 6 hrs | 3,00 CHF | 4,00 CHF | 6,00 CHF |
+| 12 hrs | 5,00 CHF | 7,00 CHF | 8,00 CHF |
+| 24 hrs | 6,00 CHF | 9,00 CHF | 10,00 CHF |
+
+Package price: covers the entire booking period.
+
+#### Locker sizes
+
+| Size | Dimensions (W×H×D) | Note |
+| --- | --- | --- |
+| S |  |  |
+| M |  |  |
+| L |  |  |
+
+#### Amenities
+
+- Lighting
+- Covered
+
+#### Support and contact
+
+- Phone: +41 338221961
+
+---
+
+Source: holdmybag.net — Holdmybag luggage storage. Operator and contractual partner: Holdmybag GmbH.
+
+### Homaris Berlin West Side
+
+> Luggage storage (lockers) by Holdmybag
+>
+> Die Gepäckschließfächer sind in der Lobby des Hotels frei zugänglich. Zutritt über den Haupteingang des Hotels mittels Zugangscode für die Gäste des Hotels.
+
+- Web page: https://test.holdmybag.net/en/location/homaris-berlin-west-side/
+- Deutsche Version: https://test.holdmybag.net/standort/homaris-berlin-west-side/
+- Markdown (Deutsch): https://test.holdmybag.net/standort/homaris-berlin-west-side.md
+
+#### Address and map
+
+- Address: Bundesallee 31A, 10717 Berlin, DE
+- Coordinates (latitude, longitude): 52.4903144, 13.3305934
+- Directions: https://www.google.com/maps/dir/?api=1&destination=52.4903144,13.3305934
+
+#### Getting there and access
+
+Im Rahmen des Hotelzugangs. Zugang für die Gäste über den Code des Hotels.
+
+#### Opening hours
+
+Open 24/7.
+
+#### Booking and payment
+
+- Online: Reserve and pay for a locker in advance; the access code arrives by email. [Book now](https://booking.holdmybag.net/homaris-ag/homaris-berlin-west-side/dates)
+- On site by smartphone: Scan the QR code on the locker, choose a compartment and pay on your phone. Payment methods: Card, Apple Pay, Google Pay, PayPal.
+- On site at the terminal: Choose a compartment on the screen and pay by card or contactless at the terminal. Payment methods: Card, Apple Pay, Google Pay, PayPal.
+
+#### Prices
+
+Package prices (total):
+
+| Duration | M | L | XL |
+| --- | --- | --- | --- |
+| 1 hr | 2,50 € | 3,50 € | 4,50 € |
+| 6 hrs | 3,50 € | 6,00 € | 7,00 € |
+| 12 hrs | 5,00 € | 7,00 € | 8,50 € |
+| 24 hrs | 7,00 € | 9,00 € | 11,50 € |
+
+Package price: covers the entire booking period.
+
+#### Locker sizes
+
+| Size | Dimensions (W×H×D) | Note |
+| --- | --- | --- |
+| M | 46 × 28 × 45 cm | Laptop Tasche |
+| L | 46 × 43 × 45 cm | Trolley plus kleine Tasche, Rucksäcke |
+| XL | 46 × 88 × 45 cm | große Reisekoffer bis 81 cm Höhe / Big Trolleys |
+
+#### Amenities
+
+- 24/7 access
+- Lighting
+- Covered
+
+#### Support and contact
+
+- Website: https://my.homaris.de/search/offers?PROPERTY_IDS=21201
+
+---
+
+Source: holdmybag.net — Holdmybag luggage storage. Operator and contractual partner: Holdmybag GmbH.
+
+### Homaris K48 Studios
+
+> Luggage storage (lockers) by Holdmybag
+>
+> Die Gepäckschließfächer befinden sich im Erdgeschoss des Homaris in einem extra Gepäckraum.
+
+- Web page: https://test.holdmybag.net/en/location/homaris-k48-studios/
+- Deutsche Version: https://test.holdmybag.net/standort/homaris-k48-studios/
+- Markdown (Deutsch): https://test.holdmybag.net/standort/homaris-k48-studios.md
+
+#### Address and map
+
+- Address: Köpenicker Str. 48, 10179 Berlin, DE
+- Coordinates (latitude, longitude): 52.5093478, 13.42329
+- Directions: https://www.google.com/maps/dir/?api=1&destination=52.5093478,13.42329
+
+#### Getting there and access
+
+Zutritt für Gäste des Homaris. Öffnungszeiten sind analog der Zutrittszeiten für die Gäste.
+
+#### Opening hours
+
+Open 24/7.
+
+#### Booking and payment
+
+- Online: Reserve and pay for a locker in advance; the access code arrives by email. [Book now](https://booking.holdmybag.net/homaris-ag/homaris-apartmenthaus-coe48/dates)
+- On site by smartphone: Scan the QR code on the locker, choose a compartment and pay on your phone.
+- On site at the terminal: not available at this location.
+
+#### Prices
+
+Package prices (total):
+
+| Duration | S | M | L | XL |
+| --- | --- | --- | --- | --- |
+| 1 hr | 2,50 € | 2,50 € | 3,00 € | 4,50 € |
+| 6 hrs | 3,50 € | 3,50 € | 5,50 € | 7,50 € |
+| 12 hrs | 5,00 € | 5,00 € | 7,00 € | 8,50 € |
+| 24 hrs | 7,00 € | 7,00 € | 9,00 € | 11,50 € |
+
+Package price: covers the entire booking period.
+
+#### Locker sizes
+
+| Size | Dimensions (W×H×D) | Note |
+| --- | --- | --- |
+| S | 5 × 1 × 4 cm | Jacke / Handtasche |
+| M | 5 × 3 × 4 cm | Helm / Rucksack |
+| L | 5 × 4 × 4 cm | großer Rucksack |
+| XL |  | große Reisekoffer bis 81 cm Höhe / Big Trolleys |
+
+---
+
+Source: holdmybag.net — Holdmybag luggage storage. Operator and contractual partner: Holdmybag GmbH.
+
+### Burghausen Stadtplatz
+
+> Luggage storage (lockers) by Holdmybag
+>
+> Zugang am Gemeindeamt
+
+- Web page: https://test.holdmybag.net/en/location/burghausen/
+- Deutsche Version: https://test.holdmybag.net/standort/burghausen/
+- Markdown (Deutsch): https://test.holdmybag.net/standort/burghausen.md
+
+#### Address and map
+
+- Address: Stadtplatz 108, 84489 Burghausen, DE
+- Coordinates (latitude, longitude): 48.1586054, 12.8333581
+- Directions: https://www.google.com/maps/dir/?api=1&destination=48.1586054,12.8333581
+
+#### Getting there and access
+
+Im Eingang zum Gemeindeamt
+
+#### Opening hours
+
+Open 24/7.
+
+#### Booking and payment
+
+- Online: not available at this location.
+- On site by smartphone: Scan the QR code on the locker, choose a compartment and pay on your phone.
+- On site at the terminal: not available at this location.
+
+#### Prices
+
+Package prices (total):
+
+| Duration | M |
+| --- | --- |
+| 24 hrs | 0,00 € |
+
+Package price: covers the entire booking period.
+
+#### Locker sizes
+
+| Size | Dimensions (W×H×D) | Note |
+| --- | --- | --- |
+| M | 52 × 43 × 65 cm |  |
+
+#### Support and contact
+
+- Phone: +49 8677 887 140
+
+---
+
+Source: holdmybag.net — Holdmybag luggage storage. Operator and contractual partner: Holdmybag GmbH.
+
+### Holdmybag Locker Store Frankfurt am Main - Niddastr. 63
+
+> Luggage storage (lockers) by Holdmybag
+>
+> Holdmybag Locker Store, just a 3-minute walk from Frankfurt Central Station, featuring 75 high-quality lockers in a video-monitored facility. Easy access via QR code, with the option to book in advance.
+
+- Web page: https://test.holdmybag.net/en/location/lockerstore-niddastrasse/
+- Deutsche Version: https://test.holdmybag.net/standort/lockerstore-niddastrasse/
+- Markdown (Deutsch): https://test.holdmybag.net/standort/lockerstore-niddastrasse.md
+
+#### Address and map
+
+- Address: Niddastr. 65, 60329 Frankfurt am Main, DE
+- Coordinates (latitude, longitude): 50.1094045, 8.6630254
+- Directions: https://www.google.com/maps/dir/?api=1&destination=50.1094045,8.6630254
+
+#### Getting there and access
+
+Der Holdmybag Locker Store befindet sich 3 Gehminuten vom Frankfurter Hauptbahnhof in der Niddastr. 65. Tagsüber Zutritt mit QR Code möglich, Fachbuchung Online oder vor Ort per Display oder Mobil. Der Raum ist videoüberwacht und in einem abgesicherten Strassenbereich. Abends ist der Store mit einem Rolltor gesichert. Jeder Nutzer des Stores kann dieses mit der Buchung und dem Zutrittscode öffnen und den Store damit sicher in den Abendzeiten nutzen.
+
+##### Frankfurter Hauptbahnhof
+
+The Holdmybag Locker Store on Niddastraße is just a 3-minute walk (450 m) from Frankfurt Central Station, easily accessible via the main entrance or side entrance.
+
+The Platz der Republik tram stop is approximately a 1-minute walk away, located directly on Düsseldorfer Straße in Frankfurt.The Holdmybag Locker Store on Niddastraße is just a 3-minute walk (450 m) from Frankfurt Central Station, easily accessible via the main entrance or side entrance.
+
+The Platz der Republik tram stop is approximately a 1-minute walk away, located directly on Düsseldorfer Straße in Frankfurt.
+
+#### Opening hours
+
+Open 24/7.
+
+#### Booking and payment
+
+- Online: Reserve and pay for a locker in advance; the access code arrives by email. [Book now](https://booking.safecube.io/holdmybag/lockerstore-niddastrasse/dates)
+- On site by smartphone: Scan the QR code on the locker, choose a compartment and pay on your phone. Payment methods: Card, Apple Pay, Google Pay, PayPal.
+- On site at the terminal: Choose a compartment on the screen and pay by card or contactless at the terminal. Payment methods: Card, Apple Pay, Google Pay, PayPal.
+
+#### Prices
+
+Package prices (total):
+
+| Duration | M | L | XL |
+| --- | --- | --- | --- |
+| 2 hrs | 2,00 € | 3,00 € | 4,00 € |
+| 4 hrs | 3,50 € | 5,00 € | 6,50 € |
+| 6 hrs | 4,00 € | 6,00 € | 8,00 € |
+| 24 hrs | 5,00 € | 7,00 € | 10,00 € |
+
+Package price: covers the entire booking period.
+
+#### Locker sizes
+
+| Size | Dimensions (W×H×D) | Note |
+| --- | --- | --- |
+| M | 46 × 28 × 45 cm | Helmet / Backpack |
+| L | 46 × 43 × 45 cm | Large backpack |
+| XL | 46 × 88 × 45 cm | Large trolley up to 32” / 81 cm in height |
+
+#### Amenities
+
+- 24/7 access
+- CCTV
+- Lighting
+- Covered
+
+#### About this location
+
+Der Holdmybag Locker Store befindet sich 3 Gehminuten vom Frankfurter Hauptbahnhof in der Niddastr. 65.
+
+Tagsüber Zutritt mit QR Code möglich, Fachbuchung Online oder vor Ort per Display oder Mobil.
+
+Der Raum ist videoüberwacht und in einem abgesicherten Strassenbereich. Abends ist der Store mit einem Rolltor gesichert. Jeder Nutzer des Stores kann dieses mit der Buchung und dem Zutrittscode öffnen und den Store damit sicher in den Abendzeiten nutzen.
+
+#### Support and contact
+
+- Phone: +43 720 676 300 90
+
+---
+
+Source: holdmybag.net — Holdmybag luggage storage. Operator and contractual partner: Holdmybag GmbH.
+
+### Im Wizemann Halle Stuttgart
+
+> Luggage storage (lockers) by Holdmybag
+>
+> Zugang zum Garderoben Locker im Rahmen der Veranstaltungen und der Öffnungszeiten des Wizemann.
+
+- Web page: https://test.holdmybag.net/en/location/im-wizemann-halle-stuttgart/
+- Deutsche Version: https://test.holdmybag.net/standort/im-wizemann-halle-stuttgart/
+- Markdown (Deutsch): https://test.holdmybag.net/standort/im-wizemann-halle-stuttgart.md
+
+#### Address and map
+
+- Address: Quellenstraße 7, 70376 Stuttgart, DE
+- Coordinates (latitude, longitude): 48.8079795, 9.1999992
+- Directions: https://www.google.com/maps/dir/?api=1&destination=48.8079795,9.1999992
+
+#### Getting there and access
+
+Zugang zum Garderoben Locker im Rahmen der Veranstaltungen und der Öffnungszeiten des Wizemann.
+
+#### Opening hours
+
+Open 24/7.
+
+#### Booking and payment
+
+- Online: Reserve and pay for a locker in advance; the access code arrives by email. [Book now](https://booking.safecube.io/str-kultur-und-betriebs-gmbH)
+- On site by smartphone: Scan the QR code on the locker, choose a compartment and pay on your phone.
+- On site at the terminal: not available at this location.
+
+#### Prices
+
+Package prices (total):
+
+| Duration | S | M | XL |
+| --- | --- | --- | --- |
+| 1 day | 3,00 € | 5,00 € | 8,00 € |
+
+Package price: covers the entire booking period.
+
+#### Locker sizes
+
+| Size | Dimensions (W×H×D) | Note |
+| --- | --- | --- |
+| S | 32 × 13 × 65 cm | Jacke / Handtasche |
+| M | 32 × 28 × 65 cm | Helm / Rucksack |
+| XL | 32 × 73 × 65 cm | Koffer |
+
+#### Support and contact
+
+- Phone: +4915154802643
+
+---
+
+Source: holdmybag.net — Holdmybag luggage storage. Operator and contractual partner: Holdmybag GmbH.
+
+### Stuttgart – Porsche-Arena / Hanns-Martin-Schleyer-Halle / Schließsfächer für Garderobe
+
+> Luggage storage (lockers) by Holdmybag
+>
+> Die Garderoben Schließfächer befinden sich im Untergeschoss, direkt neben den manuellen Garderoben.
+
+- Web page: https://test.holdmybag.net/en/location/stuttgart-hallenduo/
+- Deutsche Version: https://test.holdmybag.net/standort/stuttgart-hallenduo/
+- Markdown (Deutsch): https://test.holdmybag.net/standort/stuttgart-hallenduo.md
+
+#### Address and map
+
+- Address: Mercedesstraße 69, 70372 Stuttgart, DE
+- Coordinates (latitude, longitude): 48.7940598, 9.2271424
+- Directions: https://www.google.com/maps/dir/?api=1&destination=48.7940598,9.2271424
+
+#### Getting there and access
+
+Die Schließfächer sind im Untergeschoss an den manuellen Garderobenbereichen und werden als bequemer einfacher Ersatz für die "manuelle" Garderobe benutzt. Der Zugang ist nur im Rahmen der Veranstaltungen zugänglich.
+
+#### Opening hours
+
+Open 24/7.
+
+#### Booking and payment
+
+- Online: Reserve and pay for a locker in advance; the access code arrives by email. [Book now](https://booking.holdmybag.net/in-stuttgart/)
+- On site by smartphone: Scan the QR code on the locker, choose a compartment and pay on your phone. Payment methods: Card, Apple Pay, Google Pay, PayPal.
+- On site at the terminal: Choose a compartment on the screen and pay by card or contactless at the terminal. Payment methods: Card, Apple Pay, Google Pay.
+
+#### Prices
+
+Package prices (total):
+
+| Duration | S | M |
+| --- | --- | --- |
+| 12 hrs | 3,00 € | 5,00 € |
+
+Package price: covers the entire booking period.
+
+#### Locker sizes
+
+| Size | Dimensions (W×H×D) | Note |
+| --- | --- | --- |
+| S | 32 × 13 × 65 cm |  |
+| M | 32 × 28 × 65 cm |  |
+
+#### Amenities
+
+- Lighting
+- Wheelchair accessible
+- Air conditioning
+
+#### Support and contact
+
+- Phone: +497119554513
+- Website: https://www.hallenduo.de/de/home/besucher-infos/garderobe-gepaeck
+
+---
+
+Source: holdmybag.net — Holdmybag luggage storage. Operator and contractual partner: Holdmybag GmbH.
+
+### Waltherpark Bozen
+
+> Luggage storage (lockers) by Holdmybag
+>
+> Die Schließfächer befinden sich an zentraler Stelle im Erdgeschoß des Waltherpark. Verschiedene Größen sind buchbar, unter anderem auch für das Aufladen von Handys/ I-Pads.
+
+- Web page: https://test.holdmybag.net/en/location/waltherpark-spa/
+- Deutsche Version: https://test.holdmybag.net/standort/waltherpark-spa/
+- Markdown (Deutsch): https://test.holdmybag.net/standort/waltherpark-spa.md
+
+#### Address and map
+
+- Address: Bahnhofsallee 5, 39100 Bozen, IT
+- Coordinates (latitude, longitude): 46.4974493, 11.3554717
+- Directions: https://www.google.com/maps/dir/?api=1&destination=46.4974493,11.3554717
+
+#### Getting there and access
+
+Öffnungszeiten auf Basis des Einkaufszentrums. Bitte informieren Sie sich über die genauen Zeiten.
+
+#### Opening hours
+
+- Monday: 08:00:00–23:00:00
+- Tuesday: 08:00:00–23:00:00
+- Wednesday: 08:00:00–23:00:00
+- Thursday: 08:00:00–23:00:00
+- Friday: 08:00:00–23:00:00
+- Saturday: 08:00:00–23:00:00
+- Sunday: 08:30:00–23:00:00
+
+#### Booking and payment
+
+- Online: Reserve and pay for a locker in advance; the access code arrives by email. [Book now](https://booking.holdmybag.net/waltherpark-spa)
+- On site by smartphone: Scan the QR code on the locker, choose a compartment and pay on your phone. Payment methods: Card, Apple Pay, Google Pay, PayPal.
+- On site at the terminal: Choose a compartment on the screen and pay by card or contactless at the terminal. Payment methods: Card, Apple Pay, Google Pay, PayPal.
+
+#### Prices
+
+Package prices (total):
+
+| Duration | S | M | L | XL |
+| --- | --- | --- | --- | --- |
+| 4 hrs | 3,00 € | 3,50 € | 4,00 € | 7,00 € |
+| 8 hrs | 5,00 € | 6,50 € | 6,50 € | 10,00 € |
+
+Package price: covers the entire booking period.
+
+#### Locker sizes
+
+| Size | Dimensions (W×H×D) | Note |
+| --- | --- | --- |
+| S | 32 × 28 × 45 cm |  |
+| M | 32 × 50 × 45 cm |  |
+| L | 32 × 61 × 45 cm |  |
+| XL | 32 × 83 × 45 cm |  |
+
+#### Amenities
+
+- CCTV
+- Covered
+- Wi-Fi
+- Parking
+- Air conditioning
+- Charging
+
+#### Support and contact
+
+- Phone: +39473742417
+- Website: https://www.waltherpark.com/
+
+---
+
+Source: holdmybag.net — Holdmybag luggage storage. Operator and contractual partner: Holdmybag GmbH.
+
+## Optional
+
+- [All locations (map and search)](https://test.holdmybag.net/en/locations/)
+- [FAQ](https://test.holdmybag.net/en/faq/)
+- [Contact](https://test.holdmybag.net/en/contact/)
+- [Legal notice](https://test.holdmybag.net/en/legal-notice/)

@@ -44,6 +44,11 @@
 - Barrierefrei
 - Parkplatz
 
+## Support und Kontakt
+
+- Telefon: +43 720 6763000
+- E-Mail: support@holdmybag.net
+
 ---
 
 Quelle: holdmybag.net — Holdmybag, Gepäckaufbewahrung. Betreiber und Vertragspartner: Holdmybag GmbH.

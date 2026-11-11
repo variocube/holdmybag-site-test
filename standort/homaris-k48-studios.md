@@ -50,6 +50,11 @@ Paketpreis: gilt für die gesamte Buchungsdauer.
 | L | 5 × 4 × 4 cm | großer Rucksack |
 | XL |  | große Reisekoffer bis 81 cm Höhe / Big Trolleys |
 
+## Support und Kontakt
+
+- Telefon: +43 720 6763000
+- E-Mail: support@holdmybag.net
+
 ---
 
 Quelle: holdmybag.net — Holdmybag, Gepäckaufbewahrung. Betreiber und Vertragspartner: Holdmybag GmbH.

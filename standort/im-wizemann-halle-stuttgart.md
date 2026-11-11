@@ -49,6 +49,7 @@ Paketpreis: gilt für die gesamte Buchungsdauer.
 ## Support und Kontakt
 
 - Telefon: +4915154802643
+- E-Mail: support@holdmybag.net
 
 ---
 

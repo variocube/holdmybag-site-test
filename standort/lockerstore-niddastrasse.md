@@ -73,6 +73,7 @@ Der Raum ist videoüberwacht und in einem abgesicherten Strassenbereich. Abends 
 ## Support und Kontakt
 
 - Telefon: +43 720 676 300 90
+- E-Mail: support@holdmybag.net
 
 ---
 

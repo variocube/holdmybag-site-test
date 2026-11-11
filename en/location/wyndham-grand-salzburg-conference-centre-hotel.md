@@ -58,6 +58,7 @@ Package price: covers the entire booking period.
 ## Support and contact
 
 - Phone: +43 662 46 88 0
+- Email: support@holdmybag.net
 - Website: https://www.gchhotelgroup.com/de/hotel/radisson-blu-hotel-conference-centre-salzburg?gad_source=1&gad_campaignid=1330991487&gbraid=0AAAAADxUAX4U0RG021jFkogrl-jkTt_zH&gclid=Cj0KCQjwkt_UBhDMARIsALpnOAzN9osWIOlqzeWuBjYXOeXpn0QunLtOv_dOIqinTwftffeArlvCMvIaAibMEALw_wcB
 
 ---

@@ -57,6 +57,8 @@ Package price: covers the entire booking period.
 
 ## Support and contact
 
+- Phone: +43 720 6763000
+- Email: support@holdmybag.net
 - Website: https://my.homaris.de/search/offers?PROPERTY_IDS=21201
 
 ---

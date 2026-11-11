@@ -67,6 +67,7 @@ In case of an emergency outside support hours, assistance will only be available
 ## Support and contact
 
 - Phone: +43 720 676 300 90
+- Email: support@holdmybag.net
 - Website: https://www.praterwien.com/
 
 ---

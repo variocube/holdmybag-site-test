@@ -53,6 +53,7 @@ Package price: covers the entire booking period.
 ## Support and contact
 
 - Phone: +43 720 676 300 90
+- Email: support@holdmybag.net
 
 ---
 

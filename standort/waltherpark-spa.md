@@ -66,6 +66,7 @@ Paketpreis: gilt für die gesamte Buchungsdauer.
 ## Support und Kontakt
 
 - Telefon: +39473742417
+- E-Mail: support@holdmybag.net
 - Website: https://www.waltherpark.com/
 
 ---

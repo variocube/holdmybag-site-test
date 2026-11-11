@@ -69,6 +69,7 @@ Im Notfall steht erst am nächsten Tag die Information 1020 Wien Riesenradplatz 
 ## Support und Kontakt
 
 - Telefon: +43 720 676 300 90
+- E-Mail: support@holdmybag.net
 - Website: https://www.praterwien.com/
 
 ---

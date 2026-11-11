@@ -50,6 +50,11 @@ Package price: covers the entire booking period.
 | L | 5 × 4 × 4 cm | großer Rucksack |
 | XL |  | große Reisekoffer bis 81 cm Höhe / Big Trolleys |
 
+## Support and contact
+
+- Phone: +43 720 6763000
+- Email: support@holdmybag.net
+
 ---
 
 Source: holdmybag.net — Holdmybag luggage storage. Operator and contractual partner: Holdmybag GmbH.

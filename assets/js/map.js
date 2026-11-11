@@ -41,17 +41,20 @@
 	}
 
 	// WS-HMB-MAP-MARKERS: Marken-Pin als data-URI. online=true → Mint, sonst Lila.
-	var MARKER_MINT = "#18bdc5", MARKER_PURPLE = "#693e7e";
+	var MARKER_MINT = "#0f7a80", MARKER_PURPLE = "#693e7e";
+	// Online = gefuellter Teal-Pin; vor Ort = weisser Pin mit dicker Lila-Kontur (Form, nicht nur Farbe).
 	function pinIcon(online) {
-		var color = online ? MARKER_MINT : MARKER_PURPLE;
-		var svg = '<svg xmlns="http://www.w3.org/2000/svg" width="28" height="40" viewBox="0 0 28 40">'
+		var fill = online ? MARKER_MINT : "#ffffff";
+		var stroke = online ? "#ffffff" : MARKER_PURPLE, sw = online ? 2 : 4;
+		var dot = online ? "#ffffff" : MARKER_PURPLE;
+		var svg = '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="44" viewBox="-2 -2 32 44">'
 			+ '<path d="M14 0C6.27 0 0 6.27 0 14c0 10.5 14 26 14 26s14-15.5 14-26C28 6.27 21.73 0 14 0z" '
-			+ 'fill="' + color + '" stroke="#ffffff" stroke-width="2"/>'
-			+ '<circle cx="14" cy="14" r="5" fill="#ffffff"/></svg>';
+			+ 'fill="' + fill + '" stroke="' + stroke + '" stroke-width="' + sw + '"/>'
+			+ '<circle cx="14" cy="14" r="5" fill="' + dot + '"/></svg>';
 		return {
 			url: "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(svg),
-			scaledSize: new google.maps.Size(28, 40),
-			anchor: new google.maps.Point(14, 40),
+			scaledSize: new google.maps.Size(32, 44),
+			anchor: new google.maps.Point(16, 42),
 		};
 	}
 

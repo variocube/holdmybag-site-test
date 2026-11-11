@@ -54,6 +54,7 @@ Package price: covers the entire booking period.
 ## Support and contact
 
 - Phone: +497119554513
+- Email: support@holdmybag.net
 - Website: https://www.hallenduo.de/de/home/besucher-infos/garderobe-gepaeck
 
 ---

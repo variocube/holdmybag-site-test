@@ -50,6 +50,11 @@ Lieber Gast! Es ist uns eine Freude, Ihnen unseren neuen Gepäckaufbewahrungsser
 
 - 24/7-Zugang
 
+## Support und Kontakt
+
+- Telefon: +43 720 6763000
+- E-Mail: support@holdmybag.net
+
 ---
 
 Quelle: holdmybag.net — Holdmybag, Gepäckaufbewahrung. Betreiber und Vertragspartner: Holdmybag GmbH.

@@ -46,6 +46,8 @@ Open 24/7.
 
 ## Support and contact
 
+- Phone: +43 720 6763000
+- Email: support@holdmybag.net
 - Website: https://www.citylocker.store/#galerie
 
 ---

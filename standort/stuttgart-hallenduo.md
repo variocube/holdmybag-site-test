@@ -54,6 +54,7 @@ Paketpreis: gilt für die gesamte Buchungsdauer.
 ## Support und Kontakt
 
 - Telefon: +497119554513
+- E-Mail: support@holdmybag.net
 - Website: https://www.hallenduo.de/de/home/besucher-infos/garderobe-gepaeck
 
 ---

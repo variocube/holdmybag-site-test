@@ -2,14 +2,14 @@
  *
  * Layout-Ideen inspiriert von HTML5 UP "Story" (CC-BY 3.0), Markup eigenständig.
  * Brand-Tokens (gegen echte Live-Screenshots kalibriert, W6-FIX-1):
- *   Primär/Accent  #18bdc5 (Teal)        — Buttons, Links, Akzente
+ *   Primär/Accent  #0f7a80 (Teal)        — Buttons, Links, Akzente (VC-Hub#16 Option B, 2026-11-09)
  *   Lila           #693e7e / #9f519f     — Header + dunkle Sektionen/Bänder/Footer (Live-Brand!)
- *   Teal dunkel    #0f7a80               — Text auf hellem Grund (Eyebrow, Badges, Chips, Preise), Hover
+ *   Teal dunkel    #0b5d62               — NUR Hover/Active-Flaechen + dunkles Verlaufsende (Text/Flaechen sonst #0f7a80)
  *   Schrift        Roboto (300/400, self-hosted)
- * Kontrast (WCAG AA, VC-Hub#12): Text auf hellem Grund >= 4,5:1 — Teal dunkel
- * 4,6:1 auf #e3f7f8, 4,8:1 auf #f6f9fa (vorher #0f8e95 = 3,6:1); Kleingedrucktes
- * im lila Footer #d1d5db = 5,5:1 (vorher das globale small-Grau #6b7280 = 1,7:1).
- * Weiss auf #18bdc5 (Knoepfe) bleibt bewusst (Markenentscheid, VC-Hub#16).
+ * Kontrast (WCAG AA, VC-Hub#12/#16): Teal #0f7a80 = 5,1:1 auf Weiss, 4,8:1 auf #f6f9fa,
+ * 4,6:1 auf #e3f7f8 (Text und Weiss-auf-Teal-Knoepfe >= 4,5:1); Hover #0b5d62 = 7,6:1 mit Weiss;
+ * Kleingedrucktes im lila Footer #d1d5db = 5,5:1. Das alte helle Marken-Teal
+ * (2,3:1 mit Weiss) ist entfernt (Markenentscheid Option B).
  * (W6b hatte den Header faelschlich Navy #0a3049 — Live-Header ist LILA. Navy raus.)
  */
 
@@ -30,8 +30,8 @@
  * --------------------------------------------------------------------- */
 :root {
   /* Brand (W6b — echte holdmybag-Marke) */
-  --hmb-accent:       #18bdc5;   /* Teal — Primär (Buttons/Links) */
-  --hmb-accent-dark:  #0f7a80;   /* dunkleres Teal: Text auf hellem Grund (≥ 4,5:1) + Hover */
+  --hmb-accent:       #0f7a80;   /* Teal — Primär (Buttons/Links; Weiss darauf 5,1:1, VC-Hub#16 Option B) */
+  --hmb-accent-dark:  #0b5d62;   /* noch dunkleres Teal: Hover/Active + dunkles Gradient-Ende (Weiss 7,6:1) */
   --hmb-accent-soft:  #e3f7f8;   /* helles Teal-Tint */
   --hmb-purple:       #693e7e;   /* Lila (dunkel) — Header + dunkle Sektionen */
   --hmb-purple-light: #9f519f;   /* Lila (hell) — Akzent-Band */
@@ -86,6 +86,11 @@ body {
 img { max-width: 100%; height: auto; display: block; }
 a { color: var(--hmb-accent); text-decoration: none; transition: color .15s var(--ease); }
 a:hover { color: var(--hmb-accent-dark); }
+/* Links im Fliesstext: Unterstrich (Teal vs. Text nur ~2,9:1, WCAG 1.4.1) */
+main p a:not(.btn), main li:not(.loc-card) a:not(.btn), main dd a:not(.btn),
+.description a, .rtext a, .rich a {
+  text-decoration: underline; text-underline-offset: .15em; text-decoration-thickness: 1px;
+}
 h1, h2, h3, h4 { line-height: 1.15; margin: 0 0 .5em; letter-spacing: -.01em; font-weight: 700; }
 h1 { font-size: var(--fs-2xl); }
 h2 { font-size: var(--fs-xl); }
@@ -130,12 +135,17 @@ hr { border: 0; border-top: 1px solid var(--hmb-border); margin: 2em 0; }
 .site-nav { display: flex; gap: clamp(8px, 1.5vw, 20px); align-items: center; }
 .site-nav a {
   color: rgba(255, 255, 255, .88); font-weight: 500; font-size: var(--fs-sm);
-  padding: 6px 4px; border-bottom: 2px solid transparent;
 }
-.site-nav a:hover, .site-nav a.is-active {
-  color: var(--hmb-accent); border-bottom-color: var(--hmb-accent);
+.site-nav a:not(.btn) { padding: 4px 8px; border-radius: 4px; }   /* Pille wie .lang-picker a; der CTA behaelt .btn */
+/* Aktiv/Hover als helle Pille wie beim Sprachwechsel (Weiss auf Pille ueber Lila >= 4,5:1) */
+.site-nav a:not(.btn):hover { background: rgba(255, 255, 255, .08); color: #fff; }
+.site-nav a:not(.btn).is-active, .site-nav a:not(.btn)[aria-current="page"] {
+  background: rgba(255, 255, 255, .14); color: #fff; font-weight: 600;
 }
-.site-nav a.btn-primary { color: #fff; border-bottom: 0; }
+.site-nav a:focus-visible, .lang-picker a:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+/* Kopf-CTA: weiss mit Teal-Schrift (Teal-Knopf waere auf Lila nur 1,6:1) */
+.site-nav a.btn-primary { background: #fff; color: var(--hmb-accent); }
+.site-nav a.btn-primary:hover { background: var(--hmb-accent-soft); color: var(--hmb-accent-dark); }
 
 .nav-toggle { color: #fff; }
 
@@ -194,7 +204,7 @@ hr { border: 0; border-top: 1px solid var(--hmb-border); margin: 2em 0; }
 }
 .hmb-input:focus {
   outline: 0; border-color: var(--hmb-accent);
-  box-shadow: 0 0 0 3px var(--hmb-accent-soft);
+  box-shadow: 0 0 0 3px rgba(15, 122, 128, .3);
 }
 textarea.hmb-input { min-height: 150px; resize: vertical; }
 
@@ -225,7 +235,7 @@ textarea.hmb-input { min-height: 150px; resize: vertical; }
   /* Fallback-Gradient (Brand-Lila/Teal) falls kein Hero-Bild gesetzt ist. */
   background:
     linear-gradient(135deg, rgba(105, 62, 126, .82) 0%, rgba(105, 62, 126, .55) 60%, rgba(105,62,126,.7) 100%),
-    radial-gradient(circle at 30% 40%, #18bdc5 0%, transparent 55%),
+    radial-gradient(circle at 30% 40%, var(--hmb-accent) 0%, transparent 55%),
     linear-gradient(180deg, #693e7e 0%, #4a2c5a 100%);
   color: #fff;
   overflow: hidden;
@@ -290,7 +300,7 @@ textarea.hmb-input { min-height: 150px; resize: vertical; }
 .section-head { text-align: center; margin-bottom: clamp(28px, 5vh, 56px); }
 .section-head .eyebrow {
   display: inline-block; padding: 4px 12px; border-radius: 999px;
-  background: var(--hmb-accent-soft); color: var(--hmb-accent-dark);
+  background: var(--hmb-accent-soft); color: var(--hmb-accent);
   font-size: var(--fs-xs); font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
   margin-bottom: 14px;
 }
@@ -306,7 +316,7 @@ textarea.hmb-input { min-height: 150px; resize: vertical; }
 .usp-card .icon {
   display: inline-flex; align-items: center; justify-content: center;
   width: 56px; height: 56px; border-radius: 50%;
-  background: var(--hmb-accent-soft); color: var(--hmb-accent-dark);
+  background: var(--hmb-accent-soft); color: var(--hmb-accent);
   font-size: 1.5rem; margin-bottom: 12px;
 }
 .usp-card h3 { font-size: 1.1rem; margin-bottom: 6px; }
@@ -329,7 +339,7 @@ textarea.hmb-input { min-height: 150px; resize: vertical; }
   width: 36px; height: 36px; border-radius: 50%;
   background: var(--hmb-accent); color: #fff;
   display: inline-flex; align-items: center; justify-content: center;
-  font-weight: 700; font-size: 1.05rem; box-shadow: 0 4px 12px rgba(226, 0, 26, .35);
+  font-weight: 700; font-size: 1.05rem; box-shadow: 0 4px 12px rgba(11, 93, 98, .35);
 }
 .step-card h3 { margin-top: 4px; }
 
@@ -341,7 +351,7 @@ textarea.hmb-input { min-height: 150px; resize: vertical; }
   background: var(--hmb-bg-alt); border: 1px solid var(--hmb-border);
   border-radius: 12px; padding: 28px 24px; text-align: center;
 }
-.pricing-card.is-featured { border-color: var(--hmb-accent); box-shadow: 0 10px 30px rgba(24, 189, 197, .18); }
+.pricing-card.is-featured { border-color: var(--hmb-accent); box-shadow: 0 10px 30px rgba(15, 122, 128, .18); }
 .pricing-card .price { font-size: var(--fs-xl); font-weight: 800; color: var(--hmb-accent); margin: 8px 0; }
 .pricing-card .size { color: var(--hmb-text-mute); font-size: var(--fs-sm); margin-bottom: 16px; }
 .pricing-card ul { list-style: none; padding: 0; margin: 0 0 20px; text-align: left; }
@@ -458,7 +468,7 @@ textarea.hmb-input { min-height: 150px; resize: vertical; }
 .location-detail .description { font-size: var(--fs-lg); color: var(--hmb-text-soft); }
 .amenities { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0; }
 .amenities .amenity {
-  background: var(--hmb-accent-soft); color: var(--hmb-accent-dark);
+  background: var(--hmb-accent-soft); color: var(--hmb-accent);
   padding: 4px 12px; border-radius: 999px; font-size: var(--fs-xs);
 }
 
@@ -480,19 +490,18 @@ textarea.hmb-input { min-height: 150px; resize: vertical; }
   display: inline-block; padding: 2px 10px; border-radius: 999px;
   font-size: var(--fs-xs); text-transform: capitalize;
 }
-.category-online_onsite { background: var(--hmb-accent-soft); color: var(--hmb-accent-dark); }
+.category-online_onsite { background: var(--hmb-accent-soft); color: var(--hmb-accent); }
 .category-online { background: #e0f2fe; color: #0369a1; }
 .category-onsite { background: #f3f4f6; color: #4b5563; }
 
 /* Static-page (impressum/datenschutz/agb) */
 .static-page { max-width: 760px; margin: 0 auto; padding: clamp(32px, 6vh, 80px) clamp(16px, 4vw, 32px); }
 .static-page .placeholder { color: var(--hmb-text-mute); font-style: italic; }
-/* E-346: Entwurfsvermerk der englischen Rechtsseiten ("Draft — pending legal review"). */
-.static-page .draft-note { margin: 0 0 24px; padding: 12px 16px; border: 2px solid #b45309; border-radius: 6px;
-  background: #fffbeb; color: #78350f; font-size: .95rem; }
-.static-page .draft-note p { margin: 0 0 6px; }
-.static-page .draft-note p:last-child, .static-page .draft-note ul:last-child { margin-bottom: 0; }
-.static-page .draft-note ul { margin: 6px 0 0; padding-left: 20px; }
+/* E-346: Hinweis auf nicht-deutschen Rechtsseiten (deutsche Fassung verbindlich, automatische Uebersetzung). */
+.static-page .legal-notice { margin: 0 0 24px; padding: 12px 16px; border: 1px solid var(--hmb-purple); border-left-width: 6px;
+  border-radius: 6px; background: var(--hmb-accent-soft); color: var(--hmb-text); font-size: .95rem; }
+.static-page .legal-notice p { margin: 0; }
+.static-page .legal-notice a { color: var(--hmb-purple); text-decoration: underline; }
 .static-page .table-wrap { overflow-x: auto; margin: 0 0 1.2em; }
 .static-page table { border-collapse: collapse; width: 100%; font-size: .95rem; }
 .static-page th, .static-page td { border: 1px solid #d1d5db; padding: 8px 10px; text-align: left; vertical-align: top; }
@@ -571,7 +580,7 @@ textarea.hmb-input { min-height: 150px; resize: vertical; }
 .badge { font-size: var(--fs-xs); font-weight: 600; padding: 4px 10px; border-radius: 999px;
 	display: inline-flex; gap: 5px; align-items: center; }
 .badge-online { background: #e0f2fe; color: #0369a1; }
-.badge-onsite { background: var(--hmb-accent-soft); color: var(--hmb-accent-dark); }
+.badge-onsite { background: var(--hmb-accent-soft); color: var(--hmb-accent); }
 .badge-247 { background: #ecfccb; color: #3f6212; }
 
 /* ---- Detail ---- */
@@ -579,7 +588,7 @@ textarea.hmb-input { min-height: 150px; resize: vertical; }
    leerem Lila-Verlauf. Foto-Fall überschreibt `background-image` inline im Template. */
 .d-hero { position: relative; min-height: 300px; display: flex; align-items: flex-end; color: #fff;
 	background: linear-gradient(180deg, rgba(105,62,126,.25), rgba(105,62,126,.85)),
-		url('/assets/img/default-locker.svg') center / cover no-repeat,
+		url('/assets/img/default-locker.svg?v=2') center / cover no-repeat,
 		linear-gradient(135deg, var(--hmb-purple), var(--hmb-purple-light)); }
 .d-hero .container { padding-top: 60px; padding-bottom: 26px; }
 .d-return { background: var(--hmb-bg); padding: 8px 0; }
@@ -628,7 +637,7 @@ textarea.hmb-input { min-height: 150px; resize: vertical; }
 .w3w { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; padding: 14px 16px;
 	border: 2px dashed var(--hmb-accent); border-radius: 12px; background: var(--hmb-accent-soft); margin: 6px 0 16px; }
 .w3w .code { font-family: ui-monospace,'SF Mono',Menlo,Consolas,monospace; font-size: 1.15rem; font-weight: 700; color: var(--hmb-purple); }
-.w3w .code i { color: var(--hmb-accent-dark); font-style: normal; }
+.w3w .code i { color: var(--hmb-accent); font-style: normal; }
 .w3w small { flex-basis: 100%; color: var(--hmb-text-soft); }
 
 .route { border: 1px solid var(--hmb-border); border-radius: 12px; overflow: hidden; background: var(--hmb-bg-alt); }
@@ -638,7 +647,7 @@ textarea.hmb-input { min-height: 150px; resize: vertical; }
 .route > summary::after { content: '+'; margin-left: auto; font-size: 1.4rem; color: var(--hmb-accent); font-weight: 400; }
 .route[open] > summary::after { content: '\2212'; }
 .route > summary .from-ic { width: 30px; height: 30px; border-radius: 50%; background: var(--hmb-accent-soft);
-	color: var(--hmb-accent-dark); display: flex; align-items: center; justify-content: center; flex: 0 0 auto; }
+	color: var(--hmb-accent); display: flex; align-items: center; justify-content: center; flex: 0 0 auto; }
 .route .rbody { padding: 0 18px 18px; }
 .route .rbody .rtext { color: var(--hmb-text-soft); font-size: var(--fs-sm); }
 .route-media { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 8px; }
@@ -659,7 +668,7 @@ textarea.hmb-input { min-height: 150px; resize: vertical; }
 .book-grid { display: flex; flex-direction: column; gap: 14px; }
 .book-card { border: 1px solid var(--hmb-border); border-radius: 12px; padding: 18px; background: var(--hmb-bg-alt);
 	display: flex; flex-direction: column; }
-.book-card.feature { border-color: var(--hmb-accent); box-shadow: 0 8px 24px rgba(24,189,197,.14); }
+.book-card.feature { border-color: var(--hmb-accent); box-shadow: 0 8px 24px rgba(15,122,128,.14); }
 .book-card.off { opacity: .55; }
 .book-card .num { width: 30px; height: 30px; border-radius: 50%; background: var(--hmb-accent); color: #fff;
 	font-weight: 700; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; }
@@ -707,7 +716,7 @@ textarea.hmb-input { min-height: 150px; resize: vertical; }
 	.gallery-slide { flex-basis: 84%; }
 	.gallery-track { padding: 0 8%; scroll-padding: 0 8%; }
 }
-.d-side .price-big { font-size: 1.4rem; font-weight: 800; color: var(--hmb-accent-dark); margin: 0; }
+.d-side .price-big { font-size: 1.4rem; font-weight: 800; color: var(--hmb-accent); margin: 0; }
 /* WS-HMB-DETAIL-PRICES: saubere Pro-Größe-Kacheln (Größe → Maße) statt Freitext. */
 .price-sizes-cap { margin: 12px 0 6px; font-size: var(--fs-xs); text-transform: uppercase;
 	letter-spacing: .04em; }
@@ -716,7 +725,7 @@ textarea.hmb-input { min-height: 150px; resize: vertical; }
 	padding: 8px 12px; background: var(--hmb-bg); border: 1px solid var(--hmb-border); border-radius: 10px; }
 .price-size .ps-label { font-weight: 700; color: var(--hmb-purple); flex-shrink: 0; }
 .price-size .ps-dim { color: var(--hmb-text-soft); font-size: var(--fs-sm); text-align: right; }
-.price-size .ps-price { color: var(--hmb-accent-dark); font-weight: 800; white-space: nowrap; }
+.price-size .ps-price { color: var(--hmb-accent); font-weight: 800; white-space: nowrap; }
 
 .action-bar { display: none; }
 @media (max-width: 820px) {
@@ -741,12 +750,12 @@ textarea.hmb-input { min-height: 150px; resize: vertical; }
 .finder { display: flex; gap: 10px; flex-wrap: wrap; align-items: stretch; margin: 8px 0 12px; }
 .finder-search { display: flex; align-items: center; gap: 8px; flex: 1 1 380px; background: var(--hmb-bg-alt);
 	border: 1.5px solid var(--hmb-border-strong); border-radius: 999px; padding: 4px 6px 4px 16px; }
-.finder-search:focus-within { border-color: var(--hmb-accent); box-shadow: 0 0 0 3px var(--hmb-accent-soft); }
+.finder-search:focus-within { border-color: var(--hmb-accent); box-shadow: 0 0 0 3px rgba(15, 122, 128, .3); }
 .finder-ic { color: var(--hmb-text-mute); }
 .finder-search input { flex: 1; border: 0; outline: 0; background: none; font-family: inherit;
 	font-size: var(--fs-base); min-height: 40px; color: var(--hmb-text); }
 .finder-city-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 6px; }
-.finder-city-chips button { background: var(--hmb-accent-soft); color: var(--hmb-accent-dark); border: 0;
+.finder-city-chips button { background: var(--hmb-accent-soft); color: var(--hmb-accent); border: 0;
 	border-radius: 999px; padding: 6px 14px; font-size: var(--fs-sm); font-weight: 600; cursor: pointer; font-family: inherit; }
 /* WS-HMB-CITY-CHIPS: Aufklapper ist kein Ort → dezenter „Ghost"-Look. */
 .finder-city-chips button.city-more { background: transparent; color: var(--hmb-text-soft);
@@ -800,7 +809,7 @@ textarea.hmb-input { min-height: 150px; resize: vertical; }
 .finder-restrict {
 	display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
 	margin: 8px 0 0; padding: 8px 14px; border-radius: 10px;
-	background: var(--hmb-accent-soft); color: var(--hmb-accent-dark);
+	background: var(--hmb-accent-soft); color: var(--hmb-accent);
 	font-size: var(--fs-sm); font-weight: 600;
 }
 .finder-restrict .fr-text { flex: 1; min-width: 0; }
@@ -813,14 +822,14 @@ textarea.hmb-input { min-height: 150px; resize: vertical; }
 .result-card { display: none; }
 .result-card.is-active { display: block; }
 .result-card .rc-img { height: 150px;
-	background: url('/assets/img/default-locker.svg') center / cover no-repeat,
+	background: url('/assets/img/default-locker.svg?v=2') center / cover no-repeat,
 		linear-gradient(135deg, var(--hmb-purple), var(--hmb-purple-light));
 	background-size: cover; background-position: center; }
 .result-card .rc-body { padding: 18px 20px 20px; }
 .result-card h3 { margin: 0 0 2px; }
 .result-card .rc-city { color: var(--hmb-text-mute); font-size: var(--fs-sm); margin-bottom: 10px; }
 .result-card .rc-desc { font-size: var(--fs-sm); color: var(--hmb-text-soft); margin-bottom: 14px; }
-.result-card .rc-price { font-weight: 700; color: var(--hmb-accent-dark); margin-bottom: 14px; }
+.result-card .rc-price { font-weight: 700; color: var(--hmb-accent); margin-bottom: 14px; }
 .result-card .rc-actions { display: flex; gap: 8px; flex-wrap: wrap; }
 
 /* WS-HMB-MAP-MARKERS: Karten-Legende (Marker-Farben Mint=online / Lila=vor Ort) */
@@ -830,11 +839,11 @@ textarea.hmb-input { min-height: 150px; resize: vertical; }
 .hmb-map-legend span { display: inline-flex; align-items: center; gap: 6px; }
 .hmb-map-legend .lg-dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block;
 	border: 1px solid rgba(0,0,0,.12); }
-.hmb-map-legend .lg-online { background: #18bdc5; }
-.hmb-map-legend .lg-onsite { background: #693e7e; }
+.hmb-map-legend .lg-online { background: var(--hmb-accent); }
+.hmb-map-legend .lg-onsite { background: #fff; border: 3px solid #693e7e; width: 14px; height: 14px; box-sizing: border-box; }
 
 /* WS-HMB-FINDER-UX: Ergebnisliste farbcodiert wie die Marker (Mint=online /
    Lila=vor Ort) + 2. Filter-Chip-Reihe unter der Karte (nicht sticky). */
-.loc-card.hmb-card-online { border-left: 4px solid #18bdc5; }
-.loc-card.hmb-card-onsite { border-left: 4px solid #693e7e; }
+.loc-card.hmb-card-online { border-left: 4px solid var(--hmb-accent); }
+.loc-card.hmb-card-onsite { border-left: 6px double #693e7e; }   /* Linienart statt nur Farbe */
 .ov-filter-list { position: static; top: auto; z-index: auto; margin: 4px 0 0; }

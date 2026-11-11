@@ -50,6 +50,11 @@ Open 24/7.
 
 - 24/7 access
 
+## Support and contact
+
+- Phone: +43 720 6763000
+- Email: support@holdmybag.net
+
 ---
 
 Source: holdmybag.net — Holdmybag luggage storage. Operator and contractual partner: Holdmybag GmbH.

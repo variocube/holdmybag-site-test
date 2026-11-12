@@ -2,7 +2,7 @@
 
 > Luggage storage (lockers) by Holdmybag
 >
-> Öffentlich nutzbare Gepäckschließfächer, direkt am Bahnhof Zell am Ziller
+> Publicly accessible luggage lockers, directly at the train station Zell am Ziller
 
 - Web page: https://test.holdmybag.net/en/location/bahnhof-zell-am-ziller/
 - Deutsche Version: https://test.holdmybag.net/standort/bahnhof-zell-am-ziller/

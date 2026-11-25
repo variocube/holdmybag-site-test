@@ -6,6 +6,13 @@
  *   - Kategorie "stats" → data-name googleAnalytics, googleTagManager (GA4/GTM)
  * Persistiert die Wahl im Cookie (Name aus #hmb-consent[data-cookie-name],
  * z.B. hmb_consent / hmb_consent_test), 365 Tage. DE/EN nach <html lang>.
+ * Cookie-Domain: Auf Prod steht #hmb-consent[data-cookie-domain]="holdmybag.net" — die Wahl gilt
+ * dann auch für booking.holdmybag.net (Safecube-Buchungs-App liest und schreibt dasselbe Cookie,
+ * safecube#1323). Test/Vorschau: leer = nur dieser Host. Die Domain wird nur benutzt, wenn der
+ * aktuelle Host dazu passt (sonst verwirft der Browser das Cookie und der Dialog käme immer wieder).
+ * Beim Schreiben wird ein altes Host-only-Cookie gleichen Namens zuerst gelöscht; fremde Schlüssel
+ * im gespeicherten JSON (von der Buchungs-App) bleiben erhalten. ``v: 2`` = Domain-Cookie; ein
+ * gespeicherter Stand mit anderem ``v`` wird beim Laden einmalig still umgeschrieben (Migration).
  *
  * E-348 Variante D (Mock requirements-md/hmb/mock_cookie_banner_v1.1.html):
  *  - Erstbesuch: Dialog mitten auf der Seite, Seite abgedunkelt und gesperrt (``inert``)
@@ -58,21 +65,55 @@
 	var mount = document.getElementById("hmb-consent");
 	var cookieName = (mount && mount.getAttribute("data-cookie-name")) || "hmb_consent";
 	// Rechtsseiten (data-modal="0"): Dialog sperrt die Seite nicht.
+	var cookieDomain = (function () {
+		var d = ((mount && mount.getAttribute("data-cookie-domain")) || "").replace(/^\./, "");
+		var h = location.hostname;
+		return d && (h === d || h.slice(-(d.length + 1)) === "." + d) ? d : "";
+	})();
 	var modal = !(mount && mount.getAttribute("data-modal") === "0");
 
 	function esc(s) {
 		return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;" }[c]; });
 	}
 
+	// Alle Cookies dieses Namens (Host-only UND Domain-Cookie können gleichzeitig existieren; der Browser
+	// liefert beide, das ältere zuerst). Nur einfache Objekte zählen — alles andere (true, null, [], Zahl)
+	// gilt als nicht vorhanden. Mit v===2 gewinnt; bleiben mehrere, gilt je Kategorie die strengere Wahl
+	// (nur wahr, wenn in allen wahr), sonstige Schlüssel werden vereinigt.
+	var cookieCount = 0;
 	function readConsent() {
-		var m = document.cookie.match(new RegExp("(?:^|; )" + cookieName + "=([^;]*)"));
-		if (!m) return null;
-		try { return JSON.parse(decodeURIComponent(m[1])); } catch (_) { return null; }
+		var re = new RegExp("(?:^|; )" + cookieName + "=([^;]*)", "g"), m, all = [];
+		var raw = document.cookie;
+		while ((m = re.exec(raw)) !== null) {
+			cookieCount++;
+			try {
+				var o = JSON.parse(decodeURIComponent(m[1]));
+				if (o && typeof o === "object" && !Array.isArray(o)) all.push(o);
+			} catch (_) { /* unlesbar → ignorieren */ }
+		}
+		if (!all.length) return null;
+		var cur = all.filter(function (o) { return o.v === 2; });
+		if (cur.length) all = cur;
+		var out = {};
+		all.forEach(function (o) {
+			Object.keys(o).forEach(function (k) {
+				if (k === "map" || k === "stats") out[k] = (k in out ? out[k] : true) && o[k] === true;
+				else if (!(k in out)) out[k] = o[k];
+			});
+		});
+		out.v = all.every(function (o) { return o.v === 2; }) ? 2 : 1;
+		return out;
 	}
 	function writeConsent(state) {
+		state.v = 2;
 		var val = encodeURIComponent(JSON.stringify(state));
 		var exp = new Date(); exp.setFullYear(exp.getFullYear() + 1);
-		document.cookie = cookieName + "=" + val + ";path=/;expires=" + exp.toUTCString() + ";SameSite=Lax";
+		if (cookieDomain) {
+			// altes Host-only-Cookie gleichen Namens entfernen, sonst läge es neben dem Domain-Cookie
+			document.cookie = cookieName + "=;path=/;expires=Thu, 01 Jan 1970 00:00:00 GMT;SameSite=Lax";
+		}
+		document.cookie = cookieName + "=" + val + ";path=/;expires=" + exp.toUTCString() + ";SameSite=Lax"
+			+ (cookieDomain ? ";domain=" + cookieDomain : "");
 	}
 	function has(cat) {
 		var s = readConsent();
@@ -204,8 +245,9 @@
 		if (!wasOpen) { try { q('[data-act="accept"]').focus({ preventScroll: true }); } catch (_) { q('[data-act="accept"]').focus(); } }
 	}
 
-	function decide(state) {
-		state.v = 1;
+	function decide(choice) {
+		var state = readConsent() || {};     // fremde Schlüssel (Buchungs-App) bleiben erhalten
+		Object.keys(choice).forEach(function (k) { state[k] = choice[k]; });
 		writeConsent(state);
 		apply(state);          // aktiviert neu opted-in Kategorien sofort
 		hide();
@@ -221,7 +263,7 @@
 	// Dialog wird geschlossen.
 	window.hmbConsentAccept = function (cat) {
 		var s = readConsent() || {};
-		s[cat] = true; s.v = 1;
+		s[cat] = true;
 		writeConsent(s);
 		apply(s);
 		hide();
@@ -231,7 +273,9 @@
 	window.hmbConsentHas = has;
 
 	function init() {
+		cookieCount = 0;
 		var saved = readConsent();
+		if (saved && cookieDomain && (saved.v !== 2 || cookieCount > 1)) { writeConsent(saved); saved = readConsent(); }  // Migration host-only → Domain
 		if (saved) { apply(saved); }   // schon entschieden → still aktivieren, kein Dialog
 		else { render(); }             // erstmals → Dialog zeigen
 		updateMapPlaceholder();        // an jeder Karte ohne Zustimmung: Platzhalter

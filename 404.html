@@ -5,7 +5,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex">  <title>404 — holdmybag</title>  <link rel="canonical" href="https://holdmybag.net/404">  <link rel="alternate" hreflang="de" href="https://holdmybag.net/404">  <link rel="alternate" hreflang="en" href="https://holdmybag.net/en/404">  <link rel="alternate" hreflang="x-default" href="https://holdmybag.net/404">  <link rel="icon" href="/favicon.ico" sizes="32x32">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <link rel="stylesheet" href="/assets/css/site.css?v=36e846c68b"></head>
+  <link rel="stylesheet" href="/assets/css/site.css?v=36e846c68b"><script id="hmb-404-path">
+(function (w, d) {
+  var loc = w.location;
+  var path = loc.pathname;
+  var on404 = /^\/(en\/)?404(\.html)?$/.test(path);
+  var from = null;
+  var parts = on404 ? loc.search.replace(/^\?/, '').split('&') : [];
+  for (var i = 0; i < parts.length; i++) {
+    var eq = parts[i].indexOf('=');
+    var key = eq < 0 ? parts[i] : parts[i].slice(0, eq);
+    if (key !== 'from') continue;
+    try { from = decodeURIComponent(eq < 0 ? '' : parts[i].slice(eq + 1)); } catch (e) { from = null; }
+    break;
+  }
+  var valid = typeof from === 'string' && from.length <= 2048 && from.charAt(0) === '/' &&
+    from.charAt(1) !== '/' && from.charAt(1) !== '\\' && !/[\u0000-\u001f\u007f]/.test(from);
+  if (!on404 && d.documentElement.lang !== 'en' && path.indexOf('/en/') === 0) {
+    loc.replace('/en/404?from=' + encodeURIComponent(path + loc.search + loc.hash));
+    return;
+  }
+  if (on404 && !valid) return;
+  var target = valid ? from : path + loc.search + loc.hash;
+  if (valid) {
+    try { w.history.replaceState(null, '', from); } catch (e) { /* ignorieren */ }
+  }
+  function links() {
+    var as = d.querySelectorAll('.lang-picker a[hreflang]');
+    for (var j = 0; j < as.length; j++) {
+      var base = as[j].getAttribute('hreflang') === 'en' ? '/en/404' : '/404';
+      as[j].setAttribute('href', base + '?from=' + encodeURIComponent(target));
+    }
+  }
+  if (d.readyState === 'loading') d.addEventListener('DOMContentLoaded', links);
+  else links();
+})(window, document);
+</script></head>
 <body><div class="stage-banner" role="alert">STAGE — kein Produktivinhalt</div><header class="site-header">
   <div class="site-header-inner">
     <a class="site-brand" href="/">
@@ -64,10 +99,10 @@
       Design: <a href="https://html5up.net" rel="noopener" target="_blank">HTML5 UP</a>
     </small>
   </div>
-  <p class="site-footer-updated">Zuletzt aktualisiert am <time class="site-publish-time" datetime="2026-11-12T08:46:40.020574+01:00">12.11.2026, 08:46 Uhr (MEZ)</time></p>
-</footer><div id="hmb-consent" data-cookie-name="hmb_consent_test" data-modal="1" hidden>
+  <p class="site-footer-updated">Zuletzt aktualisiert am <time class="site-publish-time" datetime="2026-11-25T16:57:51.646890+01:00">25.11.2026, 16:57 Uhr (MEZ)</time></p>
+</footer><div id="hmb-consent" data-cookie-name="hmb_consent_test" data-cookie-domain="" data-modal="1" hidden>
   <!-- Dialog wird zur Laufzeit von /assets/js/consent.js gerendert (HMB-K6, E-348). -->
 </div>
-<script defer src="/assets/js/consent.js?v=3"></script><script defer src="/assets/js/nav.js?v=1"></script>
+<script defer src="/assets/js/consent.js?v=4"></script><script defer src="/assets/js/nav.js?v=1"></script>
 </body>
 </html>

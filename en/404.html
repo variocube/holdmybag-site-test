@@ -10,24 +10,35 @@
   var loc = w.location;
   var path = loc.pathname;
   var on404 = /^\/(en\/)?404(\.html)?$/.test(path);
-  var from = null;
-  var parts = on404 ? loc.search.replace(/^\?/, '').split('&') : [];
-  for (var i = 0; i < parts.length; i++) {
-    var eq = parts[i].indexOf('=');
-    var key = eq < 0 ? parts[i] : parts[i].slice(0, eq);
-    if (key !== 'from') continue;
-    try { from = decodeURIComponent(eq < 0 ? '' : parts[i].slice(eq + 1)); } catch (e) { from = null; }
-    break;
+  function param(name) {
+    var parts = loc.search.replace(/^\?/, '').split('&');
+    for (var i = 0; i < parts.length; i++) {
+      var eq = parts[i].indexOf('=');
+      var key = eq < 0 ? parts[i] : parts[i].slice(0, eq);
+      if (key !== name) continue;
+      try { return decodeURIComponent(eq < 0 ? '' : parts[i].slice(eq + 1)); } catch (e) { return null; }
+    }
+    return null;
   }
-  var valid = typeof from === 'string' && from.length <= 2048 && from.charAt(0) === '/' &&
-    from.charAt(1) !== '/' && from.charAt(1) !== '\\' && !/[\u0000-\u001f\u007f]/.test(from);
+  function clean(s) {
+    return typeof s === 'string' && s.length <= 2048 && !/[\u0000-\u001f\u007f]/.test(s);
+  }
+  function okRef(s) {
+    return clean(s) && /^https?:\/\/[a-z0-9\[]/i.test(s);
+  }
+  var from = on404 ? param('from') : null;
+  var valid = clean(from) && from.charAt(0) === '/' && from.charAt(1) !== '/' && from.charAt(1) !== '\\';
   if (!on404 && d.documentElement.lang !== 'en' && path.indexOf('/en/') === 0) {
-    loc.replace('/en/404?from=' + encodeURIComponent(path + loc.search + loc.hash));
+    var r = d.referrer;
+    loc.replace('/en/404?from=' + encodeURIComponent(path + loc.search + loc.hash) +
+      (okRef(r) ? '&ref=' + encodeURIComponent(r) : ''));
     return;
   }
   if (on404 && !valid) return;
   var target = valid ? from : path + loc.search + loc.hash;
   if (valid) {
+    var ref = param('ref');
+    if (okRef(ref)) w.hmbPageReferrer = ref;
     try { w.history.replaceState(null, '', from); } catch (e) { /* ignorieren */ }
   }
   function links() {
@@ -103,7 +114,7 @@
       Design: <a href="https://html5up.net" rel="noopener" target="_blank">HTML5 UP</a>
     </small>
   </div>
-  <p class="site-footer-updated">Last updated <time class="site-publish-time" datetime="2026-11-25T16:57:51.646890+01:00">25.11.2026, 16:57 (CET)</time></p>
+  <p class="site-footer-updated">Last updated <time class="site-publish-time" datetime="2026-11-25T20:19:35.787077+01:00">25.11.2026, 20:19 (CET)</time></p>
 </footer><div id="hmb-consent" data-cookie-name="hmb_consent_test" data-cookie-domain="" data-modal="1" hidden>
   <!-- Dialog wird zur Laufzeit von /assets/js/consent.js gerendert (HMB-K6, E-348). -->
 </div>
